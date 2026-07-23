@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import cocoImg from "../styles/images/coco.png";
 
-const PADLET_URL = "https://padlet.com/comsol2024/coco_1_festival";
+const PADLET_URL = "https://padlet.com/comsol2024/coco_app";
 
 export default function RainProblemPage({ user }) {
   const navigate   = useNavigate();

@@ -16,7 +16,7 @@ const STEPS = [
     ],
   },
   {
-    cocoPos: { bottom:"50%", left:"15%"  },   // ← 강당 쪽
+    cocoPos: { bottom:"50%", left:"15%"  },
     bubble:  "right",
     lines: [
       "여기는 학교 강당이야!",
@@ -25,16 +25,7 @@ const STEPS = [
     ],
   },
   {
-    cocoPos: { bottom:"58%", right:"30%"  },   // ← AED / 외심 쪽
-    bubble:  "left",
-    lines: [
-      "이 챕터는 학교의 AED 위치에 대해 생각해볼거야!",
-      "교내 요양호 학생을 위해\nAED 최적 위치를 찾아야 해!",
-      "삼각형의 외심 개념을 이용하면\n가장 가까운 위치를 구할 수 있어!",
-    ],
-  },
-  {
-    cocoPos: { bottom:"60%", right:"16%"  },   // ← 급식실 쪽
+    cocoPos: { bottom:"60%", right:"16%"  },   // ← 급식실 (2번으로 올림)
     bubble:  "left",
     lines: [
       "여기는 급식실이야!",
@@ -43,7 +34,16 @@ const STEPS = [
     ],
   },
   {
-    cocoPos: { bottom:"26%", left:"50%"  },   // ← 운동장 / 비 씬 쪽
+    cocoPos: { bottom:"58%", right:"30%"  },   // ← AED/외심 (3번으로 내림)
+    bubble:  "left",
+    lines: [
+      "이 챕터는 학교의 AED 위치에 대해 생각해볼거야!",
+      "교내 요양호 학생을 위해\nAED 최적 위치를 찾아야 해!",
+      "삼각형의 외심 개념을 이용하면\n가장 가까운 위치를 구할 수 있어!",
+    ],
+  },
+  {
+    cocoPos: { bottom:"26%", left:"50%"  },
     bubble:  "right",
     lines: [
       "여기는 운동장이야!",

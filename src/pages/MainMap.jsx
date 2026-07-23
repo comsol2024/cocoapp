@@ -9,10 +9,10 @@ import TutorialModal from "../components/TutorialModal";
 
 const RESOURCE_URL = "https://sites.google.com/goedu.kr/aicoco/%ED%99%88";
 const LEARNING_ITEMS = [
-  { icon:"📐", label:"데스모스 활동",    desc:"인터랙티브 그래프 탐구" },
-  { icon:"🤖", label:"서술형 AI 도우미", desc:"AI와 함께 수학 풀기"    },
-  { icon:"📝", label:"연습문제",          desc:"단원별 연습문제"         },
+  { emoji:"🤖", label:"AI 문제해결 도우미" },
+  { emoji:"✏️", label:"연습문제" },
 ];
+
 
 export default function MainMap({ user }) {
   const navigate = useNavigate();
@@ -143,8 +143,11 @@ export default function MainMap({ user }) {
       {LEARNING_ITEMS.map((item,i) => (
         <button key={i} onClick={() => {
           setShowLearning(false);
-          // 추후 기능 연결 예정
-          alert(`${item.label} 준비 중이야! 🌀`);
+          if (item.label === "연습문제") {
+            navigate("/practice");
+          } else if (item.label === "AI 문제해결 도우미") {
+            window.open("https://gemini.google.com/gem/1SZraZ-zK01KDobj_mpALlkzR6JHXij-2?usp=sharing", "_blank");
+          }
         }} style={{
           display:"flex", alignItems:"center", gap:"12px",
           padding:"13px 18px",
@@ -163,7 +166,7 @@ export default function MainMap({ user }) {
             background:"linear-gradient(135deg,#E3F2FD,#BBDEFB)",
             display:"flex", alignItems:"center",
             justifyContent:"center", fontSize:"20px", flexShrink:0
-          }}>{item.icon}</div>
+          }}>{item.emoji}</div>
           <div>
             <div style={{ fontSize:"14px", fontWeight:"700",
               color:"#1a1a2e" }}>{item.label}</div>

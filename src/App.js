@@ -20,6 +20,8 @@ import "./styles/coco.css";
 import AdminAccountPage from "./pages/AdminAccountPage";
 import { isAdmin } from "./config/admins";
 import LessonDesign from "./pages/LessonDesign";
+import PracticeHub from "./pages/PracticeHub";
+import PracticeQuiz from "./pages/PracticeQuiz";
 
 
 function App() {
@@ -62,6 +64,8 @@ function App() {
         <Route path="/rain-problem" element={user ? <RainProblemPage user={user}/> : <Navigate to="/" replace/>}/>
         <Route path="/admin-accounts" element={user && isAdmin(user)? <AdminAccountPage user={user} />: <Navigate to="/" />}/>
         <Route path="/lesson-design" element={<LessonDesign />} />
+        <Route path="/practice" element={<PracticeHub />} />
+        <Route path="/practice/:unitId" element={<PracticeQuiz user={user} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -6,7 +6,7 @@ import html2canvas from "html2canvas";
 import CocoChat    from "../components/CocoChat";
 import { PROMPTS } from "../utils/cocoPrompts";
 
-const PADLET_URL = "https://padlet.com/comsol2024/coco_1_festival";
+const PADLET_URL = "https://padlet.com/comsol2024/coco_app";
 const TOTAL = 60;
 const PALETTE = [
   "#5b9fe8","#ab47bc","#26a69a","#ef5350","#ff7043",

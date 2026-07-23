@@ -5,7 +5,7 @@ import { doc, setDoc, getDoc } from "firebase/firestore";
 import CocoChat    from "../components/CocoChat";
 import { PROMPTS } from "../utils/cocoPrompts";
 
-const PADLET_URL = "https://padlet.com/comsol2024/coco_1_festival";
+const PADLET_URL = "https://padlet.com/comsol2024/coco_app";
 const DAYS = [
   { id:"mon", day:"월요일", defaultMenu:"한식", color:"#e3f2fd", lc:"#1565c0" },
   { id:"tue", day:"화요일", defaultMenu:"양식", color:"#f3e5f5", lc:"#7b1fa2" },

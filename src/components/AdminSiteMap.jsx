@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAdmin } from "../config/admins";
 
@@ -65,23 +65,23 @@ export default function AdminSiteMap({ user }) {
           title="관리자 사이트맵"
           style={{
             position: "fixed",
-            bottom: "90px",
-            left: "16px",
-            width: "44px",
-            height: "44px",
+            bottom: "40px",
+            left: "10px",
+            width: "34px",
+            height: "34px",
             borderRadius: "50%",
-            background: "linear-gradient(135deg,#333,#111)",
-            border: "2px solid rgba(255,255,255,0.2)",
+            background: "rgba(189, 188, 188, 0.2)",
+            border: "2px solid rgba(197, 197, 197, 0.2)",
             color: "white",
             fontSize: "18px",
             cursor: "pointer",
             zIndex: 500,
-            boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+            boxShadow: "0 4px 16px rgba(141, 141, 141, 0.4)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}>
-          🚩
+          ★
         </button>
       )}
 
@@ -93,7 +93,7 @@ export default function AdminSiteMap({ user }) {
             onClick={() => setOpen(false)}
             style={{
               position: "fixed", inset: 0,
-              background: "rgba(0,0,0,0.5)",
+              background: "rgba(180, 180, 180, 0.5)",
               zIndex: 600
             }}/>
 
@@ -202,8 +202,22 @@ export default function AdminSiteMap({ user }) {
                   </div>
                 </div>
               ))}
+                          <button onClick={() => {
+              const keys = Object.keys(localStorage)
+                .filter(k => k.startsWith('coco_tutorial'));
+              keys.forEach(k => localStorage.removeItem(k));
+              alert('튜토리얼 초기화 완료! 새로고침하면 다시 시작돼요 😊');
+            }} style={{
+              padding:"8px 14px",
+              background:"#012d5f",
+              border:"0.2px solid #217ca0",
+              borderRadius:"8px",
+              fontSize:"13px", fontWeight:"700",
+              color:"#ffffff", cursor:"pointer"
+            }}>
+              🔄 튜토리얼 초기화
+            </button>
             </div>
-
             {/* 현재 경로 표시 */}
             <div style={{
               padding: "10px 20px",
