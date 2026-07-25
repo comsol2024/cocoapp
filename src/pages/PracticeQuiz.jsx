@@ -155,7 +155,7 @@ export default function PracticeQuiz({ user }) {
           <div style={{ fontSize:"22px", fontWeight:"900", marginBottom:"6px" }}>
             {unitConfig.title} 완료!
           </div>
-          <div style={{ fontSize:"14px", color:"#888", marginBottom:"24px" }}>
+          <div style={{ fontSize:"18px", color:"#888", marginBottom:"24px" }}>
             10문제를 모두 풀었어요
           </div>
 
@@ -167,13 +167,13 @@ export default function PracticeQuiz({ user }) {
               <div style={{ fontSize:"24px", fontWeight:"900", color:"#2E7D32" }}>
                 {firstCount}
               </div>
-              <div style={{ fontSize:"12px", color:"#555" }}>한 번에 맞춤 ✅</div>
+              <div style={{ fontSize:"18px", color:"#555" }}>한 번에 맞춤 ✅</div>
             </div>
             <div style={{ background:"#FFF3E0", borderRadius:"14px", padding:"16px" }}>
               <div style={{ fontSize:"24px", fontWeight:"900", color:"#E65100" }}>
                 {hintCount}
               </div>
-              <div style={{ fontSize:"12px", color:"#555" }}>힌트 보고 맞춤 💡</div>
+              <div style={{ fontSize:"18px", color:"#555" }}>힌트 보고 맞춤 💡</div>
             </div>
           </div>
 
@@ -188,7 +188,7 @@ export default function PracticeQuiz({ user }) {
           <button onClick={()=>navigate("/practice")} style={{
             width:"100%", padding:"12px",
             background:"white", border:"1.5px solid #e2e8f0",
-            borderRadius:"14px", fontSize:"14px",
+            borderRadius:"14px", fontSize:"18px",
             fontWeight:"700", color:"#666", cursor:"pointer"
           }}>
             ✏️ 다른 단원 풀기
@@ -213,12 +213,12 @@ export default function PracticeQuiz({ user }) {
       }}>
         <button onClick={()=>navigate("/practice")} style={{
           background:"none", border:"none", color,
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 단원 선택</button>
-        <div style={{ fontWeight:"900", fontSize:"16px" }}>
+        <div style={{ fontWeight:"900", fontSize:"18px" }}>
           {unitConfig.emoji} {unitConfig.title} 연습문제
         </div>
-        <div style={{ fontSize:"12px", fontWeight:"600",
+        <div style={{ fontSize:"18px", fontWeight:"600",
           color: saved ? "#34a853" : "#bbb" }}>
           {saved ? "✓ 저장됨" : ""}
         </div>
@@ -240,7 +240,7 @@ export default function PracticeQuiz({ user }) {
             }}/>
           ))}
         </div>
-        <div style={{ fontSize:"13px", color:"#888", marginBottom:"16px",
+        <div style={{ fontSize:"18px", color:"#888", marginBottom:"16px",
           textAlign:"right" }}>
           {currentIndex + 1} / {problems.length} 문제
         </div>
@@ -254,7 +254,7 @@ export default function PracticeQuiz({ user }) {
           <div style={{
             display:"inline-block",
             background: unitConfig.bg, color,
-            fontSize:"12px", fontWeight:"700",
+            fontSize:"18px", fontWeight:"700",
             padding:"4px 12px", borderRadius:"20px",
             marginBottom:"14px"
           }}>
@@ -315,7 +315,7 @@ export default function PracticeQuiz({ user }) {
               <div style={{
                 background:"#E8F5E9", borderRadius:"12px",
                 padding:"14px 16px", color:"#2E7D32",
-                fontWeight:"800", fontSize:"15px",
+                fontWeight:"800", fontSize:"18px",
                 textAlign:"center", marginBottom:"10px"
               }}>
                 🎉 정답입니다!
@@ -337,7 +337,7 @@ export default function PracticeQuiz({ user }) {
               <div style={{
                 background:"#FFEBEE", borderRadius:"12px",
                 padding:"12px 16px", color:"#C62828",
-                fontWeight:"700", fontSize:"14px",
+                fontWeight:"700", fontSize:"18px",
                 textAlign:"center", marginBottom:"10px"
               }}>
                 ❌ 아직 정답이 아니에요!
@@ -346,7 +346,7 @@ export default function PracticeQuiz({ user }) {
                 <button onClick={handleRetry} style={{
                   padding:"12px", background:"white",
                   border:"1.5px solid #e2e8f0", borderRadius:"12px",
-                  fontSize:"14px", fontWeight:"700", color:"#555", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", color:"#555", cursor:"pointer"
                 }}>
                   🔁 다시 풀기
                 </button>
@@ -354,7 +354,7 @@ export default function PracticeQuiz({ user }) {
                   padding:"12px",
                   background:"linear-gradient(135deg,#FF8F00,#E65100)",
                   color:"white", border:"none", borderRadius:"12px",
-                  fontSize:"14px", fontWeight:"700", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
                 }}>
                   💡 힌트 확인
                 </button>
@@ -370,11 +370,11 @@ export default function PracticeQuiz({ user }) {
                 padding:"14px 16px", marginBottom:"10px",
                 border:"1.5px solid #FFE082"
               }}>
-                <div style={{ fontSize:"13px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#E65100", marginBottom:"6px" }}>
                   💡 힌트
                 </div>
-                <div style={{ fontSize:"14px", color:"#555", lineHeight:"1.8" }}>
+                <div style={{ fontSize:"18px", color:"#555", lineHeight:"1.8" }}>
                   {problem.hint}
                 </div>
               </div>
@@ -384,11 +384,11 @@ export default function PracticeQuiz({ user }) {
                 padding:"14px 16px", marginBottom:"12px",
                 border:"1.5px solid #90CAF9"
               }}>
-                <div style={{ fontSize:"13px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#1565C0", marginBottom:"6px" }}>
                   📌 정답
                 </div>
-                <div style={{ fontSize:"14px", color:"#333",
+                <div style={{ fontSize:"18px", color:"#333",
                   lineHeight:"1.8", fontWeight:"600" }}>
                   {problem.answer}
                 </div>
@@ -398,7 +398,7 @@ export default function PracticeQuiz({ user }) {
                 <button onClick={handleRetry} style={{
                   padding:"12px", background:"white",
                   border:"1.5px solid #e2e8f0", borderRadius:"12px",
-                  fontSize:"14px", fontWeight:"700", color:"#555", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", color:"#555", cursor:"pointer"
                 }}>
                   🔁 다시 풀어보기
                 </button>
@@ -406,7 +406,7 @@ export default function PracticeQuiz({ user }) {
                   padding:"12px",
                   background:`linear-gradient(135deg,${color},${color}cc)`,
                   color:"white", border:"none", borderRadius:"12px",
-                  fontSize:"14px", fontWeight:"700", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
                 }}>
                   {currentIndex < problems.length - 1 ? "다음 문제 →" : "결과 보기 🎉"}
                 </button>

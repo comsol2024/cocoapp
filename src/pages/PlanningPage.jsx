@@ -70,7 +70,7 @@ export default function PlanningPage({ user }) {
 
   const inputStyle = {
     padding: "7px 10px", borderRadius: "8px",
-    border: "1px solid #e2e8f0", fontSize: "13px",
+    border: "1px solid #e2e8f0", fontSize: "18px",
     outline: "none", width: "100%", boxSizing: "border-box",
   };
 
@@ -92,11 +92,11 @@ export default function PlanningPage({ user }) {
         <button onClick={() => navigate("/classroom")} style={{
           background: "none", border: "none",
           color: "#5b9fe8", fontWeight: "700",
-          fontSize: "14px", cursor: "pointer"
+          fontSize: "18px", cursor: "pointer"
         }}>← 뒤로</button>
-        <div style={{ fontWeight: "900", fontSize: "16px" }}>📋 공연 기획</div>
+        <div style={{ fontWeight: "900", fontSize: "18px" }}>📋 공연 기획</div>
         <div style={{
-          fontSize: "12px", fontWeight: "600",
+          fontSize: "22px", fontWeight: "500",
           color: saved ? "#34a853" : "#bbb",
           transition: "color 0.3s"
         }}>
@@ -104,18 +104,18 @@ export default function PlanningPage({ user }) {
         </div>
       </div>
 
-      <div style={{ padding: "20px 16px", maxWidth: "680px", margin: "0 auto" }}>
+      <div style={{ padding: "20px 16px", maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* 안내 배지 */}
         <div style={{
           background: "linear-gradient(135deg,#667eea,#764ba2)",
           borderRadius: "14px", padding: "14px 18px",
           marginBottom: "20px", color: "white",
-          fontSize: "13px", lineHeight: "1.8"
+          fontSize: "18px", lineHeight: "1.8"
         }}>
           🌀 <strong>코코의 미션</strong><br/>
           학교에서 직접 자료를 조사하고 기록해봐!<br/>
-          <span style={{ opacity: 0.85, fontSize: "12px" }}>
+          <span style={{ opacity: 0.85, fontSize: "18px" }}>
             60분 안에 축제 공연이 성공적으로 진행되려면 어떤 것들을 고려해야 좋을까?
           </span>
         </div>
@@ -132,10 +132,10 @@ export default function PlanningPage({ user }) {
             display: "flex", alignItems: "center",
             justifyContent: "space-between"
           }}>
-            <div style={{ fontWeight: "900", fontSize: "15px" }}>
+            <div style={{ fontWeight: "900", fontSize: "20px" }}>
               🔍 현장조사기록
             </div>
-            <div style={{ fontSize: "12px", color: "#aaa" }}>
+            <div style={{ fontSize: "18px", color: "#aaa" }}>
               {surveyRows.length}개 항목
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function PlanningPage({ user }) {
             gridTemplateColumns: "1fr 1fr 1fr 32px",
             gap: "6px", padding: "8px 14px",
             background: "#f8f9ff",
-            fontSize: "12px", fontWeight: "700", color: "#718096"
+            fontSize: "18px", fontWeight: "700", color: "#718096"
           }}>
             <div>데이터 출처</div>
             <div>데이터 이름</div>
@@ -203,7 +203,7 @@ export default function PlanningPage({ user }) {
                   background: "none", border: "none",
                   color: surveyRows.length === 1 ? "#eee" : "#ccc",
                   cursor: surveyRows.length === 1 ? "default" : "pointer",
-                  fontSize: "15px", padding: "2px"
+                  fontSize: "18px", padding: "2px"
                 }}
                 onMouseEnter={e => { if (surveyRows.length > 1) e.target.style.color = "#ff5f57"; }}
                 onMouseLeave={e => e.target.style.color = "#ccc"}
@@ -217,7 +217,7 @@ export default function PlanningPage({ user }) {
               width: "100%", padding: "9px",
               background: "#f8f9ff", border: "1px dashed #c0d0f0",
               borderRadius: "8px", color: "#5b9fe8",
-              fontSize: "13px", fontWeight: "700", cursor: "pointer"
+              fontSize: "18px", fontWeight: "700", cursor: "pointer"
             }}>
               ➕ 항목 추가
             </button>
@@ -233,7 +233,7 @@ export default function PlanningPage({ user }) {
           <div style={{
             padding: "14px 18px",
             borderBottom: "1px solid #f0f0f0",
-            fontWeight: "900", fontSize: "15px"
+            fontWeight: "900", fontSize: "18px"
           }}>📝 메모</div>
           <textarea
             value={memo}
@@ -242,7 +242,7 @@ export default function PlanningPage({ user }) {
             style={{
               width: "100%", minHeight: "100px",
               padding: "14px 18px", border: "none",
-              fontSize: "14px", lineHeight: "1.7",
+              fontSize: "18px", lineHeight: "1.7",
               resize: "vertical", outline: "none",
               fontFamily: "inherit", color: "#2D3748",
               boxSizing: "border-box"
@@ -262,11 +262,11 @@ export default function PlanningPage({ user }) {
             display: "flex", alignItems: "center",
             justifyContent: "space-between"
           }}>
-            <div style={{ fontWeight: "900", fontSize: "15px" }}>
+            <div style={{ fontWeight: "900", fontSize: "18px" }}>
               🎪 공연기획표
             </div>
             <div style={{
-              fontSize: "13px", fontWeight: "700",
+              fontSize: "18px", fontWeight: "700",
               color: totalTime > 60 ? "#e53e3e"
                    : totalTime === 60 ? "#34a853"
                    : "#5b9fe8"
@@ -283,7 +283,7 @@ export default function PlanningPage({ user }) {
             gridTemplateColumns: "36px 1fr 76px 68px 32px",
             gap: "6px", padding: "8px 14px",
             background: "#f8f9ff",
-            fontSize: "12px", fontWeight: "700", color: "#718096"
+            fontSize: "18px", fontWeight: "700", color: "#718096"
           }}>
             <div>순서</div>
             <div>팀명</div>
@@ -307,7 +307,7 @@ export default function PlanningPage({ user }) {
                 borderRadius: "50%", color: "white",
                 display: "flex", alignItems: "center",
                 justifyContent: "center",
-                fontSize: "11px", fontWeight: "700"
+                fontSize: "18px", fontWeight: "700"
               }}>{row.order}</div>
 
               <input
@@ -342,7 +342,7 @@ export default function PlanningPage({ user }) {
 
               <button onClick={() => deletePlanRow(row.id)} style={{
                 background: "none", border: "none",
-                color: "#ccc", cursor: "pointer", fontSize: "15px"
+                color: "#ccc", cursor: "pointer", fontSize: "18px"
               }}
                 onMouseEnter={e => e.target.style.color = "#ff5f57"}
                 onMouseLeave={e => e.target.style.color = "#ccc"}
@@ -355,7 +355,7 @@ export default function PlanningPage({ user }) {
               width: "100%", padding: "9px",
               background: "#f8f9ff", border: "1px dashed #c0d0f0",
               borderRadius: "8px", color: "#5b9fe8",
-              fontSize: "13px", fontWeight: "700", cursor: "pointer"
+              fontSize: "18px", fontWeight: "700", cursor: "pointer"
             }}>
               ➕ 팀 추가
             </button>
@@ -369,7 +369,7 @@ export default function PlanningPage({ user }) {
             width: "100%", padding: "14px",
             background: "linear-gradient(135deg,#5b9fe8,#764ba2)",
             color: "white", border: "none",
-            borderRadius: "14px", fontSize: "15px",
+            borderRadius: "14px", fontSize: "18px",
             fontWeight: "700", cursor: "pointer",
             boxShadow: "0 4px 16px rgba(91,159,232,0.35)",
             display: "flex", alignItems: "center",

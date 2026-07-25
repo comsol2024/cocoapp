@@ -215,7 +215,7 @@ export default function ChapterScene({ user }) {
               <div className="answer-title">📝 워크북을 풀고 입력해봐!</div>
 
               <div style={{
-                fontSize:"12px", color:"var(--text-muted)",
+                fontSize:"18px", color:"var(--text-muted)",
                 marginBottom:"8px", fontWeight:"600"
               }}>
                 ✏️ 내가 세운 연립방정식
@@ -250,7 +250,7 @@ export default function ChapterScene({ user }) {
               </div>
 
               <div style={{
-                fontSize:"12px", color:"var(--text-muted)",
+                fontSize:"18px", color:"var(--text-muted)",
                 marginBottom:"8px", fontWeight:"600"
               }}>
                 🎯 정답 입력
@@ -292,7 +292,7 @@ export default function ChapterScene({ user }) {
       <div style={{ fontSize:"20px", fontWeight:"900", marginBottom:"8px" }}>
         정답이야!
       </div>
-      <div style={{ fontSize:"14px", color:"#718096", marginBottom:"20px", lineHeight:"1.7" }}>
+      <div style={{ fontSize:"18px", color:"#718096", marginBottom:"20px", lineHeight:"1.7" }}>
         노래팀 {chapter.answer.노래}팀, 댄스팀 {chapter.answer.댄스}팀으로<br/>
         딱 60분 공연이 완성됐어! 🎭
       </div>
@@ -305,7 +305,7 @@ export default function ChapterScene({ user }) {
       }}>
         <div style={{ fontSize:"28px", marginBottom:"8px" }}>🌀</div>
         <div style={{
-          color:"white", fontSize:"14px",
+          color:"white", fontSize:"18px",
           lineHeight:"1.7", fontWeight:"600"
         }}>
           이제 우리 학교에 대한 이야기로<br/>
@@ -315,10 +315,10 @@ export default function ChapterScene({ user }) {
       </div>
 
       <button onClick={() => navigate("/classroom")} style={{
-        width:"100%", padding:"13px",
+        minWidth:"100%", padding:"13px",
         background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
         color:"white", border:"none", borderRadius:"12px",
-        fontSize:"15px", fontWeight:"700", cursor:"pointer",
+        fontSize:"18px", fontWeight:"700", cursor:"pointer",
         marginBottom:"8px", display:"flex",
         alignItems:"center", justifyContent:"center", gap:"8px"
       }}>
@@ -326,9 +326,9 @@ export default function ChapterScene({ user }) {
       </button>
 
       <button onClick={handleReset} style={{
-        width:"100%", padding:"10px",
+        minWidth:"100%", padding:"10px",
         background:"white", border:"2px solid #ddd",
-        borderRadius:"12px", fontSize:"13px",
+        borderRadius:"12px", fontSize:"18px",
         fontWeight:"700", cursor:"pointer", color:"#718096"
       }}>
         🔄 처음부터 다시하기

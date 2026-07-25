@@ -218,7 +218,7 @@ export default function AEDScene({ user }) {
               <div style={{
                 background: "#fff8e1", borderRadius: "12px",
                 padding: "12px 14px", marginBottom: "16px",
-                fontSize: "13px", lineHeight: "1.7", color: "#5D4037"
+                fontSize: "18px", lineHeight: "1.7", color: "#5D4037"
               }}>
                 💡 세 교실을 꼭짓점으로 하는 삼각형에서,<br/>
                 <strong>세 점으로부터 거리가 같은 점</strong>에 AED를 설치하면<br/>
@@ -241,7 +241,7 @@ export default function AEDScene({ user }) {
                         : "2px solid #e2e8f0",
                       background: selectedAnswer === opt
                         ? "#e3f2fd" : "white",
-                      fontSize: "17px", fontWeight: "900",
+                      fontSize: "18px", fontWeight: "900",
                       cursor: "pointer",
                       color: selectedAnswer === opt ? "#1565C0" : "#2D3748",
                       transition: "all 0.15s",
@@ -256,7 +256,7 @@ export default function AEDScene({ user }) {
               {/* 이유 (선택) */}
               <div style={{ marginBottom: "14px" }}>
                 <label style={{
-                  display: "block", fontSize: "12px",
+                  display: "block", fontSize: "18px",
                   fontWeight: "700", color: "#718096", marginBottom: "5px"
                 }}>
                   ✏️ 그 이유는? (선택)
@@ -268,7 +268,7 @@ export default function AEDScene({ user }) {
                   style={{
                     width: "100%", padding: "10px 12px",
                     borderRadius: "10px", border: "1px solid #e2e8f0",
-                    fontSize: "13px", minHeight: "60px",
+                    fontSize: "18px", minHeight: "60px",
                     resize: "none", outline: "none",
                     lineHeight: "1.6", boxSizing: "border-box",
                     fontFamily: "inherit"
@@ -299,7 +299,7 @@ export default function AEDScene({ user }) {
                 미션 완료!
               </div>
               <div style={{
-                fontSize: "14px", color: "#718096",
+                fontSize: "18px", color: "#718096",
                 marginBottom: "20px", lineHeight: "1.7"
               }}>
                 외심을 이용해 AED의 최적 위치를 찾았어!<br/>
@@ -312,7 +312,7 @@ export default function AEDScene({ user }) {
               }}>
                 <div style={{ fontSize: "28px", marginBottom: "8px" }}>🌀</div>
                 <div style={{
-                  color: "white", fontSize: "14px",
+                  color: "white", fontSize: "18px",
                   lineHeight: "1.7", fontWeight: "600"
                 }}>
                   우리가 배운 외심 개념으로<br/>
@@ -325,7 +325,7 @@ export default function AEDScene({ user }) {
                 width: "100%", padding: "13px",
                 background: "linear-gradient(135deg,#1565C0,#0D47A1)",
                 color: "white", border: "none", borderRadius: "12px",
-                fontSize: "15px", fontWeight: "700", cursor: "pointer",
+                fontSize: "18px", fontWeight: "700", cursor: "pointer",
                 marginBottom: "8px", display: "flex",
                 alignItems: "center", justifyContent: "center", gap: "8px"
                 }}>
@@ -335,7 +335,7 @@ export default function AEDScene({ user }) {
                 width: "100%", padding: "13px",
                 background: "linear-gradient(135deg,#5b9fe8,#764ba2)",
                 color: "white", border: "none", borderRadius: "12px",
-                fontSize: "15px", fontWeight: "700", cursor: "pointer",
+                fontSize: "18px", fontWeight: "700", cursor: "pointer",
                 marginBottom: "8px"
               }}>
                 지도로 돌아가기
@@ -343,7 +343,7 @@ export default function AEDScene({ user }) {
               <button onClick={handleReset} style={{
                 width: "100%", padding: "10px",
                 background: "white", border: "2px solid #ddd",
-                borderRadius: "12px", fontSize: "13px",
+                borderRadius: "12px", fontSize: "18px",
                 fontWeight: "700", cursor: "pointer", color: "#718096"
               }}>
                 처음부터 다시하기

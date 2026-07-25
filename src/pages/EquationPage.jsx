@@ -7,7 +7,7 @@ import CocoChat    from "../components/CocoChat";
 import { PROMPTS } from "../utils/cocoPrompts";
 
 const PADLET_URL = "https://padlet.com/comsol2024/coco_app";
-const TOTAL = 60;
+const TOTAL = 50;
 const PALETTE = [
   "#5b9fe8","#ab47bc","#26a69a","#ef5350","#ff7043",
   "#66bb6a","#ffa726","#8d6e63","#78909c","#ec407a",
@@ -116,8 +116,8 @@ export default function EquationPage({ user }) {
 
   const inp = (extra = {}) => ({
     padding: "8px 11px", borderRadius: "9px",
-    border: "1px solid #e2e8f0", fontSize: "13px",
-    outline: "none", width: "100%", boxSizing: "border-box",
+    border: "1px solid #e2e8f0", fontSize: "18px",
+    outline: "none", minWidth: "100%", boxSizing: "border-box",
     fontFamily: "inherit", background: "white",
     transition: "border-color 0.2s", ...extra
   });
@@ -144,13 +144,13 @@ export default function EquationPage({ user }) {
         <button onClick={() => navigate("/planning")} style={{
           background: "none", border: "none",
           color: "#5b9fe8", fontWeight: "700",
-          fontSize: "14px", cursor: "pointer"
+          fontSize: "18px", cursor: "pointer"
         }}>← 뒤로</button>
-        <div style={{ fontWeight: "900", fontSize: "15px" }}>
+        <div style={{ fontWeight: "900", fontSize: "20px" }}>
           📐 해결하기 & 공연 타임테이블
         </div>
         <div style={{
-          fontSize: "12px", fontWeight: "600",
+          fontSize: "18px", fontWeight: "600",
           color: saved ? "#34a853" : "#bbb"
         }}>
           {saved ? "✓ 저장됨" : "저장 중..."}
@@ -175,7 +175,7 @@ export default function EquationPage({ user }) {
           <div style={{
             padding: "12px 18px",
             borderBottom: "1px solid #f0f0f0",
-            fontWeight: "900", fontSize: "14px", flexShrink: 0,
+            fontWeight: "900", fontSize: "18px", flexShrink: 0,
             background: "linear-gradient(90deg,#f0f7ff,white)"
           }}>
             📐 연립방정식 세우기
@@ -194,16 +194,16 @@ export default function EquationPage({ user }) {
               display: "flex", gap: "8px",
               alignItems: "center", flexWrap: "wrap"
             }}>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#718096" }}>
+              <span style={{ fontSize: "18px", fontWeight: "700", color: "#718096" }}>
                 변수:
               </span>
-              <span style={{ fontSize: "13px", fontWeight: "700" }}>x =</span>
+              <span style={{ fontSize: "18px", fontWeight: "700" }}>x =</span>
               <input value={varX} onChange={e => setVarX(e.target.value)}
-                style={{ ...inp(), width: "120px" }}
+                style={{ ...inp(), minWidth: "120px" }}
                 onFocus={onFocus} onBlur={onBlur} />
-              <span style={{ fontSize: "13px", fontWeight: "700" }}>, y =</span>
+              <span style={{ fontSize: "18px", fontWeight: "700" }}>, y =</span>
               <input value={varY} onChange={e => setVarY(e.target.value)}
-                style={{ ...inp(), width: "120px" }}
+                style={{ ...inp(), minWidth: "120px" }}
                 onFocus={onFocus} onBlur={onBlur} />
             </div>
 
@@ -214,18 +214,18 @@ export default function EquationPage({ user }) {
             }}>
               <div style={{
                 background: "#e3f2fd", padding: "7px 14px",
-                fontSize: "12px", fontWeight: "700", color: "#1565C0"
+                fontSize: "18px", fontWeight: "700", color: "#1565C0"
               }}>식 ①</div>
               <div style={{ padding: "10px 14px",
                 display: "flex", flexDirection: "column", gap: "8px" }}>
                 <input value={eq1} onChange={e => setEq1(e.target.value)}
                   placeholder="수식으로 작성하세요. ex) x+y=1"
-                  style={{ ...inp(), fontFamily:"Courier New", fontSize:"15px" }}
+                  style={{ ...inp(), fontFamily:"Courier New", fontSize:"18px" }}
                   onFocus={onFocus} onBlur={onBlur} />
                 <textarea value={reason1} onChange={e => setReason1(e.target.value)}
                   placeholder="이 식을 세운 이유..."
                   style={{ ...inp(), minHeight:"52px", resize:"none",
-                    lineHeight:"1.5", fontSize:"12px" }}
+                    lineHeight:"1.5", fontSize:"18px" }}
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
             </div>
@@ -237,32 +237,32 @@ export default function EquationPage({ user }) {
             }}>
               <div style={{
                 background: "#f3e5f5", padding: "7px 14px",
-                fontSize: "12px", fontWeight: "700", color: "#6A1B9A"
+                fontSize: "18px", fontWeight: "700", color: "#6A1B9A"
               }}>식 ②</div>
               <div style={{ padding: "10px 14px",
                 display: "flex", flexDirection: "column", gap: "8px" }}>
                 <input value={eq2} onChange={e => setEq2(e.target.value)}
                   placeholder="수식으로 작성하세요. ex) x+y=1"
-                  style={{ ...inp(), fontFamily:"Courier New", fontSize:"15px" }}
+                  style={{ ...inp(), fontFamily:"Courier New", fontSize:"18px" }}
                   onFocus={onFocus} onBlur={onBlur} />
                 <textarea value={reason2} onChange={e => setReason2(e.target.value)}
                   placeholder="이 식을 세운 이유..."
                   style={{ ...inp(), minHeight:"52px", resize:"none",
-                    lineHeight:"1.5", fontSize:"12px" }}
+                    lineHeight:"1.5", fontSize:"18px" }}
                   onFocus={onFocus} onBlur={onBlur} />
               </div>
             </div>
 
             {/* 풀이 */}
             <div>
-              <div style={{ fontSize:"12px", fontWeight:"700",
+              <div style={{ fontSize:"18px", fontWeight:"700",
                 color:"#718096", marginBottom:"5px" }}>
                 ✏️ 풀이 과정
               </div>
               <textarea value={solution} onChange={e => setSolution(e.target.value)}
                 placeholder="단계별로 풀어봐!"
-                style={{ ...inp(), minHeight:"62px", resize:"none",
-                  lineHeight:"1.6", fontSize:"12px" }}
+                style={{ ...inp(), minHeight:"150px", resize:"none",
+                  lineHeight:"1.6", fontSize:"18px" }}
                 onFocus={onFocus} onBlur={onBlur} />
             </div>
 
@@ -273,19 +273,19 @@ export default function EquationPage({ user }) {
               display:"flex", alignItems:"center",
               gap:"10px", flexWrap:"wrap"
             }}>
-              <span style={{ fontSize:"12px", fontWeight:"700", color:"#2E7D32" }}>
+              <span style={{ fontSize:"18px", fontWeight:"700", color:"#2E7D32" }}>
                 🎯 해:
               </span>
-              <span style={{ fontSize:"14px", fontWeight:"700" }}>x =</span>
+              <span style={{ fontSize:"18px", fontWeight:"700" }}>x =</span>
               <input value={ansX} onChange={e => setAnsX(e.target.value)}
                 placeholder="?" style={{
-                  ...inp(), width:"70px", textAlign:"center",
+                  ...inp(), minWidth:"70px", textAlign:"center",
                   fontSize:"18px", fontWeight:"900", border:"2px solid #a5d6a7"
                 }} onFocus={onFocus} onBlur={onBlur} />
-              <span style={{ fontSize:"14px", fontWeight:"700" }}>, y =</span>
+              <span style={{ fontSize:"18px", fontWeight:"700" }}>, y =</span>
               <input value={ansY} onChange={e => setAnsY(e.target.value)}
                 placeholder="?" style={{
-                  ...inp(), width:"70px", textAlign:"center",
+                  ...inp(), minWidth:"70px", textAlign:"center",
                   fontSize:"18px", fontWeight:"900", border:"2px solid #a5d6a7"
                 }} onFocus={onFocus} onBlur={onBlur} />
             </div>
@@ -303,11 +303,11 @@ export default function EquationPage({ user }) {
             flexShrink: 0, background: "linear-gradient(90deg,#f8f0ff,white)",
             display: "flex", alignItems: "center", justifyContent: "space-between"
           }}>
-            <span style={{ fontWeight:"900", fontSize:"14px" }}>
+            <span style={{ fontWeight:"900", fontSize:"18px" }}>
               🎪 공연 타임테이블
             </span>
             <span style={{
-              fontSize:"13px", fontWeight:"700",
+              fontSize:"18px", fontWeight:"700",
               color: totalTime > TOTAL ? "#e53e3e"
                    : totalTime === TOTAL ? "#34a853" : "#5b9fe8"
             }}>
@@ -330,16 +330,16 @@ export default function EquationPage({ user }) {
                   if (!row.time || row.time <= 0) return null;
                   return (
                     <div key={row.id} style={{
-                      width:`${pct}%`, background: row.color,
+                      minWidth:`${pct}%`, background: row.color,
                       display:"flex", alignItems:"center",
                       justifyContent:"center",
-                      fontSize:"10px", color:"white", fontWeight:"700",
+                      fontSize:"15px", color:"white", fontWeight:"700",
                       overflow:"hidden", whiteSpace:"nowrap",
                       borderRight: i < timeRows.length - 1
                         ? "1px solid rgba(255,255,255,0.5)" : "none",
                       transition:"width 0.3s"
                     }}>
-                      {pct > 7 ? (row.label || row.category) : ""}
+                      {pct > 5 ? (row.label || row.category) : ""}
                     </div>
                   );
                 })}
@@ -348,7 +348,7 @@ export default function EquationPage({ user }) {
                     flex:1, background:"#e8e8e8",
                     display:"flex", alignItems:"center",
                     justifyContent:"center",
-                    fontSize:"10px", color:"#aaa"
+                    fontSize:"18px", color:"#aaa"
                   }}>{TOTAL - totalTime}분 남음</div>
                 )}
               </div>
@@ -361,7 +361,7 @@ export default function EquationPage({ user }) {
             gridTemplateColumns:"32px 1fr 80px 52px 28px",
             gap:"6px", padding:"7px 14px",
             background:"#f8f9ff", flexShrink:0,
-            fontSize:"11px", fontWeight:"700", color:"#718096"
+            fontSize:"14px", fontWeight:"700", color:"#718096", textAlign:"center"
           }}>
             <div>색상</div>
             <div>항목명</div>
@@ -385,7 +385,7 @@ export default function EquationPage({ user }) {
                 <div style={{ position:"relative" }}
                   onClick={e => { e.stopPropagation(); setOpenPalette(openPalette === row.id ? null : row.id); }}>
                   <div style={{
-                    width:"24px", height:"24px", borderRadius:"50%",
+                    minWidth:"15px", height:"24px", borderRadius:"50%",
                     background: row.color, cursor:"pointer",
                     border:"2px solid rgba(0,0,0,0.1)",
                     boxShadow:"0 2px 6px rgba(0,0,0,0.15)",
@@ -405,7 +405,7 @@ export default function EquationPage({ user }) {
                         padding:"8px", zIndex:100,
                         boxShadow:"0 8px 24px rgba(0,0,0,0.15)",
                         display:"grid", gridTemplateColumns:"repeat(5,1fr)",
-                        gap:"5px", width:"130px"
+                        gap:"5px", minWidth:"130px"
                     }}>
                       {PALETTE.map(c => (
                         <div key={c}
@@ -432,12 +432,12 @@ export default function EquationPage({ user }) {
                 <input value={row.label}
                   onChange={e => updateTimeRow(row.id, "label", e.target.value)}
                   placeholder="예: 댄스팀, 대기..."
-                  style={{ ...inp(), padding:"6px 9px", fontSize:"12px" }}
+                  style={{ ...inp(), padding:"6px 9px", fontSize:"18px" }}
                   onFocus={onFocus} onBlur={onBlur} />
 
                 <select value={row.category}
                   onChange={e => updateTimeRow(row.id, "category", e.target.value)}
-                  style={{ ...inp(), padding:"6px 4px", fontSize:"11px" }}>
+                  style={{ ...inp(), padding:"6px 4px", fontSize:"14px" }}>
                   {CATEGORY_PRESETS.map(c => (
                     <option key={c} value={c}>{c}</option>
                   ))}
@@ -448,12 +448,12 @@ export default function EquationPage({ user }) {
                   onChange={e => updateTimeRow(row.id, "time", e.target.value)}
                   placeholder="0"
                   style={{ ...inp(), padding:"6px 7px",
-                    textAlign:"center", fontSize:"13px" }}
+                    textAlign:"center", fontSize:"15px" }}
                   onFocus={onFocus} onBlur={onBlur} />
 
                 <button onClick={() => deleteTimeRow(row.id)} style={{
                   background:"none", border:"none",
-                  color:"#ccc", cursor:"pointer", fontSize:"14px"
+                  color:"#ccc", cursor:"pointer", fontSize:"18px"
                 }}
                   onMouseEnter={e => e.target.style.color = "#ff5f57"}
                   onMouseLeave={e => e.target.style.color = "#ccc"}
@@ -463,10 +463,10 @@ export default function EquationPage({ user }) {
 
             <div style={{ padding:"10px 14px" }}>
               <button onClick={addTimeRow} style={{
-                width:"100%", padding:"8px",
+                minWidth:"100%", padding:"8px",
                 background:"#f8f9ff", border:"1px dashed #c0d0f0",
                 borderRadius:"8px", color:"#5b9fe8",
-                fontSize:"12px", fontWeight:"700", cursor:"pointer"
+                fontSize:"18px", fontWeight:"700", cursor:"pointer"
               }}>➕ 항목 추가</button>
             </div>
           </div>
@@ -485,7 +485,7 @@ export default function EquationPage({ user }) {
           background: capturing ? "#ccc"
             : "linear-gradient(135deg,#f093fb,#f5576c)",
           color:"white", border:"none", borderRadius:"12px",
-          fontSize:"14px", fontWeight:"700",
+          fontSize:"18px", fontWeight:"700",
           cursor: capturing ? "default" : "pointer",
           boxShadow: capturing ? "none" : "0 3px 12px rgba(245,87,108,0.3)"
         }}>
@@ -495,7 +495,7 @@ export default function EquationPage({ user }) {
           flex:1, padding:"12px",
           background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
           color:"white", border:"none", borderRadius:"12px",
-          fontSize:"14px", fontWeight:"700", cursor:"pointer",
+          fontSize:"18px", fontWeight:"700", cursor:"pointer",
           boxShadow:"0 3px 12px rgba(91,159,232,0.35)"
         }}>
           🚀 패들렛에 공유하기

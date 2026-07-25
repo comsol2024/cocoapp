@@ -287,7 +287,8 @@ export const CHAPTERS = {
 export const CHAPTER_LIST = [
   { 
     id: "auditorium",   
-    name: "1. 학교 축제 공연 일정표를 설계하기!",          
+    name: "1. 학교 축제 공연 일정표를 설계하기!",
+    sub: "연립방정식",          
     emoji: "🎊",  
     image: auditoriumImg, // ✨ 이미지 경로 직접 추가
     locked: false, 
@@ -295,7 +296,8 @@ export const CHAPTER_LIST = [
   },
   { 
     id: "aed",          
-    name: "3. 생명을 살리는 AED, 어디에 설치할까?",  
+    name: "3. 생명을 살리는 AED, 어디에 설치할까?",
+    sub: "외심과 내심",  
     emoji: "🏥",  
     image: aedImg,        // ✨ 이미지 경로 직접 추가
     locked: false, 
@@ -303,7 +305,8 @@ export const CHAPTER_LIST = [
   },
   { 
     id: "cafeteria",    
-    name: "2. 급식 배식 속도를 일차함수로 분석하기!",  
+    name: "2. 급식 배식 시간을 예측할 수 있을까?",  
+    sub: "일차함수",
     emoji: "🍱",  
     image: cafeteriaImg,  // ✨ 이미지 경로 직접 추가
     locked: false, 
@@ -312,6 +315,7 @@ export const CHAPTER_LIST = [
   { 
     id: "rain", 
     name: "4. 체육 활동, 내일 날씨를 예측할 수 있을까?", 
+    sub: "확률",
     emoji: "⛈️", 
     image: rainImg,       // ✨ 이미지 경로 직접 추가
     locked: false, 

@@ -143,7 +143,7 @@ export default function RainDataPage({ user }) {
           gap:"3px", marginBottom:"4px" }}>
           {WEEKDAYS.map((d,i) => (
             <div key={d} style={{
-              textAlign:"center", fontSize:"11px",
+              textAlign:"center", fontSize:"18px",
               fontWeight:"700", padding:"3px",
               color: i===0?"#e53935": i===6?"#1565C0":"#888"
             }}>{d}</div>
@@ -177,18 +177,18 @@ export default function RainDataPage({ user }) {
                   boxShadow: isChecked ? "0 2px 6px rgba(0,0,0,0.25)" : "none",
                 }}>
                 <div style={{
-                  fontSize:"10px", fontWeight:"700",
+                  fontSize:"18px", fontWeight:"700",
                   color: isChecked ? "white" : "#555"
                 }}>
                   {day+1}
                 </div>
-                <div style={{ fontSize:"13px", lineHeight:"1" }}>
+                <div style={{ fontSize:"18px", lineHeight:"1" }}>
                   {isRain ? "🌧" : "☀️"}
                 </div>
                 {isChecked && (
                   <div style={{
                     position:"absolute", top:"1px", right:"2px",
-                    fontSize:"9px", color:"white", fontWeight:"900"
+                    fontSize:"18px", color:"white", fontWeight:"900"
                   }}>✓</div>
                 )}
               </div>
@@ -200,21 +200,21 @@ export default function RainDataPage({ user }) {
         <div style={{ display:"flex", gap:"8px", marginTop:"8px",
           alignItems:"center", flexWrap:"wrap" }}>
           <div style={{ display:"flex", alignItems:"center", gap:"3px",
-            fontSize:"11px", color:"#555" }}>
+            fontSize:"18px", color:"#555" }}>
             <span style={{ background:"#BBDEFB", borderRadius:"4px",
               padding:"1px 5px", border:"1px solid #42A5F5" }}>🌧</span> 비
           </div>
           <div style={{ display:"flex", alignItems:"center", gap:"3px",
-            fontSize:"11px", color:"#555" }}>
+            fontSize:"18px", color:"#555" }}>
             <span style={{ background:"#FFF9C4", borderRadius:"4px",
               padding:"1px 5px", border:"1px solid #F9A825" }}>☀️</span> 맑음
           </div>
           <div style={{ display:"flex", alignItems:"center", gap:"3px",
-            fontSize:"11px", color:"#1565C0", fontWeight:"700" }}>
+            fontSize:"18px", color:"#1565C0", fontWeight:"700" }}>
             <span style={{ background:"#1565C0", borderRadius:"4px",
               padding:"1px 5px", color:"white" }}>✓</span> 체크됨
           </div>
-          <span style={{ fontSize:"11px", color:"#888", marginLeft:"auto" }}>
+          <span style={{ fontSize:"18px", color:"#888", marginLeft:"auto" }}>
             5월 {data.length}일
           </span>
         </div>
@@ -226,11 +226,11 @@ export default function RainDataPage({ user }) {
           background:"#f8f9ff", borderRadius:"8px",
           padding:"6px 10px"
         }}>
-          <span style={{ fontSize:"12px", color:"#555" }}>
+          <span style={{ fontSize:"18px", color:"#555" }}>
             ✓ 체크한 날: <strong style={{ color:"#1565C0" }}>{checkedCount}일</strong>
           </span>
           <button onClick={()=>resetChecked(year)} style={{
-            fontSize:"11px", color:"#e53935", background:"white",
+            fontSize:"18px", color:"#e53935", background:"white",
             border:"1px solid #e53935", borderRadius:"6px",
             padding:"3px 8px", cursor:"pointer", fontWeight:"700"
           }}>
@@ -243,7 +243,7 @@ export default function RainDataPage({ user }) {
 
   const inp = {
     padding:"8px 12px", borderRadius:"10px",
-    border:"1.5px solid #e2e8f0", fontSize:"14px",
+    border:"1.5px solid #e2e8f0", fontSize:"18px",
     outline:"none", width:"100%", boxSizing:"border-box",
   };
 
@@ -251,10 +251,10 @@ export default function RainDataPage({ user }) {
     <span style={{ display:"inline-flex", flexDirection:"column",
       alignItems:"center", margin:"0 6px", verticalAlign:"middle",
       lineHeight:"1.4" }}>
-      <span style={{ fontSize:"12px", fontWeight:"700", color,
+      <span style={{ fontSize:"18px", fontWeight:"700", color,
         borderBottom:`1.5px solid ${color}`, paddingBottom:"1px",
         whiteSpace:"nowrap" }}>{top}</span>
-      <span style={{ fontSize:"12px", fontWeight:"700", color,
+      <span style={{ fontSize:"18px", fontWeight:"700", color,
         paddingTop:"1px", whiteSpace:"nowrap" }}>{bottom}</span>
     </span>
   );
@@ -272,12 +272,12 @@ export default function RainDataPage({ user }) {
       }}>
         <button onClick={()=>navigate("/rain-scene")} style={{
           background:"none", border:"none", color:"#1565C0",
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← Step 1</button>
         <div style={{ fontWeight:"900", fontSize:"17px" }}>
           ⛈️ 비오는 날 체육 수업 — Step 2
         </div>
-        <div style={{ fontSize:"12px", fontWeight:"600",
+        <div style={{ fontSize:"18px", fontWeight:"600",
           color:saved?"#34a853":"#bbb" }}>
           {saved?"✓ 저장됨":"저장 중..."}
         </div>
@@ -294,7 +294,7 @@ export default function RainDataPage({ user }) {
         }}>
           <img src={cocoImg} alt="COCO"
             style={{ width:"80px", height:"80px", objectFit:"contain", flexShrink:0 }}/>
-          <div style={{ fontSize:"15px", lineHeight:"1.8" }}>
+          <div style={{ fontSize:"18px", lineHeight:"1.8" }}>
             🌀 <strong>COCO 미션 — Step 2</strong><br/>
             서울·경기 지역 5월 날씨 달력을 보면서<br/>
             날씨 변화 횟수를 직접 세어 통계적 확률을 구해봐!
@@ -313,13 +313,13 @@ export default function RainDataPage({ user }) {
               padding:"12px 16px", borderBottom:"1px solid #f0f0f0",
               background:"linear-gradient(90deg,#e3f2fd,white)"
             }}>
-              <div style={{ fontWeight:"900", fontSize:"15px", marginBottom:"8px" }}>
+              <div style={{ fontWeight:"900", fontSize:"18px", marginBottom:"8px" }}>
                 📅 서울·경기 5월 강수 데이터 (2021~2025)
               </div>
               <div style={{ display:"flex", gap:"8px", flexWrap:"wrap" }}>
                 <a href="https://data.kma.go.kr/stcs/grnd/grndRnDay.do?pgmNo=156"
                   target="_blank" rel="noreferrer" style={{
-                    fontSize:"12px", fontWeight:"700", color:"#1565C0",
+                    fontSize:"18px", fontWeight:"700", color:"#1565C0",
                     textDecoration:"none", background:"white",
                     padding:"5px 10px", borderRadius:"8px",
                     border:"1px solid #90CAF9", display:"inline-block"
@@ -327,7 +327,7 @@ export default function RainDataPage({ user }) {
                   🌐 기상청 출처
                 </a>
                 <button onClick={downloadCSV} style={{
-                  fontSize:"12px", fontWeight:"700", color:"white",
+                  fontSize:"18px", fontWeight:"700", color:"white",
                   background:"#1565C0", padding:"5px 12px",
                   borderRadius:"8px", border:"none", cursor:"pointer"
                 }}>
@@ -346,7 +346,7 @@ export default function RainDataPage({ user }) {
                     border: selYear===y ? "2px solid #1565C0" : "1px solid #e2e8f0",
                     background: selYear===y ? "#1565C0" : "white",
                     color: selYear===y ? "white" : "#555",
-                    fontSize:"13px", fontWeight: selYear===y ? "700" : "400",
+                    fontSize:"18px", fontWeight: selYear===y ? "700" : "400",
                   }}>{y}</button>
                 ))}
               </div>
@@ -356,14 +356,14 @@ export default function RainDataPage({ user }) {
               {/* 전체 요약 */}
               <div style={{ marginTop:"12px", padding:"10px 12px",
                 background:"#f8f9ff", borderRadius:"10px",
-                fontSize:"13px", color:"#555", lineHeight:"1.8" }}>
+                fontSize:"18px", color:"#555", lineHeight:"1.8" }}>
                 <strong>2021~2025 전체: {YEARS.length * 31}일</strong>
               </div>
 
               {/* 사용 안내 */}
               <div style={{ marginTop:"10px", padding:"10px 12px",
                 background:"#FFF8E1", borderRadius:"10px",
-                fontSize:"12px", color:"#E65100", lineHeight:"1.8",
+                fontSize:"18px", color:"#E65100", lineHeight:"1.8",
                 border:"1px solid #FFE082" }}>
                 💡 <strong>체크 방법:</strong> 날짜 칸을 클릭하면 체크돼요!<br/>
                 비가 온 날(🌧) 다음날도 비가 오면 <strong>비→비</strong>,<br/>
@@ -377,7 +377,7 @@ export default function RainDataPage({ user }) {
             boxShadow:"0 4px 16px rgba(0,0,0,0.07)", overflow:"hidden" }}>
             <div style={{
               padding:"12px 16px", borderBottom:"1px solid #f0f0f0",
-              fontWeight:"900", fontSize:"15px",
+              fontWeight:"900", fontSize:"18px",
               background:"linear-gradient(90deg,#e8f5e9,white)"
             }}>
               📊 통계 데이터 추출
@@ -389,17 +389,17 @@ export default function RainDataPage({ user }) {
               {/* ① 전체 날수 */}
               <div style={{ background:"#f8f9ff", borderRadius:"12px",
                 padding:"14px 16px", border:"1.5px solid #dde3ff" }}>
-                <div style={{ fontSize:"14px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#3949AB", marginBottom:"12px" }}>
                   ① 전체 날수 세기
-                  <span style={{ fontSize:"12px", fontWeight:"400",
+                  <span style={{ fontSize:"18px", fontWeight:"400",
                     color:"#888", marginLeft:"8px" }}>
                     (달력 보고 5년 합계를 세어봐!)
                   </span>
                 </div>
                 <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"10px" }}>
                   <div>
-                    <label style={{ fontSize:"13px", fontWeight:"700",
+                    <label style={{ fontSize:"18px", fontWeight:"700",
                       color:"#1565C0", display:"block", marginBottom:"5px" }}>
                       🌧 비가 온 날 (일)
                     </label>
@@ -410,7 +410,7 @@ export default function RainDataPage({ user }) {
                         border:"1.5px solid #B39DDB" }}/>
                   </div>
                   <div>
-                    <label style={{ fontSize:"13px", fontWeight:"700",
+                    <label style={{ fontSize:"18px", fontWeight:"700",
                       color:"#E65100", display:"block", marginBottom:"5px" }}>
                       ☀️ 맑은 날 (일)
                     </label>
@@ -422,7 +422,7 @@ export default function RainDataPage({ user }) {
                   </div>
                 </div>
                 {rainDays && clearDays && (
-                  <div style={{ marginTop:"6px", fontSize:"12px",
+                  <div style={{ marginTop:"6px", fontSize:"18px",
                     color:"#888", textAlign:"right" }}>
                     합계: {(parseFloat(rainDays)||0)+(parseFloat(clearDays)||0)}일
                     &nbsp;(전체 {YEARS.length * 31}일 중)
@@ -433,18 +433,18 @@ export default function RainDataPage({ user }) {
               {/* ② 비→비 */}
               <div style={{ background:"#EDE7F6", borderRadius:"12px",
                 padding:"14px 16px", border:"1.5px solid #CE93D8" }}>
-                <div style={{ fontSize:"14px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#6A1B9A", marginBottom:"8px" }}>
                   ② 비가 온 다음날도 비가 온 횟수 세기
                 </div>
-                <div style={{ fontSize:"12px", color:"#666",
+                <div style={{ fontSize:"18px", color:"#666",
                   marginBottom:"10px", lineHeight:"1.8",
                   background:"white", borderRadius:"8px",
                   padding:"8px 10px" }}>
                   달력에서 <strong style={{ color:"#1565C0" }}>🌧 비</strong>인 날을 찾고,
                   그 <strong>다음날도 🌧 비</strong>이면 체크해봐!
                 </div>
-                <label style={{ fontSize:"13px", fontWeight:"700",
+                <label style={{ fontSize:"18px", fontWeight:"700",
                   color:"#6A1B9A", display:"block", marginBottom:"5px" }}>
                   비 다음날 비 횟수 (일)
                 </label>
@@ -458,18 +458,18 @@ export default function RainDataPage({ user }) {
               {/* ③ 맑→비 */}
               <div style={{ background:"#E8F5E9", borderRadius:"12px",
                 padding:"14px 16px", border:"1.5px solid #A5D6A7" }}>
-                <div style={{ fontSize:"14px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#2E7D32", marginBottom:"8px" }}>
                   ③ 맑은 다음날 비가 온 횟수 세기
                 </div>
-                <div style={{ fontSize:"12px", color:"#666",
+                <div style={{ fontSize:"18px", color:"#666",
                   marginBottom:"10px", lineHeight:"1.8",
                   background:"white", borderRadius:"8px",
                   padding:"8px 10px" }}>
                   달력에서 <strong style={{ color:"#E65100" }}>☀️ 맑음</strong>인 날을 찾고,
                   그 <strong>다음날이 🌧 비</strong>이면 체크해봐!
                 </div>
-                <label style={{ fontSize:"13px", fontWeight:"700",
+                <label style={{ fontSize:"18px", fontWeight:"700",
                   color:"#2E7D32", display:"block", marginBottom:"5px" }}>
                   맑은날 다음날 비 횟수 (일)
                 </label>
@@ -483,7 +483,7 @@ export default function RainDataPage({ user }) {
               {/* ④ 통계적 확률 계산 */}
               <div style={{ background:"#e3f2fd", borderRadius:"12px",
                 padding:"14px 16px", border:"1.5px solid #90CAF9" }}>
-                <div style={{ fontSize:"14px", fontWeight:"800",
+                <div style={{ fontSize:"18px", fontWeight:"800",
                   color:"#1565C0", marginBottom:"12px" }}>
                   📐 통계적 확률 계산하기
                 </div>
@@ -491,7 +491,7 @@ export default function RainDataPage({ user }) {
                 {/* P(비→비) */}
                 <div style={{ background:"white", borderRadius:"10px",
                   padding:"12px 14px", marginBottom:"10px" }}>
-                  <div style={{ fontSize:"13px", color:"#555",
+                  <div style={{ fontSize:"18px", color:"#555",
                     marginBottom:"8px", lineHeight:"2" }}>
                     <strong style={{ color:"#6A1B9A" }}>P(비 → 비)</strong>
                     {" = "}
@@ -501,7 +501,7 @@ export default function RainDataPage({ user }) {
                       color="#6A1B9A"/>
                   </div>
                   <div style={{ display:"flex", alignItems:"center", gap:"8px" }}>
-                    <span style={{ fontSize:"13px", fontWeight:"700",
+                    <span style={{ fontSize:"18px", fontWeight:"700",
                       color:"#6A1B9A", whiteSpace:"nowrap" }}>
                       P(비 → 비) =
                     </span>
@@ -509,7 +509,7 @@ export default function RainDataPage({ user }) {
                       onChange={e=>setProbRR(e.target.value)}
                       placeholder="0.00"
                       style={{ ...inp, maxWidth:"100px", textAlign:"center",
-                        fontFamily:"Courier New", fontSize:"15px",
+                        fontFamily:"Courier New", fontSize:"18px",
                         fontWeight:"700" }}/>
                   </div>
                 </div>
@@ -517,7 +517,7 @@ export default function RainDataPage({ user }) {
                 {/* P(맑→비) */}
                 <div style={{ background:"white", borderRadius:"10px",
                   padding:"12px 14px" }}>
-                  <div style={{ fontSize:"13px", color:"#555",
+                  <div style={{ fontSize:"18px", color:"#555",
                     marginBottom:"8px", lineHeight:"2" }}>
                     <strong style={{ color:"#2E7D32" }}>P(맑 → 비)</strong>
                     {" = "}
@@ -527,7 +527,7 @@ export default function RainDataPage({ user }) {
                       color="#2E7D32"/>
                   </div>
                   <div style={{ display:"flex", alignItems:"center", gap:"8px" }}>
-                    <span style={{ fontSize:"13px", fontWeight:"700",
+                    <span style={{ fontSize:"18px", fontWeight:"700",
                       color:"#2E7D32", whiteSpace:"nowrap" }}>
                       P(맑 → 비) =
                     </span>
@@ -535,7 +535,7 @@ export default function RainDataPage({ user }) {
                       onChange={e=>setProbCR(e.target.value)}
                       placeholder="0.00"
                       style={{ ...inp, maxWidth:"100px", textAlign:"center",
-                        fontFamily:"Courier New", fontSize:"15px",
+                        fontFamily:"Courier New", fontSize:"18px",
                         fontWeight:"700" }}/>
                   </div>
                 </div>

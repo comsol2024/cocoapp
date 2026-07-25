@@ -149,14 +149,14 @@ export default function LessonDesign() {
         <div className="coco-logo">🌀 COCO</div>
         <button onClick={() => navigate("/map")}
           style={{ background:"none", border:"none", color:"var(--primary-dark)",
-            fontSize:"14px", cursor:"pointer", fontWeight:"600" }}>
+            fontSize:"18px", cursor:"pointer", fontWeight:"600" }}>
           ← 홈으로
         </button>
       </div>
 
       <div style={{ padding:"4px 24px 16px" }}>
         <div style={{ fontSize:"20px", fontWeight:"900" }}>🧠 AI 수업 설계</div>
-        <div style={{ fontSize:"13px", color:"var(--text-muted)", marginTop:"2px" }}>
+        <div style={{ fontSize:"18px", color:"var(--text-muted)", marginTop:"2px" }}>
           IB + 2022 개정교육과정 기반 수업 설계안을 자동 생성해요
         </div>
       </div>
@@ -165,7 +165,7 @@ export default function LessonDesign() {
       <div className="clay-card" style={{ margin:"0 24px 20px", padding:"24px" }}>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"12px", marginBottom:"12px" }}>
           <div>
-            <label style={{ fontSize:"12px", fontWeight:"700", color:"var(--text-muted)",
+            <label style={{ fontSize:"18px", fontWeight:"700", color:"var(--text-muted)",
               display:"block", marginBottom:"6px" }}>학교급</label>
             <select value={form.schoolLevel} onChange={e => handleChange("schoolLevel", e.target.value)}
               className="coco-input" style={{ width:"100%" }}>
@@ -175,7 +175,7 @@ export default function LessonDesign() {
           </div>
 
           <div>
-            <label style={{ fontSize:"12px", fontWeight:"700", color:"var(--text-muted)",
+            <label style={{ fontSize:"18px", fontWeight:"700", color:"var(--text-muted)",
               display:"block", marginBottom:"6px" }}>학년</label>
             <select value={form.grade} onChange={e => handleChange("grade", e.target.value)}
               className="coco-input" style={{ width:"100%" }}>
@@ -184,7 +184,7 @@ export default function LessonDesign() {
           </div>
 
           <div>
-            <label style={{ fontSize:"12px", fontWeight:"700", color:"var(--text-muted)",
+            <label style={{ fontSize:"18px", fontWeight:"700", color:"var(--text-muted)",
               display:"block", marginBottom:"6px" }}>교과</label>
             <select value={form.subject} onChange={e => handleChange("subject", e.target.value)}
               className="coco-input" style={{ width:"100%" }}>
@@ -193,7 +193,7 @@ export default function LessonDesign() {
           </div>
 
           <div>
-            <label style={{ fontSize:"12px", fontWeight:"700", color:"var(--text-muted)",
+            <label style={{ fontSize:"18px", fontWeight:"700", color:"var(--text-muted)",
               display:"block", marginBottom:"6px" }}>단원 / 주제</label>
             <input className="coco-input" value={form.topic}
               onChange={e => handleChange("topic", e.target.value)}
@@ -203,7 +203,7 @@ export default function LessonDesign() {
         </div>
 
         {error && (
-          <p style={{ color:"#e53e3e", fontSize:"13px", marginBottom:"10px", textAlign:"center" }}>
+          <p style={{ color:"#e53e3e", fontSize:"18px", marginBottom:"10px", textAlign:"center" }}>
             {error}
           </p>
         )}
@@ -231,7 +231,7 @@ export default function LessonDesign() {
               display:"inline-block",
               background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
               color:"white", padding:"10px 24px", borderRadius:"20px",
-              fontSize:"15px", fontWeight:"700"
+              fontSize:"18px", fontWeight:"700"
             }}>
               {form.grade} {form.subject} · {form.topic}
             </div>
@@ -249,13 +249,13 @@ export default function LessonDesign() {
                   padding:"16px 20px 12px",
                   borderBottom:`1px solid ${border}40`
                 }}>
-                  <div style={{ fontWeight:"800", fontSize:"15px" }}>
+                  <div style={{ fontWeight:"800", fontSize:"18px" }}>
                     {icon} {key}
                   </div>
                 </div>
                 <div style={{
                   padding:"16px 20px",
-                  fontSize:"14px", lineHeight:"1.8",
+                  fontSize:"18px", lineHeight:"1.8",
                   whiteSpace:"pre-wrap", color:"var(--text)"
                 }}>
                   {result[key]}

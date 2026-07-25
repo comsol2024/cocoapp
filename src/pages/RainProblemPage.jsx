@@ -93,7 +93,7 @@ export default function RainProblemPage({ user }) {
 
   const inp = {
     padding:"12px 14px", borderRadius:"12px",
-    border:"1.5px solid #e2e8f0", fontSize:"15px",
+    border:"1.5px solid #e2e8f0", fontSize:"18px",
     outline:"none", width:"100%", boxSizing:"border-box",
     lineHeight:"1.7", fontFamily:"inherit",
     background:"white"
@@ -115,12 +115,12 @@ export default function RainProblemPage({ user }) {
       }}>
         <button onClick={()=>navigate("/rain-data")} style={{
           background:"none", border:"none", color:"#1565C0",
-          fontWeight:"700", fontSize:"16px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 데이터 분석</button>
         <div style={{ fontWeight:"900", fontSize:"20px" }}>
           ✏️ 나만의 확률 문제 만들기
         </div>
-        <div style={{ fontSize:"14px", fontWeight:"600",
+        <div style={{ fontSize:"18px", fontWeight:"600",
           color:saved?"#34a853":"#bbb" }}>
           {saved ? "✓ 저장됨" : "저장 중..."}
         </div>
@@ -143,7 +143,7 @@ export default function RainProblemPage({ user }) {
             <div style={{ fontSize:"17px", fontWeight:"900", marginBottom:"5px" }}>
               🌀 COCO 미션 — 나만의 문제 만들기
             </div>
-            <div style={{ fontSize:"15px", lineHeight:"1.8", opacity:0.92 }}>
+            <div style={{ fontSize:"18px", lineHeight:"1.8", opacity:0.92 }}>
               앞에서 구한 통계 확률({statRR}%, {statCR}%)을 이용해서<br/>
               나만의 날씨 확률 문제를 직접 만들고 풀어봐!
             </div>
@@ -169,7 +169,7 @@ export default function RainProblemPage({ user }) {
               <div style={{ fontSize:"20px", fontWeight:"900" }}>
                 비오는 날 체육 수업 — 나만의 확률 문제
               </div>
-              <div style={{ fontSize:"14px", color:"#888", marginTop:"2px" }}>
+              <div style={{ fontSize:"18px", color:"#888", marginTop:"2px" }}>
                 통계 확률 P(비→비): {statRR}%,  P(맑→비): {statCR}%
               </div>
             </div>
@@ -190,11 +190,11 @@ export default function RainProblemPage({ user }) {
                 background:"#FFF8E1", borderRadius:"16px",
                 padding:"18px 20px", border:"1.5px solid #FFE082"
               }}>
-                <div style={{ fontSize:"16px", fontWeight:"700",
+                <div style={{ fontSize:"18px", fontWeight:"700",
                   color:"#E65100", marginBottom:"10px" }}>
                   📝 내가 만든 확률 문제
                 </div>
-                <div style={{ fontSize:"13px", color:"#BDBDBD",
+                <div style={{ fontSize:"18px", color:"#BDBDBD",
                   marginBottom:"10px", lineHeight:"1.7",
                   fontStyle:"italic" }}>
                   예) "5월 기준 비가 온 다음날 비가 올 확률이 {statRR}%,<br/>
@@ -212,7 +212,7 @@ export default function RainProblemPage({ user }) {
                 background:"#F3E5F5", borderRadius:"16px",
                 padding:"18px 20px", border:"1.5px solid #CE93D8"
               }}>
-                <div style={{ fontSize:"16px", fontWeight:"700",
+                <div style={{ fontSize:"18px", fontWeight:"700",
                   color:"#6A1B9A", marginBottom:"10px" }}>
                   🔢 풀이 과정과 답
                 </div>
@@ -224,7 +224,7 @@ export default function RainProblemPage({ user }) {
 
               {/* 기타 메모 */}
               <div>
-                <div style={{ fontSize:"15px", fontWeight:"700",
+                <div style={{ fontSize:"18px", fontWeight:"700",
                   color:"#718096", marginBottom:"8px" }}>📝 기타 메모</div>
                 <textarea value={memo}
                   onChange={e=>setMemo(e.target.value)}
@@ -240,14 +240,14 @@ export default function RainProblemPage({ user }) {
                 background:"#EDE7F6", borderRadius:"16px",
                 padding:"18px 20px", border:"1.5px solid #B39DDB"
               }}>
-                <div style={{ fontSize:"16px", fontWeight:"700",
+                <div style={{ fontSize:"18px", fontWeight:"700",
                   color:"#4527A0", marginBottom:"10px" }}>
                   🏃‍♂️ 3일 전 비가 왔을 때 체육 활동 계획
                 </div>
                 <div style={{
                   background:"white", borderRadius:"10px",
                   padding:"10px 14px", marginBottom:"10px",
-                  fontSize:"14px", lineHeight:"1.8", color:"#555"
+                  fontSize:"18px", lineHeight:"1.8", color:"#555"
                 }}>
                   목요일 기준, 월요일 비 → 목요일 비 확률 ≈{" "}
                   <strong style={{ color:"#1565C0" }}>47.5%</strong><br/>
@@ -268,7 +268,7 @@ export default function RainProblemPage({ user }) {
             display:"flex", justifyContent:"flex-end",
             alignItems:"center", gap:"8px"
           }}>
-            <div style={{ fontSize:"13px", color:"#bbb" }}>
+            <div style={{ fontSize:"18px", color:"#bbb" }}>
               ⛈️ 비오는 날 체육 수업 — 나만의 문제 활동지
             </div>
           </div>
@@ -288,7 +288,7 @@ export default function RainProblemPage({ user }) {
             padding:"18px",
             background:"linear-gradient(135deg,#546E7A,#37474F)",
             color:"white", border:"none", borderRadius:"16px",
-            fontSize:"16px", fontWeight:"700", cursor:"pointer",
+            fontSize:"18px", fontWeight:"700", cursor:"pointer",
             boxShadow:"0 4px 16px rgba(84,110,122,0.35)",
             display:"flex", alignItems:"center",
             justifyContent:"center", gap:"10px"
@@ -305,7 +305,7 @@ export default function RainProblemPage({ user }) {
             padding:"18px",
             background:"linear-gradient(135deg,#1565C0,#0D47A1)",
             color:"white", border:"none", borderRadius:"16px",
-            fontSize:"16px", fontWeight:"700", cursor:"pointer",
+            fontSize:"18px", fontWeight:"700", cursor:"pointer",
             boxShadow:"0 4px 18px rgba(21,101,192,0.35)",
             display:"flex", alignItems:"center",
             justifyContent:"center", gap:"10px"

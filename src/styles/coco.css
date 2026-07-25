@@ -372,7 +372,7 @@ body {
     font-size: 20px;
   }
 
-  .object-name { font-size: 10px; }
+  .object-name { font-size: 0px; }
 
   /* 모바일에서 핀 크기 조정 */
   .pin-circle {
@@ -438,7 +438,7 @@ body {
   border-radius: 10px;
   padding: 12px;
   margin-bottom: 12px;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.8;
   text-align: left;
 }
@@ -450,7 +450,7 @@ body {
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
@@ -500,7 +500,7 @@ body {
 
 .equation-field label {
   display: block;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-muted);
   margin-bottom: 4px;
@@ -520,7 +520,7 @@ body {
 .equation-field input:focus { border-color: var(--primary); }
 
 .equation-check {
-  font-size: 11px;
+  font-size: 15px;
   margin-top: 4px;
   padding: 3px 8px;
   border-radius: 8px;
@@ -662,7 +662,7 @@ body {
   color: white;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   pointer-events: all;
 }
@@ -732,52 +732,52 @@ body {
 
 /* ── 코코 말풍선 (씬 내부) ── */
 .coco-dialog {
-  font-size: 17px !important;
+  font-size: 20px !important;
   line-height: 1.9 !important;
   padding: 18px 22px !important;
 }
 .coco-next-btn {
-  font-size: 15px !important;
+  font-size: 20px !important;
   padding: 9px 18px !important;
   margin-top: 12px !important;
 }
 
 /* ── 오브젝트 팝업 ── */
 .object-popup {
-  font-size: 16px !important;
+  font-size: 20px !important;
 }
 .popup-title {
   font-size: 20px !important;
 }
 .popup-dialog {
-  font-size: 16px !important;
+  font-size: 20px !important;
   line-height: 2 !important;
 }
 .popup-close {
-  font-size: 16px !important;
+  font-size: 20px !important;
   padding: 12px 24px !important;
 }
 .popup-emoji {
-  font-size: 40px !important;
+  font-size: 50px !important;
 }
 
 /* ── 오브젝트 이름 ── */
 .object-name {
-  font-size: 14px !important;
+  font-size: 20px !important;
 }
 
 /* ── 엔딩 모달 ── */
 .ending-modal {
-  font-size: 16px !important;
+  font-size: 20px !important;
 }
 
 /* ── 입력칸 전역 ── */
 input, textarea, select {
-  font-size: 16px !important;
+  font-size: 18px !important;
 }
 
 /* ── HUD 배지 ── */
 .hud-badge {
-  font-size: 15px !important;
+  font-size: 22px !important;
   padding: 7px 14px !important;
 }

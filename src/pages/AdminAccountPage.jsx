@@ -133,7 +133,7 @@ export default function AdminAccountPage({ user }) {
 
   const inp = {
     padding:"10px 14px", borderRadius:"10px",
-    border:"1.5px solid #e2e8f0", fontSize:"14px",
+    border:"1.5px solid #e2e8f0", fontSize:"18px",
     outline:"none", width:"100%", boxSizing:"border-box",
   };
 
@@ -149,12 +149,12 @@ export default function AdminAccountPage({ user }) {
       }}>
         <button onClick={()=>navigate("/map")} style={{
           background:"none", border:"none", color:"#667eea",
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 지도로</button>
         <div style={{ fontWeight:"900", fontSize:"18px" }}>
           👨‍💼 학생 계정 관리
         </div>
-        <div style={{ fontSize:"13px", color:"#888" }}>
+        <div style={{ fontSize:"18px", color:"#888" }}>
           {students.length}명 등록됨
         </div>
       </div>
@@ -165,7 +165,7 @@ export default function AdminAccountPage({ user }) {
         {msg && (
           <div style={{
             padding:"12px 16px", borderRadius:"12px",
-            marginBottom:"16px", fontSize:"14px", fontWeight:"700",
+            marginBottom:"16px", fontSize:"18px", fontWeight:"700",
             background: msg.type==="ok" ? "#e8f5e9" : "#ffebee",
             color:       msg.type==="ok" ? "#2e7d32" : "#c62828",
             border:`1px solid ${msg.type==="ok"?"#a5d6a7":"#ef9a9a"}`
@@ -182,14 +182,14 @@ export default function AdminAccountPage({ user }) {
               background:"white", borderRadius:"16px",
               padding:"20px", boxShadow:"0 4px 16px rgba(0,0,0,0.07)"
             }}>
-              <div style={{ fontWeight:"900", fontSize:"16px",
+              <div style={{ fontWeight:"900", fontSize:"18px",
                 color:"#3949AB", marginBottom:"16px" }}>
                 ➕ 학생 계정 추가
               </div>
               <form onSubmit={handleCreate}
                 style={{ display:"flex", flexDirection:"column", gap:"10px" }}>
                 <div>
-                  <label style={{ fontSize:"12px", fontWeight:"700",
+                  <label style={{ fontSize:"18px", fontWeight:"700",
                     color:"#555", display:"block", marginBottom:"4px" }}>
                     학번 *
                   </label>
@@ -199,7 +199,7 @@ export default function AdminAccountPage({ user }) {
                     style={inp}/>
                 </div>
                 <div>
-                  <label style={{ fontSize:"12px", fontWeight:"700",
+                  <label style={{ fontSize:"18px", fontWeight:"700",
                     color:"#555", display:"block", marginBottom:"4px" }}>
                     이름 (선택)
                   </label>
@@ -209,7 +209,7 @@ export default function AdminAccountPage({ user }) {
                     style={inp}/>
                 </div>
                 <div>
-                  <label style={{ fontSize:"12px", fontWeight:"700",
+                  <label style={{ fontSize:"18px", fontWeight:"700",
                     color:"#555", display:"block", marginBottom:"4px" }}>
                     비밀번호 * (6자 이상)
                   </label>
@@ -225,7 +225,7 @@ export default function AdminAccountPage({ user }) {
                         position:"absolute", right:"12px", top:"50%",
                         transform:"translateY(-50%)",
                         background:"none", border:"none",
-                        cursor:"pointer", fontSize:"16px", color:"#aaa"
+                        cursor:"pointer", fontSize:"18px", color:"#aaa"
                       }}>
                       {showPw?"🙈":"👁"}
                     </button>
@@ -237,7 +237,7 @@ export default function AdminAccountPage({ user }) {
                     ? "#ccc"
                     : "linear-gradient(135deg,#667eea,#764ba2)",
                   color:"white", border:"none", borderRadius:"10px",
-                  fontSize:"14px", fontWeight:"700",
+                  fontSize:"18px", fontWeight:"700",
                   cursor: creating ? "not-allowed" : "pointer",
                   marginTop:"4px"
                 }}>
@@ -251,11 +251,11 @@ export default function AdminAccountPage({ user }) {
               background:"white", borderRadius:"16px",
               padding:"20px", boxShadow:"0 4px 16px rgba(0,0,0,0.07)"
             }}>
-              <div style={{ fontWeight:"900", fontSize:"16px",
+              <div style={{ fontWeight:"900", fontSize:"18px",
                 color:"#2E7D32", marginBottom:"8px" }}>
                 📊 엑셀로 일괄 추가
               </div>
-              <div style={{ fontSize:"12px", color:"#888",
+              <div style={{ fontSize:"18px", color:"#888",
                 lineHeight:"1.8", marginBottom:"12px" }}>
                 열 순서: <strong>학번 | 이름(선택) | 비밀번호</strong><br/>
                 첫 행은 헤더로 건너뜀
@@ -265,7 +265,7 @@ export default function AdminAccountPage({ user }) {
                 <button onClick={()=>fileRef.current?.click()} style={{
                   flex:1, padding:"10px",
                   background:"#e8f5e9", border:"1.5px solid #a5d6a7",
-                  borderRadius:"10px", fontSize:"13px",
+                  borderRadius:"10px", fontSize:"18px",
                   fontWeight:"700", color:"#2E7D32", cursor:"pointer"
                 }}>
                   📂 파일 선택
@@ -273,7 +273,7 @@ export default function AdminAccountPage({ user }) {
                 <button onClick={downloadSample} style={{
                   padding:"10px 14px",
                   background:"white", border:"1.5px solid #e2e8f0",
-                  borderRadius:"10px", fontSize:"12px",
+                  borderRadius:"10px", fontSize:"18px",
                   fontWeight:"700", color:"#555", cursor:"pointer",
                   whiteSpace:"nowrap"
                 }}>
@@ -288,7 +288,7 @@ export default function AdminAccountPage({ user }) {
               {bulkMsg && (
                 <div style={{
                   padding:"10px 12px", borderRadius:"8px",
-                  fontSize:"13px", fontWeight:"600", marginBottom:"10px",
+                  fontSize:"18px", fontWeight:"600", marginBottom:"10px",
                   background: bulkMsg.type==="ok" ? "#e8f5e9" : "#ffebee",
                   color:       bulkMsg.type==="ok" ? "#2e7d32" : "#c62828",
                 }}>{bulkMsg.text}</div>
@@ -301,7 +301,7 @@ export default function AdminAccountPage({ user }) {
                     border:"1px solid #e2e8f0", borderRadius:"8px",
                     marginBottom:"10px" }}>
                     <table style={{ width:"100%", borderCollapse:"collapse",
-                      fontSize:"12px" }}>
+                      fontSize:"18px" }}>
                       <thead>
                         <tr style={{ background:"#f8f9ff" }}>
                           {["학번","이름","비밀번호"].map(h=>(
@@ -333,7 +333,7 @@ export default function AdminAccountPage({ user }) {
                       ? "#ccc"
                       : "linear-gradient(135deg,#2E7D32,#1B5E20)",
                     color:"white", border:"none", borderRadius:"10px",
-                    fontSize:"14px", fontWeight:"700",
+                    fontSize:"18px", fontWeight:"700",
                     cursor: bulkDoing ? "not-allowed" : "pointer"
                   }}>
                     {bulkDoing
@@ -356,13 +356,13 @@ export default function AdminAccountPage({ user }) {
               display:"flex", alignItems:"center",
               justifyContent:"space-between", gap:"10px", flexShrink:0
             }}>
-              <div style={{ fontWeight:"900", fontSize:"16px" }}>
+              <div style={{ fontWeight:"900", fontSize:"18px" }}>
                 📋 등록된 학생 ({students.length}명)
               </div>
               <button onClick={loadStudents} style={{
                 background:"none", border:"1px solid #e2e8f0",
                 borderRadius:"8px", padding:"5px 10px",
-                fontSize:"12px", cursor:"pointer", color:"#555"
+                fontSize:"18px", cursor:"pointer", color:"#555"
               }}>↻ 새로고침</button>
             </div>
 
@@ -371,17 +371,17 @@ export default function AdminAccountPage({ user }) {
               <input type="text" value={search}
                 onChange={e=>setSearch(e.target.value)}
                 placeholder="학번 또는 이름 검색..."
-                style={{ ...inp, fontSize:"13px" }}/>
+                style={{ ...inp, fontSize:"18px" }}/>
             </div>
 
             {/* 목록 */}
             <div style={{ flex:1, overflowY:"auto", maxHeight:"580px" }}>
               {loading ? (
                 <div style={{ padding:"40px", textAlign:"center",
-                  color:"#aaa", fontSize:"14px" }}>불러오는 중...</div>
+                  color:"#aaa", fontSize:"18px" }}>불러오는 중...</div>
               ) : filtered.length === 0 ? (
                 <div style={{ padding:"40px", textAlign:"center",
-                  color:"#aaa", fontSize:"14px" }}>
+                  color:"#aaa", fontSize:"18px" }}>
                   {search ? "검색 결과가 없어요" : "등록된 학생이 없어요"}
                 </div>
               ) : filtered.map(s => (
@@ -396,17 +396,17 @@ export default function AdminAccountPage({ user }) {
                     background:"linear-gradient(135deg,#667eea,#764ba2)",
                     display:"flex", alignItems:"center",
                     justifyContent:"center",
-                    color:"white", fontSize:"16px",
+                    color:"white", fontSize:"18px",
                     fontWeight:"700", flexShrink:0
                   }}>
                     {(s.name||s.studentId)[0]}
                   </div>
                   <div style={{ flex:1, minWidth:0 }}>
-                    <div style={{ fontSize:"14px", fontWeight:"700",
+                    <div style={{ fontSize:"18px", fontWeight:"700",
                       color:"#333" }}>
                       {s.name || "이름 없음"}
                     </div>
-                    <div style={{ fontSize:"12px", color:"#888",
+                    <div style={{ fontSize:"18px", color:"#888",
                       fontFamily:"Courier New" }}>
                       학번: {s.studentId}
                     </div>
@@ -416,7 +416,7 @@ export default function AdminAccountPage({ user }) {
                     style={{
                       background:"#ffebee", border:"1px solid #ef9a9a",
                       borderRadius:"8px", padding:"5px 10px",
-                      fontSize:"12px", color:"#c62828",
+                      fontSize:"18px", color:"#c62828",
                       cursor:"pointer", fontWeight:"700",
                       flexShrink:0
                     }}>
@@ -432,7 +432,7 @@ export default function AdminAccountPage({ user }) {
         <div style={{
           marginTop:"20px", background:"#FFF8E1",
           borderRadius:"12px", padding:"14px 18px",
-          border:"1px solid #FFE082", fontSize:"13px",
+          border:"1px solid #FFE082", fontSize:"18px",
           lineHeight:"1.9", color:"#555"
         }}>
           <strong style={{ color:"#E65100" }}>💡 사용 안내</strong><br/>

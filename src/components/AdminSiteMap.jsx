@@ -127,12 +127,12 @@ export default function AdminSiteMap({ user }) {
             }}>
               <div>
                 <div style={{
-                  color: "white", fontWeight: "900", fontSize: "17px"
+                  color: "white", fontWeight: "900", fontSize: "18px"
                 }}>
                   사이트맵
                 </div>
                 <div style={{
-                  fontSize: "12px",
+                  fontSize: "18px",
                   color: "rgba(255,255,255,0.45)",
                   marginTop: "2px"
                 }}>
@@ -144,7 +144,7 @@ export default function AdminSiteMap({ user }) {
                 border: "none", color: "white",
                 width: "32px", height: "32px",
                 borderRadius: "50%", cursor: "pointer",
-                fontSize: "14px", fontWeight: "700"
+                fontSize: "18px", fontWeight: "700"
               }}>✕</button>
             </div>
 
@@ -157,7 +157,7 @@ export default function AdminSiteMap({ user }) {
                 <div key={si}>
                   {/* 섹션 라벨 */}
                   <div style={{
-                    fontSize: "12px", fontWeight: "700",
+                    fontSize: "18px", fontWeight: "700",
                     color: section.color,
                     marginBottom: "6px",
                     paddingLeft: "4px",
@@ -183,7 +183,7 @@ export default function AdminSiteMap({ user }) {
                           border: `1px solid ${section.color}55`,
                           background: `${section.color}18`,
                           color: "rgba(255,255,255,0.85)",
-                          fontSize: "13px",
+                          fontSize: "18px",
                           fontWeight: "600",
                           cursor: "pointer",
                           transition: "all 0.15s"
@@ -212,7 +212,7 @@ export default function AdminSiteMap({ user }) {
               background:"#012d5f",
               border:"0.2px solid #217ca0",
               borderRadius:"8px",
-              fontSize:"13px", fontWeight:"700",
+              fontSize:"18px", fontWeight:"700",
               color:"#ffffff", cursor:"pointer"
             }}>
               🔄 튜토리얼 초기화
@@ -222,7 +222,7 @@ export default function AdminSiteMap({ user }) {
             <div style={{
               padding: "10px 20px",
               borderTop: "1px solid rgba(255,255,255,0.08)",
-              fontSize: "11px",
+              fontSize: "18px",
               color: "rgba(255,255,255,0.3)",
               flexShrink: 0
             }}>

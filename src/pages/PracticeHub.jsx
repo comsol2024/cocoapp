@@ -18,7 +18,7 @@ export default function PracticeHub() {
       }}>
         <button onClick={()=>navigate("/map")} style={{
           background:"none", border:"none", color:"#5E35B1",
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 지도로</button>
         <div style={{ fontWeight:"900", fontSize:"17px" }}>
           ✏️ 연습문제
@@ -33,7 +33,7 @@ export default function PracticeHub() {
           background:"linear-gradient(135deg,#5E35B1,#7B1FA2)",
           borderRadius:"16px", padding:"18px 22px",
           marginBottom:"24px", color:"white",
-          fontSize:"15px", lineHeight:"1.8"
+          fontSize:"18px", lineHeight:"1.8"
         }}>
           🌀 <strong>코코의 미션</strong> — 단원을 선택해서 연습문제 10개를 풀어봐!
           <br></br>
@@ -86,7 +86,7 @@ export default function PracticeHub() {
               }}>
                 {unit.title}
               </div>
-              <div style={{ fontSize:"15px", color:"#888" }}>
+              <div style={{ fontSize:"18px", color:"#888" }}>
                 {unit.desc}
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function PracticeHub() {
             )}
             {!unit.ready && (
               <div style={{
-                fontSize:"11px", fontWeight:"700", color:"#999",
+                fontSize:"18px", fontWeight:"700", color:"#999",
                 background:"#f0f0f0", borderRadius:"8px",
                 padding:"4px 10px", whiteSpace:"nowrap"
               }}>

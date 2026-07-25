@@ -198,7 +198,7 @@ export default function RainScene({ user }) {
   // 스피너 숨기기 + 공통 스타일
   const inp = {
     padding:"8px 12px", borderRadius:"10px",
-    border:"2px solid #e2e8f0", fontSize:"15px",
+    border:"2px solid #e2e8f0", fontSize:"18px",
     fontWeight:"700", textAlign:"center",
     outline:"none", width:"90px",
     fontFamily:"Courier New",
@@ -264,11 +264,11 @@ export default function RainScene({ user }) {
               background:"white", border:"2px solid #90CAF9",
               borderRadius:"16px 4px 16px 16px",
               padding:"14px 18px", maxWidth:"400px",
-              fontSize:"16px", lineHeight:"1.75",
+              fontSize:"18px", lineHeight:"1.75",
               boxShadow:"0 4px 20px rgba(0,0,0,0.12)",
               whiteSpace:"pre-line"
             }}>
-              <div style={{ fontSize:"12px", fontWeight:"700",
+              <div style={{ fontSize:"18px", fontWeight:"700",
                 color:"#1565C0", marginBottom:"5px" }}>🏃‍♂️ 체육 선생님</div>
               {curIntro?.text}
               <button className="coco-next-btn"
@@ -362,7 +362,7 @@ export default function RainScene({ user }) {
               <div style={{
                 background:"#e3f2fd", borderRadius:"12px",
                 padding:"12px 16px", marginBottom:"14px",
-                fontSize:"13px", lineHeight:"2"
+                fontSize:"18px", lineHeight:"2"
               }}>
                 <div style={{ fontWeight:"800", color:"#1565C0",
                   marginBottom:"4px" }}>📒 수집한 데이터 요약</div>
@@ -372,21 +372,21 @@ export default function RainScene({ user }) {
                   gap:"6px"
                 }}>
                   <div style={{ background:"white", borderRadius:"8px",
-                    padding:"8px 10px", fontSize:"12px" }}>
+                    padding:"8px 10px", fontSize:"18px" }}>
                     <div style={{ fontWeight:"700", color:"#555",
                       marginBottom:"3px" }}>📊 한 달 관측</div>
                     <div>비가 온 날: <strong>10</strong>일</div>
                     <div>맑은 날: <strong>20</strong>일</div>
                   </div>
                   <div style={{ background:"white", borderRadius:"8px",
-                    padding:"8px 10px", fontSize:"12px" }}>
+                    padding:"8px 10px", fontSize:"18px" }}>
                     <div style={{ fontWeight:"700", color:"#1565C0",
                       marginBottom:"3px" }}>☔ 비온 날 다음날</div>
                     <div>총 <strong>10</strong>일 중</div>
                     <div>다음날 비: <strong>7</strong>일</div>
                   </div>
                   <div style={{ background:"white", borderRadius:"8px",
-                    padding:"8px 10px", fontSize:"12px" }}>
+                    padding:"8px 10px", fontSize:"18px" }}>
                     <div style={{ fontWeight:"700", color:"#E65100",
                       marginBottom:"3px" }}>☀️ 맑은 날 다음날</div>
                     <div>총 <strong>20</strong>일 중</div>
@@ -395,7 +395,7 @@ export default function RainScene({ user }) {
                 </div>
                 <div style={{ marginTop:"8px", background:"white",
                   borderRadius:"8px", padding:"8px 10px",
-                  fontSize:"12px", fontWeight:"700", color:"#C62828" }}>
+                  fontSize:"18px", fontWeight:"700", color:"#C62828" }}>
                   📌 조건: 이번 주 <strong>월요일에 비가 왔음</strong> → 수요일 비 올 확률은?
                 </div>
               </div>
@@ -406,14 +406,14 @@ export default function RainScene({ user }) {
                 overflow:"hidden", marginBottom:"10px"
               }}>
                 <div style={{ background:"#e3f2fd", padding:"8px 14px",
-                  fontSize:"13px", fontWeight:"800", color:"#1565C0" }}>
+                  fontSize:"18px", fontWeight:"800", color:"#1565C0" }}>
                   STEP 1. 전이 확률 구하기
                 </div>
                 <div style={{ padding:"12px 14px",
                   display:"flex", flexDirection:"column", gap:"10px" }}>
                   <div style={{ display:"flex", alignItems:"center",
                     gap:"8px", flexWrap:"wrap" }}>
-                    <span style={{ fontSize:"13px", fontWeight:"600" }}>
+                    <span style={{ fontSize:"18px", fontWeight:"600" }}>
                       P(비 → 비) = 7 ÷ 10 =
                     </span>
                     <input type="text" inputMode="decimal" value={pRR}
@@ -423,7 +423,7 @@ export default function RainScene({ user }) {
                   </div>
                   <div style={{ display:"flex", alignItems:"center",
                     gap:"8px", flexWrap:"wrap" }}>
-                    <span style={{ fontSize:"13px", fontWeight:"600" }}>
+                    <span style={{ fontSize:"18px", fontWeight:"600" }}>
                       P(맑 → 비) = 4 ÷ 20 =
                     </span>
                     <input type="text" inputMode="decimal" value={pNR}
@@ -440,7 +440,7 @@ export default function RainScene({ user }) {
                 overflow:"hidden", marginBottom:"10px"
               }}>
                 <div style={{ background:"#f3e5f5", padding:"8px 14px",
-                  fontSize:"13px", fontWeight:"800", color:"#6A1B9A" }}>
+                  fontSize:"18px", fontWeight:"800", color:"#6A1B9A" }}>
                   STEP 2. 요일별 확률 계산
                 </div>
                 <div style={{ padding:"12px 14px",
@@ -448,13 +448,13 @@ export default function RainScene({ user }) {
                   {/* 화요일 */}
                   <div style={{ background:"#faf5ff", borderRadius:"8px",
                     padding:"8px 10px" }}>
-                    <div style={{ fontSize:"12px", color:"#888",
+                    <div style={{ fontSize:"18px", color:"#888",
                       marginBottom:"5px" }}>
                       💡 월요일이 비였으니까 → 화요일은 "비 → ?" 확률이야
                     </div>
                     <div style={{ display:"flex", alignItems:"center",
                       gap:"8px", flexWrap:"wrap" }}>
-                      <span style={{ fontSize:"13px", fontWeight:"600" }}>
+                      <span style={{ fontSize:"18px", fontWeight:"600" }}>
                         P(화요일 비) =
                       </span>
                       <input type="text" inputMode="decimal" value={pTue}
@@ -466,13 +466,13 @@ export default function RainScene({ user }) {
                   {/* 수요일 */}
                   <div style={{ background:"#faf5ff", borderRadius:"8px",
                     padding:"8px 10px" }}>
-                    <div style={{ fontSize:"12px", color:"#888",
+                    <div style={{ fontSize:"18px", color:"#888",
                       marginBottom:"5px" }}>
                       💡 화요일이 비일 수도, 맑을 수도 있어 → 두 경우를 모두 더해줘
                     </div>
                     <div style={{ display:"flex", alignItems:"center",
                       gap:"8px", flexWrap:"wrap" }}>
-                      <span style={{ fontSize:"13px", fontWeight:"600" }}>
+                      <span style={{ fontSize:"18px", fontWeight:"600" }}>
                         P(수요일 비) =
                       </span>
                       <input type="text" inputMode="decimal" value={pWed}
@@ -492,7 +492,7 @@ export default function RainScene({ user }) {
                   background: showHint ? "#fff3e0" : "white",
                   border:"2px solid #FF8F00",
                   borderRadius:"10px", marginBottom:"8px",
-                  fontSize:"13px", fontWeight:"700",
+                  fontSize:"18px", fontWeight:"700",
                   color:"#E65100", cursor:"pointer"
                 }}>
                 {showHint ? "💡 힌트 닫기" : "💡 힌트 보기"}
@@ -502,12 +502,12 @@ export default function RainScene({ user }) {
                 <div style={{
                   background:"#fff8e1", borderRadius:"10px",
                   padding:"12px 14px", marginBottom:"10px",
-                  fontSize:"13px", lineHeight:"1.9",
+                  fontSize:"18px", lineHeight:"1.9",
                   border:"1px solid #FFE082"
                 }}>
                   <div style={{ fontWeight:"800", color:"#E65100",
                     marginBottom:"4px" }}>📐 수요일 확률 구하는 방법</div>
-                  <div style={{ fontFamily:"Courier New", fontSize:"12px",
+                  <div style={{ fontFamily:"Courier New", fontSize:"18px",
                     background:"white", borderRadius:"8px",
                     padding:"8px 12px", lineHeight:"2" }}>
                     P(수) = P(화 비오고 수 비)<br/>
@@ -520,7 +520,7 @@ export default function RainScene({ user }) {
               {ansError && (
                 <div style={{ background:"#ffebee", borderRadius:"8px",
                   padding:"8px 12px", marginBottom:"10px",
-                  fontSize:"12px", color:"#c62828", fontWeight:"600" }}>
+                  fontSize:"18px", color:"#c62828", fontWeight:"600" }}>
                   ❌ {ansError}
                 </div>
               )}
@@ -529,7 +529,7 @@ export default function RainScene({ user }) {
                 width:"100%", padding:"13px",
                 background:"linear-gradient(135deg,#1565C0,#0D47A1)",
                 color:"white", border:"none", borderRadius:"12px",
-                fontSize:"15px", fontWeight:"700", cursor:"pointer"
+                fontSize:"18px", fontWeight:"700", cursor:"pointer"
               }}>정답 제출하기 ✓</button>
             </div>
           </>
@@ -544,7 +544,7 @@ export default function RainScene({ user }) {
               <div style={{ fontSize:"20px", fontWeight:"900", marginBottom:"8px" }}>
                 미션 완료!
               </div>
-              <div style={{ fontSize:"14px", color:"#718096",
+              <div style={{ fontSize:"18px", color:"#718096",
                 marginBottom:"20px", lineHeight:"1.7" }}>
                 월요일 비 → 수요일 비 확률 = <strong>55%</strong><br/>
                 수학으로 날씨를 예측할 수 있어! 🌦️
@@ -554,7 +554,7 @@ export default function RainScene({ user }) {
                 borderRadius:"16px", padding:"16px 20px", marginBottom:"20px"
               }}>
                 <div style={{ fontSize:"28px", marginBottom:"8px" }}>🌀</div>
-                <div style={{ color:"white", fontSize:"14px",
+                <div style={{ color:"white", fontSize:"18px",
                   lineHeight:"1.7", fontWeight:"600" }}>
                   이번엔 실제 배곧 지역<br/>
                   5월 강수 데이터를 직접 분석해봐!<br/>
@@ -565,7 +565,7 @@ export default function RainScene({ user }) {
                 width:"100%", padding:"13px",
                 background:"linear-gradient(135deg,#1565C0,#0D47A1)",
                 color:"white", border:"none", borderRadius:"12px",
-                fontSize:"15px", fontWeight:"700", cursor:"pointer",
+                fontSize:"18px", fontWeight:"700", cursor:"pointer",
                 marginBottom:"8px"
               }}>
                 📊 Step 2: 실제 데이터 분석하러 가기 →
@@ -573,13 +573,13 @@ export default function RainScene({ user }) {
               <button onClick={()=>navigate("/map")} style={{
                 width:"100%", padding:"10px", background:"white",
                 border:"1px solid #ddd", borderRadius:"12px",
-                fontSize:"13px", fontWeight:"700",
+                fontSize:"18px", fontWeight:"700",
                 cursor:"pointer", color:"#718096", marginBottom:"8px"
               }}>🗺 지도로 돌아가기</button>
               <button onClick={handleReset} style={{
                 width:"100%", padding:"9px", background:"white",
                 border:"2px solid #eee", borderRadius:"12px",
-                fontSize:"12px", fontWeight:"700", cursor:"pointer", color:"#bbb"
+                fontSize:"18px", fontWeight:"700", cursor:"pointer", color:"#bbb"
               }}>🔄 처음부터 다시하기</button>
             </div>
           </>

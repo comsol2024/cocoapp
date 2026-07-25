@@ -252,12 +252,12 @@ export default function IncentorSim() {
       }}>
         <button onClick={()=>navigate("/map")} style={{
           background:"none", border:"none", color:"#90caf9",
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 지도로</button>
-        <div style={{color:"white", fontWeight:"900", fontSize:"16px"}}>
+        <div style={{color:"white", fontWeight:"900", fontSize:"18px"}}>
           🏥 외심 시뮬레이션
           <span style={{
-            fontSize:"13px", fontWeight:"400",
+            fontSize:"18px", fontWeight:"400",
             color:"rgba(255,255,255,0.5)", marginLeft:"8px"
           }}>
             {freeMode ? "✏️ 자유 그리기 모드"
@@ -269,7 +269,7 @@ export default function IncentorSim() {
         <button onClick={reset} style={{
           background:"rgba(255,255,255,0.1)", border:"none",
           color:"white", padding:"5px 12px", borderRadius:"8px",
-          fontSize:"12px", cursor:"pointer", fontWeight:"600"
+          fontSize:"18px", cursor:"pointer", fontWeight:"600"
         }}>초기화</button>
       </div>
 
@@ -631,7 +631,7 @@ export default function IncentorSim() {
               padding:"16px 20px", width:"100%",
               boxShadow:"0 4px 24px rgba(0,0,0,0.35)",
               border:"2px solid #5b9fe8",
-              fontSize:"14px", lineHeight:"1.8",
+              fontSize:"18px", lineHeight:"1.8",
               whiteSpace:"pre-line"
             }}>
               {cur.text}
@@ -640,7 +640,7 @@ export default function IncentorSim() {
                   padding:"8px 24px",
                   background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
                   color:"white", border:"none", borderRadius:"20px",
-                  fontSize:"13px", fontWeight:"700", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
                 }}>
                   {step>=STEPS.length-1?"완료 ✓":"다음 ▶"}
                 </button>
@@ -678,11 +678,11 @@ export default function IncentorSim() {
                 }}/>
                 <div>
                   <div style={{
-                    fontSize:"11px", color:"#888",
+                    fontSize:"18px", color:"#888",
                     marginBottom:"4px", fontWeight:"600"
                   }}>🌀 코코의 질문</div>
                   <div style={{
-                    fontSize:"16px", fontWeight:"900",
+                    fontSize:"18px", fontWeight:"900",
                     lineHeight:"1.55", whiteSpace:"pre-line"
                   }}>
                     {qData.prompt}
@@ -694,7 +694,7 @@ export default function IncentorSim() {
                   <button key={i} onClick={()=>handleAnswer(i)} style={{
                     padding:"13px 18px", borderRadius:"12px",
                     border:"2px solid #e2e8f0", background:"white",
-                    fontSize:"15px", fontWeight:"600",
+                    fontSize:"18px", fontWeight:"600",
                     cursor:"pointer", textAlign:"left", transition:"all 0.15s"
                   }}
                   onMouseEnter={e=>{
@@ -713,7 +713,7 @@ export default function IncentorSim() {
                 <div style={{
                   marginTop:"14px", background:"#fff3e0",
                   borderRadius:"10px", padding:"11px 14px",
-                  fontSize:"13px", color:"#E65100",
+                  fontSize:"18px", color:"#E65100",
                   fontWeight:"600", lineHeight:"1.6"
                 }}>
                   🤔 {qData.wrongHint}
@@ -736,7 +736,7 @@ export default function IncentorSim() {
           {a:3, label:"Act 3 · 4층 (4점)"},
         ].map(({a,label})=>(
           <div key={a} style={{
-            padding:"4px 12px", borderRadius:"8px", fontSize:"12px",
+            padding:"4px 12px", borderRadius:"8px", fontSize:"18px",
             background: act===a&&!freeMode
               ?"rgba(76,175,80,0.35)":"rgba(255,255,255,0.05)",
             color: act===a&&!freeMode
@@ -771,7 +771,7 @@ export default function IncentorSim() {
                   padding:"5px 16px", borderRadius:"8px",
                   background:"linear-gradient(135deg,#42a5f5,#1565C0)",
                   color:"white", border:"none",
-                  fontSize:"12px", fontWeight:"700", cursor:"pointer",
+                  fontSize:"18px", fontWeight:"700", cursor:"pointer",
                   boxShadow:"0 2px 8px rgba(21,101,192,0.4)"
                 }}>
                 ✏️ 삼각형 그리기
@@ -783,14 +783,14 @@ export default function IncentorSim() {
                     padding:"5px 12px", borderRadius:"8px",
                     background:"rgba(255,255,255,0.15)",
                     color:"white", border:"1px solid rgba(255,255,255,0.2)",
-                    fontSize:"12px", fontWeight:"600", cursor:"pointer"
+                    fontSize:"18px", fontWeight:"600", cursor:"pointer"
                   }}>🔄 점 초기화</button>
                 <button onClick={()=>{ setFreeMode(false); setFreePts([]); setDragging(null); }}
                   style={{
                     padding:"5px 12px", borderRadius:"8px",
                     background:"rgba(229,57,53,0.5)",
                     color:"white", border:"none",
-                    fontSize:"12px", fontWeight:"600", cursor:"pointer"
+                    fontSize:"18px", fontWeight:"600", cursor:"pointer"
                   }}>✕ 종료</button>
               </>
             )}

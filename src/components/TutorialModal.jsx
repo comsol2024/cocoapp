@@ -115,8 +115,8 @@ export default function TutorialOverlay({ user, onDone }) {
       borderRadius:"16px",
       padding:"14px 18px",
       boxShadow:"0 6px 24px rgba(0,0,0,0.18)",
-      maxWidth:"300px", minWidth:"260px",
-      fontSize:"15px", lineHeight:"1.85",
+      maxminminWidth:"300px", minWidth:"260px",
+      fontSize:"18px", lineHeight:"1.85",
       fontWeight:"600", color:"#2D3748",
       whiteSpace:"pre-line",
       border:"2px solid #e8ecff",
@@ -175,7 +175,7 @@ export default function TutorialOverlay({ user, onDone }) {
         display:"flex", alignItems:"center",
         justifyContent:"space-between",
         zIndex:101, backdropFilter:"blur(4px)",
-        fontSize:"14px", fontWeight:"700"
+        fontSize:"18px", fontWeight:"700"
       }}>
         <div> CoCo 튜토리얼 — {stepIdx + 1}/{STEPS.length}</div>
         <div style={{ display:"flex", gap:"5px" }}>
@@ -197,7 +197,7 @@ export default function TutorialOverlay({ user, onDone }) {
         }} style={{
           background:"rgba(255,255,255,0.2)", border:"none",
           color:"white", borderRadius:"20px",
-          padding:"4px 12px", fontSize:"12px",
+          padding:"4px 12px", fontSize:"18px",
           fontWeight:"700", cursor:"pointer"
         }}>건너뛰기</button>
       </div>
@@ -238,7 +238,7 @@ export default function TutorialOverlay({ user, onDone }) {
                 background:"linear-gradient(135deg,#667eea,#764ba2)",
                 color:"white", border:"none",
                 borderRadius:"20px",
-                fontSize:"14px", fontWeight:"800",
+                fontSize:"18px", fontWeight:"800",
                 cursor:"pointer",
                 display:"block",
                 boxShadow:"0 3px 12px rgba(102,126,234,0.4)",

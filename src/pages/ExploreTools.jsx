@@ -15,7 +15,7 @@ function Modal({ title, emoji, color="#1565C0", onClose, children }) {
         position:"fixed", top:"50%", left:"50%",
         transform:"translate(-50%,-50%)",
         background:"#16162a", borderRadius:"22px",
-        width:"min(480px,95vw)", maxHeight:"88vh",
+        minWidth:"min(480px,95vw)", maxHeight:"88vh",
         display:"flex", flexDirection:"column",
         zIndex:301,
         boxShadow:"0 24px 64px rgba(0,0,0,0.7)",
@@ -34,9 +34,9 @@ function Modal({ title, emoji, color="#1565C0", onClose, children }) {
           </span>
           <button onClick={onClose} style={{
             background:"rgba(255,255,255,0.12)", border:"none",
-            color:"white", width:"32px", height:"32px",
+            color:"white", minWidth:"32px", height:"32px",
             borderRadius:"50%", cursor:"pointer",
-            fontSize:"13px", fontWeight:"700"
+            fontSize:"18px", fontWeight:"700"
           }}>✕</button>
         </div>
         <div style={{ flex:1, overflowY:"auto" }}>
@@ -133,7 +133,7 @@ export function SlopeCamera({ onClose }) {
             width:"100%", padding:"12px",
             background:"#1565C0", color:"white",
             border:"none", borderRadius:"12px",
-            fontSize:"14px", fontWeight:"700",
+            fontSize:"18px", fontWeight:"700",
             cursor:"pointer", marginBottom:"14px"
           }}>📱 기울기 센서 권한 허용하기</button>
         )}
@@ -146,14 +146,14 @@ export function SlopeCamera({ onClose }) {
           aspectRatio:"4/3"
         }}>
           <video ref={videoRef} autoPlay muted playsInline
-            style={{ width:"100%", height:"100%",
+            style={{ minWidth:"100%", height:"100%",
               objectFit:"cover", display:cameraOn?"block":"none" }}/>
           {!cameraOn && (
             <div style={{
               position:"absolute", inset:0,
               display:"flex", alignItems:"center",
               justifyContent:"center", color:"#888",
-              fontSize:"13px", flexDirection:"column", gap:"6px"
+              fontSize:"18px", flexDirection:"column", gap:"6px"
             }}>
               <span style={{fontSize:"32px"}}>📷</span>
               카메라 사용 불가
@@ -167,7 +167,7 @@ export function SlopeCamera({ onClose }) {
             justifyContent:"center", pointerEvents:"none"
           }}>
             <div style={{
-              width:"85%", height:"2px",
+              minWidth:"85%", height:"2px",
               background:"rgba(255,255,255,0.4)",
               position:"absolute", top:"50%",
               transform:`translateY(-50%) rotate(${-displayAngle}deg)`,
@@ -187,7 +187,7 @@ export function SlopeCamera({ onClose }) {
 
         {/* 프로트랙터 */}
         <svg viewBox={`0 0 ${W} ${H}`}
-          style={{ width:"100%", marginBottom:"14px" }}>
+          style={{ minWidth:"100%", marginBottom:"14px" }}>
           {/* 반원 */}
           <path d={`M ${cx-R} ${cy} A ${R} ${R} 0 0 1 ${cx+R} ${cy}`}
             fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth={2}/>
@@ -235,7 +235,7 @@ export function SlopeCamera({ onClose }) {
             }}>
               <div style={{ fontSize:"18px", fontWeight:"900",
                 color:item.color, ...numStyle }}>{item.value}</div>
-              <div style={{ fontSize:"10px", color:"rgba(255,255,255,0.5)",
+              <div style={{ fontSize:"18px", color:"rgba(255,255,255,0.5)",
                 marginTop:"3px" }}>{item.label}</div>
             </div>
           ))}
@@ -246,18 +246,18 @@ export function SlopeCamera({ onClose }) {
           if (locked) { setLocked(false); }
           else { setLocked(true); setLockedAngle(angle); }
         }} style={{
-          width:"100%", padding:"12px",
+          minWidth:"100%", padding:"12px",
           background: locked
             ? "linear-gradient(135deg,#e53935,#c62828)"
             : "linear-gradient(135deg,#1565C0,#0D47A1)",
           color:"white", border:"none", borderRadius:"12px",
-          fontSize:"14px", fontWeight:"700", cursor:"pointer"
+          fontSize:"18px", fontWeight:"700", cursor:"pointer"
         }}>
           {locked ? "🔓 고정 해제" : "📌 현재값 고정"}
         </button>
 
         {!hasDevice && !iosNeedsPerm && (
-          <div style={{ marginTop:"10px", fontSize:"12px",
+          <div style={{ marginTop:"10px", fontSize:"18px",
             color:"rgba(255,255,255,0.4)", textAlign:"center" }}>
             기울기 센서를 지원하는 모바일 기기에서 사용해봐!
           </div>
@@ -338,10 +338,10 @@ export function ActivityCamera({ onClose, user }) {
         {!preview ? (
           <div style={{ marginBottom:"16px" }}>
             <button onClick={()=>fileRef.current?.click()} style={{
-              width:"100%", padding:"18px",
+              minWidth:"100%", padding:"18px",
               background:"linear-gradient(135deg,#6A1B9A,#4A148C)",
               color:"white", border:"none", borderRadius:"14px",
-              fontSize:"15px", fontWeight:"700", cursor:"pointer",
+              fontSize:"18px", fontWeight:"700", cursor:"pointer",
               display:"flex", alignItems:"center",
               justifyContent:"center", gap:"10px"
             }}>
@@ -353,7 +353,7 @@ export function ActivityCamera({ onClose, user }) {
               onChange={handleFile}
               style={{ display:"none" }}/>
             <div style={{ textAlign:"center", color:"rgba(255,255,255,0.3)",
-              fontSize:"12px", marginTop:"6px" }}>
+              fontSize:"18px", marginTop:"6px" }}>
               또는 갤러리에서 선택
             </div>
             <button onClick={()=>{
@@ -363,11 +363,11 @@ export function ActivityCamera({ onClose, user }) {
                 setTimeout(()=>fileRef.current?.setAttribute("capture","environment"),300);
               }
             }} style={{
-              width:"100%", padding:"11px", marginTop:"8px",
+              minWidth:"100%", padding:"11px", marginTop:"8px",
               background:"rgba(255,255,255,0.08)",
               color:"rgba(255,255,255,0.7)",
               border:"1px solid rgba(255,255,255,0.15)",
-              borderRadius:"12px", fontSize:"13px",
+              borderRadius:"12px", fontSize:"18px",
               fontWeight:"600", cursor:"pointer"
             }}>🖼️ 갤러리에서 선택</button>
           </div>
@@ -375,23 +375,23 @@ export function ActivityCamera({ onClose, user }) {
           /* 미리보기 + 저장 */
           <div style={{ marginBottom:"16px" }}>
             <img src={preview} alt="preview"
-              style={{ width:"100%", borderRadius:"14px",
+              style={{ minWidth:"100%", borderRadius:"14px",
                 marginBottom:"10px", maxHeight:"240px",
                 objectFit:"cover" }}/>
             <input value={label} onChange={e=>setLabel(e.target.value)}
               placeholder="사진 설명 (선택)"
-              style={{ width:"100%", padding:"10px 14px",
+              style={{ minWidth:"100%", padding:"10px 14px",
                 background:"rgba(255,255,255,0.08)",
                 border:"1px solid rgba(255,255,255,0.15)",
                 borderRadius:"10px", color:"white",
-                fontSize:"14px", outline:"none",
+                fontSize:"18px", outline:"none",
                 marginBottom:"10px", boxSizing:"border-box" }}/>
             <div style={{ display:"grid",
               gridTemplateColumns:"1fr 1fr", gap:"8px" }}>
               <button onClick={()=>{ setPreview(null); setLabel(""); }}
                 style={{ padding:"11px", background:"rgba(255,255,255,0.08)",
                   color:"rgba(255,255,255,0.7)", border:"none",
-                  borderRadius:"10px", fontSize:"13px",
+                  borderRadius:"10px", fontSize:"18px",
                   fontWeight:"700", cursor:"pointer" }}>
                 취소
               </button>
@@ -399,7 +399,7 @@ export function ActivityCamera({ onClose, user }) {
                 padding:"11px",
                 background:"linear-gradient(135deg,#6A1B9A,#4A148C)",
                 color:"white", border:"none", borderRadius:"10px",
-                fontSize:"13px", fontWeight:"700", cursor:"pointer"
+                fontSize:"18px", fontWeight:"700", cursor:"pointer"
               }}>
                 {saving ? "저장 중..." : "💾 저장하기"}
               </button>
@@ -408,13 +408,13 @@ export function ActivityCamera({ onClose, user }) {
         )}
 
         {/* 저장된 사진 목록 */}
-        <div style={{ fontSize:"13px", color:"rgba(255,255,255,0.5)",
+        <div style={{ fontSize:"18px", color:"rgba(255,255,255,0.5)",
           marginBottom:"8px", fontWeight:"600" }}>
           저장된 사진 ({photos.length})
         </div>
         {photos.length === 0 ? (
           <div style={{ textAlign:"center", color:"rgba(255,255,255,0.25)",
-            padding:"24px", fontSize:"13px" }}>
+            padding:"24px", fontSize:"18px" }}>
             아직 저장된 사진이 없어!
           </div>
         ) : (
@@ -423,7 +423,7 @@ export function ActivityCamera({ onClose, user }) {
             {photos.map(ph=>(
               <div key={ph.id} style={{ position:"relative" }}>
                 <img src={ph.dataUrl} alt={ph.label}
-                  style={{ width:"100%", aspectRatio:"1",
+                  style={{ minWidth:"100%", aspectRatio:"1",
                     objectFit:"cover", borderRadius:"10px" }}/>
                 <div style={{
                   position:"absolute", bottom:0, left:0, right:0,
@@ -431,7 +431,7 @@ export function ActivityCamera({ onClose, user }) {
                   borderRadius:"0 0 10px 10px",
                   padding:"6px 8px"
                 }}>
-                  <div style={{ fontSize:"10px", color:"white",
+                  <div style={{ fontSize:"18px", color:"white",
                     fontWeight:"600",
                     overflow:"hidden", textOverflow:"ellipsis",
                     whiteSpace:"nowrap" }}>
@@ -446,13 +446,13 @@ export function ActivityCamera({ onClose, user }) {
                     width:"26px", height:"26px", borderRadius:"50%",
                     background:"rgba(21,101,192,0.85)",
                     border:"none", color:"white",
-                    fontSize:"11px", cursor:"pointer"
+                    fontSize:"18px", cursor:"pointer"
                   }}>⬇</button>
                   <button onClick={()=>deletePhoto(ph.id)} style={{
-                    width:"26px", height:"26px", borderRadius:"50%",
+                    minWidth:"26px", height:"26px", borderRadius:"50%",
                     background:"rgba(198,40,40,0.85)",
                     border:"none", color:"white",
-                    fontSize:"11px", cursor:"pointer"
+                    fontSize:"18px", cursor:"pointer"
                   }}>✕</button>
                 </div>
               </div>
@@ -519,7 +519,7 @@ export function ExploreTimer({ onClose }) {
 
   const btnBase = {
     borderRadius:"14px", border:"none",
-    fontSize:"14px", fontWeight:"700",
+    fontSize:"18px", fontWeight:"700",
     cursor:"pointer", padding:"13px 0"
   };
 
@@ -552,7 +552,7 @@ export function ExploreTimer({ onClose }) {
           </div>
           {avgLap !== null && (
             <div style={{ color:"rgba(255,255,255,0.5)",
-              fontSize:"13px", marginTop:"6px" }}>
+              fontSize:"18px", marginTop:"6px" }}>
               평균 랩: {fmt(avgLap).m}:{fmt(avgLap).s}.{fmt(avgLap).c}
               &nbsp;({laps.length}회)
             </div>
@@ -594,7 +594,7 @@ export function ExploreTimer({ onClose }) {
             background:"rgba(0,0,0,0.3)", borderRadius:"14px",
             overflow:"hidden"
           }}>
-            <div style={{ padding:"10px 14px", fontSize:"12px",
+            <div style={{ padding:"10px 14px", fontSize:"18px",
               color:"rgba(255,255,255,0.4)", fontWeight:"700",
               borderBottom:"1px solid rgba(255,255,255,0.06)" }}>
               랩 기록
@@ -611,15 +611,15 @@ export function ExploreTimer({ onClose }) {
                   borderBottom:"1px solid rgba(255,255,255,0.04)"
                 }}>
                   <span style={{ color:"rgba(255,255,255,0.5)",
-                    fontSize:"12px", fontWeight:"600" }}>
+                    fontSize:"18px", fontWeight:"600" }}>
                     랩 {laps.length - i}
                   </span>
                   <span style={{ color:"white", fontWeight:"700",
-                    fontFamily:"Courier New", fontSize:"15px" }}>
+                    fontFamily:"Courier New", fontSize:"18px" }}>
                     {lm}:{ls}.{lc}
                   </span>
                   <span style={{ color:"rgba(100,220,130,0.8)",
-                    fontSize:"12px", fontFamily:"Courier New" }}>
+                    fontSize:"18px", fontFamily:"Courier New" }}>
                     +{dm}:{ds}.{dc}
                   </span>
                 </div>
@@ -699,7 +699,7 @@ export function ExploreMemo({ onClose, user }) {
           {TAGS.map(t=>(
             <button key={t} onClick={()=>setTag(t)} style={{
               padding:"5px 12px", borderRadius:"20px",
-              border:"none", fontSize:"12px",
+              border:"none", fontSize:"18px",
               fontWeight: tag===t ? "700" : "400",
               cursor:"pointer",
               background: tag===t
@@ -715,24 +715,24 @@ export function ExploreMemo({ onClose, user }) {
           onKeyDown={e=>{ if(e.key==="Enter"&&e.ctrlKey) saveMemo(); }}
           placeholder="메모를 입력해봐! (Ctrl+Enter로 저장)"
           style={{
-            width:"100%", minHeight:"90px", padding:"12px 14px",
+            minWidth:"100%", minHeight:"90px", padding:"12px 14px",
             background:"rgba(255,255,255,0.08)",
             border:"1px solid rgba(255,255,255,0.15)",
             borderRadius:"12px", color:"white",
-            fontSize:"14px", lineHeight:"1.65",
+            fontSize:"18px", lineHeight:"1.65",
             resize:"vertical", outline:"none",
             fontFamily:"inherit", boxSizing:"border-box",
             marginBottom:"10px"
           }}/>
 
         <button onClick={saveMemo} disabled={saving||!input.trim()} style={{
-          width:"100%", padding:"12px",
+          minWidth:"100%", padding:"12px",
           background: input.trim()
             ? "linear-gradient(135deg,#E65100,#BF360C)"
             : "rgba(255,255,255,0.06)",
           color: input.trim() ? "white" : "rgba(255,255,255,0.2)",
           border:"none", borderRadius:"12px",
-          fontSize:"14px", fontWeight:"700",
+          fontSize:"18px", fontWeight:"700",
           cursor: input.trim() ? "pointer" : "default",
           marginBottom:"18px"
         }}>
@@ -740,7 +740,7 @@ export function ExploreMemo({ onClose, user }) {
         </button>
 
         {/* 메모 목록 */}
-        <div style={{ fontSize:"12px",
+        <div style={{ fontSize:"18px",
           color:"rgba(255,255,255,0.4)", fontWeight:"700",
           marginBottom:"8px" }}>
           저장된 메모 ({memos.length})
@@ -763,14 +763,14 @@ export function ExploreMemo({ onClose, user }) {
               <div style={{ display:"flex",
                 justifyContent:"space-between",
                 alignItems:"flex-start", gap:"8px" }}>
-                <div style={{ fontSize:"14px", color:"white",
+                <div style={{ fontSize:"18px", color:"white",
                   lineHeight:"1.6", flex:1,
                   whiteSpace:"pre-wrap" }}>{m.text}</div>
                 <button onClick={()=>deleteMemo(m.id)} style={{
                   background:"rgba(198,40,40,0.7)",
                   border:"none", borderRadius:"6px",
-                  color:"white", width:"24px", height:"24px",
-                  cursor:"pointer", fontSize:"11px",
+                  color:"white", minWidth:"24px", height:"24px",
+                  cursor:"pointer", fontSize:"18px",
                   flexShrink:0
                 }}>✕</button>
               </div>
@@ -781,9 +781,9 @@ export function ExploreMemo({ onClose, user }) {
                 <span style={{
                   background: TAG_COLORS[m.tag]||"#546E7A",
                   borderRadius:"10px", padding:"2px 8px",
-                  fontSize:"10px", color:"white", fontWeight:"700"
+                  fontSize:"18px", color:"white", fontWeight:"700"
                 }}>{m.tag}</span>
-                <span style={{ fontSize:"11px",
+                <span style={{ fontSize:"18px",
                   color:"rgba(255,255,255,0.35)" }}>
                   {m.displayTime}
                 </span>
@@ -793,7 +793,7 @@ export function ExploreMemo({ onClose, user }) {
           {!loading && memos.length === 0 && (
             <div style={{ textAlign:"center",
               color:"rgba(255,255,255,0.25)",
-              padding:"24px", fontSize:"13px" }}>
+              padding:"24px", fontSize:"18px" }}>
               아직 저장된 메모가 없어!
             </div>
           )}

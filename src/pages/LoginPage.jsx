@@ -60,7 +60,7 @@ export default function LoginPage({ onLogin }) {
   const inp = {
     width:"100%", padding:"14px 16px",
     borderRadius:"12px", border:"1.5px solid #e2e8f0",
-    fontSize:"16px", outline:"none", boxSizing:"border-box",
+    fontSize:"18px", outline:"none", boxSizing:"border-box",
     fontFamily:"inherit",
   };
 
@@ -83,7 +83,7 @@ export default function LoginPage({ onLogin }) {
             background:"linear-gradient(135deg,#667eea,#764ba2)",
             WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent"
           }}>COCO</div>
-          <div style={{ fontSize:"14px", color:"#888", marginTop:"4px" }}>
+          <div style={{ fontSize:"18px", color:"#888", marginTop:"4px" }}>
             Context On, Connect On
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function LoginPage({ onLogin }) {
           ].map(t => (
             <button key={t.id} onClick={()=>{ setTab(t.id); setError(""); }} style={{
               padding:"10px", borderRadius:"10px", border:"none",
-              cursor:"pointer", fontSize:"14px", fontWeight:"700",
+              cursor:"pointer", fontSize:"18px", fontWeight:"700",
               background: tab===t.id ? "white" : "transparent",
               color:       tab===t.id ? "#667eea" : "#888",
               boxShadow:   tab===t.id ? "0 2px 8px rgba(0,0,0,0.12)" : "none",
@@ -116,7 +116,7 @@ export default function LoginPage({ onLogin }) {
               width:"100%", padding:"16px",
               background: loading ? "#f0f0f0" : "white",
               border:"2px solid #e2e8f0",
-              borderRadius:"14px", fontSize:"16px",
+              borderRadius:"14px", fontSize:"18px",
               fontWeight:"700", cursor: loading ? "not-allowed" : "pointer",
               display:"flex", alignItems:"center",
               justifyContent:"center", gap:"12px",
@@ -136,7 +136,7 @@ export default function LoginPage({ onLogin }) {
               )}
             </button>
             <div style={{ textAlign:"center", marginTop:"16px",
-              fontSize:"13px", color:"#aaa" }}>
+              fontSize:"18px", color:"#aaa" }}>
               선생님 · 관리자 계정
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function LoginPage({ onLogin }) {
         {tab === "student" && (
           <form onSubmit={handleStudentLogin}>
             <div style={{ marginBottom:"14px" }}>
-              <label style={{ fontSize:"13px", fontWeight:"700",
+              <label style={{ fontSize:"18px", fontWeight:"700",
                 color:"#555", display:"block", marginBottom:"6px" }}>
                 🎒 학번
               </label>
@@ -159,7 +159,7 @@ export default function LoginPage({ onLogin }) {
                 style={inp}/>
             </div>
             <div style={{ marginBottom:"20px" }}>
-              <label style={{ fontSize:"13px", fontWeight:"700",
+              <label style={{ fontSize:"18px", fontWeight:"700",
                 color:"#555", display:"block", marginBottom:"6px" }}>
                 🔒 비밀번호
               </label>
@@ -188,14 +188,14 @@ export default function LoginPage({ onLogin }) {
                 ? "#ccc"
                 : "linear-gradient(135deg,#667eea,#764ba2)",
               color:"white", border:"none", borderRadius:"14px",
-              fontSize:"16px", fontWeight:"700",
+              fontSize:"18px", fontWeight:"700",
               cursor: loading ? "not-allowed" : "pointer",
               boxShadow:"0 4px 16px rgba(102,126,234,0.4)"
             }}>
               {loading ? "로그인 중..." : "로그인 →"}
             </button>
             <div style={{ textAlign:"center", marginTop:"16px",
-              fontSize:"13px", color:"#aaa" }}>
+              fontSize:"18px", color:"#aaa" }}>
               학생 전용 · 계정은 선생님께 받아줘
             </div>
           </form>
@@ -206,7 +206,7 @@ export default function LoginPage({ onLogin }) {
           <div style={{
             marginTop:"14px", padding:"10px 14px",
             background:"#ffebee", borderRadius:"10px",
-            fontSize:"13px", color:"#c62828", fontWeight:"600",
+            fontSize:"18px", color:"#c62828", fontWeight:"600",
             textAlign:"center"
           }}>
             ❌ {error}

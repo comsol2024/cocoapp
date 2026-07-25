@@ -112,6 +112,11 @@ export default function MainMap({ user }) {
             </div>
             <div className="pin-label">
               {chapter.locked ? "잠금" : chapter.name}
+              {chapter.sub && (
+                <div style={{ fontSize:"20px", opacity:0.75, marginTop:"2px", textAlign:"center"}}>
+                  ({chapter.sub})
+                </div>
+              )}
             </div>
           </div>
         ))}
@@ -168,9 +173,9 @@ export default function MainMap({ user }) {
             justifyContent:"center", fontSize:"20px", flexShrink:0
           }}>{item.emoji}</div>
           <div>
-            <div style={{ fontSize:"14px", fontWeight:"700",
+            <div style={{ fontSize:"18px", fontWeight:"700",
               color:"#1a1a2e" }}>{item.label}</div>
-            <div style={{ fontSize:"11px", color:"#999",
+            <div style={{ fontSize:"18px", color:"#999",
               marginTop:"1px" }}>{item.desc}</div>
           </div>
         </button>
@@ -254,7 +259,7 @@ export default function MainMap({ user }) {
           {node.icon}
         </button>
         <div style={{
-          fontSize:"10px", fontWeight:"700",
+          fontSize:"18px", fontWeight:"700",
           color:"white", textAlign:"center",
           lineHeight:"1.4", whiteSpace:"pre-line",
           textShadow:"0 1px 6px rgba(0,0,0,0.9)"
@@ -289,7 +294,7 @@ export default function MainMap({ user }) {
       left:"50%",
       transform:"translateX(-50%)",
       whiteSpace:"nowrap",
-      fontSize:"11px",
+      fontSize:"18px",
       fontWeight:"700",
       color:"rgba(255,255,255,0.85)",
       textShadow:"0 1px 4px rgba(0,0,0,0.6)",
@@ -360,7 +365,7 @@ export default function MainMap({ user }) {
       {showLearning ? "✕" : "📚"}
     </div>
     <span style={{
-      fontSize:"11px", fontWeight:"700",
+      fontSize:"18px", fontWeight:"700",
       color: showLearning ? "#1565C0" : "#ffffff"
     }}>나의 학습</span>
   </button>
@@ -400,7 +405,7 @@ export default function MainMap({ user }) {
       display:"flex", alignItems:"center",
       justifyContent:"center", fontSize:"18px"
     }}>📂</div>
-    <span style={{ fontSize:"11px", fontWeight:"700", color:"#ffffff" }}>
+    <span style={{ fontSize:"18px", fontWeight:"700", color:"#ffffff" }}>
       자료실
     </span>
   </button>

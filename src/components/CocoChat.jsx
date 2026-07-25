@@ -49,7 +49,7 @@ export default function CocoChat({
           position:"fixed",
           bottom: bottomOffset,
           right:  rightOffset,
-          width:"64px", height:"64px",
+          Width:"64px", height:"64px",
           borderRadius:"50%",
           background:"linear-gradient(135deg,#667eea,#764ba2)",
           border:"none", cursor:"pointer",
@@ -59,7 +59,7 @@ export default function CocoChat({
           overflow:"hidden"
         }}>
           <img src={cocoImg} alt="COCO"
-            style={{ width:"48px", height:"48px", objectFit:"contain" }}/>
+            style={{ minWidth:"48px", height:"48px", objectFit:"contain" }}/>
         </button>
       )}
 
@@ -90,17 +90,17 @@ export default function CocoChat({
             }}>
               <div style={{ display:"flex", alignItems:"center", gap:"12px" }}>
                 <div style={{
-                  width:"44px", height:"44px", borderRadius:"50%",
+                  minWidth:"44px", height:"44px", borderRadius:"50%",
                   background:"linear-gradient(135deg,#667eea,#764ba2)",
                   display:"flex", alignItems:"center",
                   justifyContent:"center", overflow:"hidden"
                 }}>
                   <img src={cocoImg} alt="COCO"
-                    style={{ width:"36px", height:"36px", objectFit:"contain" }}/>
+                    style={{ minWidth:"36px", height:"36px", objectFit:"contain" }}/>
                 </div>
                 <div>
                   <div style={{ fontWeight:"900", fontSize:"17px" }}>AI COCO</div>
-                  <div style={{ fontSize:"14px", color:"#718096" }}>수학 학습 도우미</div>
+                  <div style={{ fontSize:"18px", color:"#718096" }}>수학 학습 도우미</div>
                 </div>
               </div>
               <button onClick={()=>setOpen(false)} style={{
@@ -120,17 +120,17 @@ export default function CocoChat({
                 }}>
                   {msg.role==="bot" && (
                     <div style={{
-                      width:"36px", height:"36px", borderRadius:"50%",
+                      minWidth:"36px", height:"36px", borderRadius:"50%",
                       background:"linear-gradient(135deg,#667eea,#764ba2)",
                       display:"flex", alignItems:"center",
                       justifyContent:"center", overflow:"hidden", flexShrink:0
                     }}>
                       <img src={cocoImg} alt="COCO"
-                        style={{ width:"28px", height:"28px", objectFit:"contain" }}/>
+                        style={{ minWidth:"28px", height:"28px", objectFit:"contain" }}/>
                     </div>
                   )}
                   <div style={{
-                    maxWidth:"78%", padding:"13px 17px",
+                    maxminWidth:"78%", padding:"13px 17px",
                     borderRadius: msg.role==="user"
                       ? "16px 4px 16px 16px"
                       : "4px 16px 16px 16px",
@@ -138,7 +138,7 @@ export default function CocoChat({
                       ? "linear-gradient(135deg,#5b9fe8,#764ba2)"
                       : "#f8f9ff",
                     color: msg.role==="user" ? "white" : "#2D3748",
-                    fontSize:"16px", lineHeight:"1.85",
+                    fontSize:"18px", lineHeight:"1.85",
                     whiteSpace:"pre-wrap"
                   }}>
                     {msg.text}
@@ -149,19 +149,19 @@ export default function CocoChat({
               {loading && (
                 <div style={{ display:"flex", gap:"10px", alignItems:"center" }}>
                   <div style={{
-                    width:"36px", height:"36px", borderRadius:"50%",
+                    minWidth:"36px", height:"36px", borderRadius:"50%",
                     background:"linear-gradient(135deg,#667eea,#764ba2)",
                     display:"flex", alignItems:"center",
                     justifyContent:"center", overflow:"hidden"
                   }}>
                     <img src={cocoImg} alt="COCO"
-                      style={{ width:"28px", height:"28px", objectFit:"contain" }}/>
+                      style={{ minWidth:"28px", height:"28px", objectFit:"contain" }}/>
                   </div>
                   <div style={{
                     padding:"13px 17px",
                     borderRadius:"4px 16px 16px 16px",
                     background:"#f8f9ff",
-                    fontSize:"16px", color:"#718096"
+                    fontSize:"18px", color:"#718096"
                   }}>생각하는 중... 💭</div>
                 </div>
               )}
@@ -184,13 +184,13 @@ export default function CocoChat({
                   flex:1, padding:"13px 18px",
                   borderRadius:"24px",
                   border:"1.5px solid #e2e8f0",
-                  fontSize:"16px", outline:"none",
+                  fontSize:"18px", outline:"none",
                   background:"#f8f9ff"
                 }}/>
               <button onClick={send}
                 disabled={loading||!input.trim()}
                 style={{
-                  width:"46px", height:"46px",
+                  minWidth:"46px", height:"46px",
                   borderRadius:"50%",
                   background: input.trim()
                     ? "linear-gradient(135deg,#5b9fe8,#764ba2)"

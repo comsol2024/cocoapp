@@ -113,7 +113,7 @@ export default function ClassroomScene({ user }) {
             alignItems:"flex-end",
             gap:"10px",
             zIndex:20,
-            maxWidth:"70%",
+            maxWidth:"100%",
             animation:"fadeSlide 0.3s ease-out",
           }}
         >
@@ -144,13 +144,13 @@ export default function ClassroomScene({ user }) {
               ? "16px 4px 16px 16px"
               : isCoco ? "16px" : "4px 16px 16px 16px",
             padding:"14px 18px",
-            fontSize:"14px", lineHeight:"1.7",
+            fontSize:"18px", lineHeight:"1.7",
             boxShadow:"0 4px 20px rgba(0,0,0,0.15)",
-            maxWidth:"280px",
+            maxWidth:"400px",
             border: isCoco ? "none" : "2px solid #e2e8f0",
           }}>
             <div style={{
-              fontSize:"11px", fontWeight:"700",
+              fontSize:"18px", fontWeight:"700",
               marginBottom:"4px",
               color: isCoco ? "rgba(255,255,255,0.8)" : "#718096"
             }}>
@@ -170,7 +170,7 @@ export default function ClassroomScene({ user }) {
             : "rgba(255,255,255,0.92)",
           color: step === DIALOGS.length - 1 ? "white" : "#2D3748",
           border:"none", borderRadius:"24px",
-          fontSize:"14px", fontWeight:"700",
+          fontSize:"18px", fontWeight:"700",
           cursor:"pointer", zIndex:20,
           boxShadow:"0 4px 16px rgba(0,0,0,0.15)",
           transition:"background 0.2s",

@@ -159,7 +159,7 @@ export default function LunchDataPage({ user }) {
 
   const inp = {
     padding:"7px 10px", borderRadius:"8px",
-    border:"1px solid #e2e8f0", fontSize:"14px",
+    border:"1px solid #e2e8f0", fontSize:"18px",
     outline:"none", width:"100%", boxSizing:"border-box",
   };
 
@@ -179,10 +179,10 @@ export default function LunchDataPage({ user }) {
       }}>
         <button onClick={()=>navigate("/lunch-scene")} style={{
           background:"none", border:"none", color:"#FF8F00",
-          fontWeight:"700", fontSize:"14px", cursor:"pointer"
+          fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← 뒤로</button>
         <div style={{ fontWeight:"900", fontSize:"17px" }}>🍱 배식 시간 측정 기록</div>
-        <div style={{ fontSize:"12px", fontWeight:"600",
+        <div style={{ fontSize:"18px", fontWeight:"600",
           color:saved?"#34a853":"#bbb" }}>
           {saved?"✓ 저장됨":"저장 중..."}
         </div>
@@ -196,7 +196,7 @@ export default function LunchDataPage({ user }) {
           background:"linear-gradient(135deg,#FF8F00,#E65100)",
           borderRadius:"14px", padding:"14px 18px",
           marginBottom:"16px", color:"white",
-          fontSize:"16px", lineHeight:"1.8"
+          fontSize:"18px", lineHeight:"1.8"
         }}>
           🌀 <strong>코코의 미션</strong> — 배식 데이터를 측정하고 일차함수 그래프로 나타내봐!
         </div>
@@ -209,7 +209,7 @@ export default function LunchDataPage({ user }) {
         }}>
           <div style={{
             padding:"14px 20px", borderBottom:"1px solid #f0f0f0",
-            fontWeight:"900", fontSize:"16px"
+            fontWeight:"900", fontSize:"18px"
           }}>📅 요일별 배식 기록</div>
 
           <div style={{
@@ -218,27 +218,27 @@ export default function LunchDataPage({ user }) {
             background:"#fffdf5", flexWrap:"wrap"
           }}>
             <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
-              <label style={{ fontSize:"14px", fontWeight:"700",
+              <label style={{ fontSize:"18px", fontWeight:"700",
                 color:"#555", whiteSpace:"nowrap" }}>🕛 배식 시작 시간</label>
               <input type="time" value={globalStart}
                 onChange={e=>setGlobalStart(e.target.value)}
                 style={{ ...inp, width:"140px" }}/>
             </div>
             <div style={{ display:"flex", alignItems:"center", gap:"10px" }}>
-              <label style={{ fontSize:"14px", fontWeight:"700",
+              <label style={{ fontSize:"18px", fontWeight:"700",
                 color:"#555", whiteSpace:"nowrap" }}>👥 전체 배식 인원수</label>
               <input type="number" value={globalTotal}
                 onChange={e=>{ setGlobalTotal(e.target.value); setGraphDrawn(false); }}
                 placeholder="예: 1300"
                 style={{ ...inp, width:"120px" }}/>
-              <span style={{ fontSize:"13px", color:"#888" }}>명</span>
+              <span style={{ fontSize:"18px", color:"#888" }}>명</span>
             </div>
           </div>
 
           <div style={{
             display:"grid", gridTemplateColumns:"90px 100px 1fr 1fr",
             gap:"8px", padding:"9px 20px",
-            background:"#fffdf5", fontSize:"13px", fontWeight:"700", color:"#999"
+            background:"#fffdf5", fontSize:"18px", fontWeight:"700", color:"#999"
           }}>
             <div>요일</div><div>메뉴</div>
             <div>1분당 배식 인원 (명/분)</div><div>비고</div>
@@ -256,11 +256,11 @@ export default function LunchDataPage({ user }) {
                 <div style={{ display:"flex", alignItems:"center", gap:"6px" }}>
                   <div style={{ width:"12px", height:"12px", borderRadius:"50%",
                     background:d.lc, flexShrink:0 }}/>
-                  <span style={{ fontSize:"15px", fontWeight:"700" }}>{d.day}</span>
+                  <span style={{ fontSize:"18px", fontWeight:"700" }}>{d.day}</span>
                 </div>
                 <select value={row.menu}
                   onChange={e=>updateDay(d.id,"menu",e.target.value)}
-                  style={{ ...inp, background:d.color, fontSize:"15px" }}>
+                  style={{ ...inp, background:d.color, fontSize:"18px" }}>
                   {MENU_OPTIONS.map(m=>(
                     <option key={m} value={m}>{MENU_EMOJI[m]} {m}</option>
                   ))}
@@ -270,7 +270,7 @@ export default function LunchDataPage({ user }) {
                     onChange={e=>{ updateDay(d.id,"rate",e.target.value); setGraphDrawn(false); }}
                     placeholder="예: 50"
                     style={{ ...inp, maxWidth:"700px" }}/>
-                  <span style={{ fontSize:"15px", color:"#888", whiteSpace:"nowrap" }}>
+                  <span style={{ fontSize:"18px", color:"#888", whiteSpace:"nowrap" }}>
                     명/분
                   </span>
                 </div>
@@ -296,7 +296,7 @@ export default function LunchDataPage({ user }) {
           }}>
             <div style={{
               padding:"14px 18px", borderBottom:"1px solid #f0f0f0",
-              fontWeight:"900", fontSize:"16px", flexShrink:0
+              fontWeight:"900", fontSize:"18px", flexShrink:0
             }}>📈 요일별 일차함수 그래프</div>
 
             <div style={{ flex:1, padding:"14px 16px", overflowY:"auto" }}>
@@ -304,7 +304,7 @@ export default function LunchDataPage({ user }) {
               <div style={{
                 background:"#f8f9ff", borderRadius:"12px",
                 padding:"12px 14px", marginBottom:"12px",
-                fontSize:"13px", lineHeight:"1.8"
+                fontSize:"18px", lineHeight:"1.8"
               }}>
                 <div style={{ fontWeight:"700", color:"#555", marginBottom:"6px" }}>
                   📌 그래프 설정값
@@ -324,7 +324,7 @@ export default function LunchDataPage({ user }) {
                     return (
                       <span key={d.id} style={{
                         padding:"2px 8px", background:d.color,
-                        borderRadius:"6px", fontSize:"12px",
+                        borderRadius:"6px", fontSize:"18px",
                         fontWeight:"700", color:d.lc
                       }}>
                         {d.day[0]}: {rate > 0 ? `-${rate}` : "?"}
@@ -416,14 +416,14 @@ export default function LunchDataPage({ user }) {
                     <div key={d.id} style={{
                       display:"flex", alignItems:"center", gap:"5px",
                       padding:"4px 10px", background:d.color,
-                      borderRadius:"8px", fontSize:"12px", fontWeight:"700"
+                      borderRadius:"8px", fontSize:"18px", fontWeight:"700"
                     }}>
                       <div style={{ width:"12px", height:"3px",
                         background:d.lc, borderRadius:"2px" }}/>
                       <span style={{ color:d.lc }}>
                         {d.day[0]}요일
                         {rate > 0 && (
-                          <span style={{ fontWeight:"400", fontSize:"11px", marginLeft:"4px" }}>
+                          <span style={{ fontWeight:"400", fontSize:"18px", marginLeft:"4px" }}>
                             y=-{rate}x+{total||"?"}
                           </span>
                         )}
@@ -438,7 +438,7 @@ export default function LunchDataPage({ user }) {
                 width:"100%", padding:"12px",
                 background:"linear-gradient(135deg,#FF8F00,#E65100)",
                 color:"white", border:"none", borderRadius:"10px",
-                fontSize:"14px", fontWeight:"700", cursor:"pointer",
+                fontSize:"18px", fontWeight:"700", cursor:"pointer",
                 marginBottom:"12px"
               }}>📈 요일별 그래프 그리기</button>
 
@@ -449,7 +449,7 @@ export default function LunchDataPage({ user }) {
                   padding:"12px 14px",
                   border:"1px solid #dde3ff"
                 }}>
-                  <div style={{ fontWeight:"800", fontSize:"14px",
+                  <div style={{ fontWeight:"800", fontSize:"18px",
                     color:"#3949AB", marginBottom:"10px" }}>
                     🔍 x절편을 구해봐! (배식 완료까지 몇 분?)
                   </div>
@@ -471,7 +471,7 @@ export default function LunchDataPage({ user }) {
                               width:"10px", height:"10px", borderRadius:"50%",
                               background:d.lc, flexShrink:0
                             }}/>
-                            <span style={{ fontSize:"13px", fontWeight:"700",
+                            <span style={{ fontSize:"18px", fontWeight:"700",
                               color:d.lc }}>
                               {d.day[0]}요일
                             </span>
@@ -503,7 +503,7 @@ export default function LunchDataPage({ user }) {
                                 textAlign:"center",
                               }}
                             />
-                            <span style={{ fontSize:"13px", color:"#888" }}>분</span>
+                            <span style={{ fontSize:"18px", color:"#888" }}>분</span>
                           </div>
 
                           {/* 확인 버튼 */}
@@ -513,7 +513,7 @@ export default function LunchDataPage({ user }) {
                               padding:"6px 12px", borderRadius:"8px",
                               border:"none", cursor:"pointer",
                               background: d.lc, color:"white",
-                              fontSize:"12px", fontWeight:"700",
+                              fontSize:"18px", fontWeight:"700",
                               whiteSpace:"nowrap"
                             }}>
                             확인
@@ -538,7 +538,7 @@ export default function LunchDataPage({ user }) {
                       marginTop:"10px",
                       background:"linear-gradient(135deg,#e8f5e9,#c8e6c9)",
                       borderRadius:"10px", padding:"10px 14px",
-                      textAlign:"center", fontSize:"14px",
+                      textAlign:"center", fontSize:"18px",
                       fontWeight:"800", color:"#2e7d32"
                     }}>
                       🎉 모든 요일의 x절편을 완벽하게 구했어!
@@ -557,7 +557,7 @@ export default function LunchDataPage({ user }) {
           }}>
             <div style={{
               padding:"14px 18px", borderBottom:"1px solid #f0f0f0",
-              fontWeight:"900", fontSize:"16px", flexShrink:0,
+              fontWeight:"900", fontSize:"18px", flexShrink:0,
               background:"linear-gradient(90deg,#fff3e0,white)"
             }}>🎭 특수 상황 분석</div>
 
@@ -570,7 +570,7 @@ export default function LunchDataPage({ user }) {
                 background:"#fff8e1", borderRadius:"12px",
                 padding:"12px 14px", border:"1px solid #FFE082"
               }}>
-                <div style={{ fontSize:"14px", fontWeight:"900",
+                <div style={{ fontSize:"18px", fontWeight:"900",
                   color:"#E65100", marginBottom:"8px" }}>① 추가되는 조건</div>
                 <div style={{ display:"flex", flexDirection:"column",
                   gap:"6px", marginBottom:"8px" }}>
@@ -579,19 +579,19 @@ export default function LunchDataPage({ user }) {
                       padding:"9px 12px", borderRadius:"10px", cursor:"pointer",
                       border: scenario===s.id?"2px solid #FF8F00":"1px solid #e2e8f0",
                       background: scenario===s.id?"#FFF3E0":"white",
-                      fontSize:"13px",
+                      fontSize:"18px",
                       fontWeight: scenario===s.id?"700":"400",
                       textAlign:"left"
                     }}>
                       <div>{s.label}</div>
-                      <div style={{ fontSize:"11px", color:"#aaa",
+                      <div style={{ fontSize:"18px", color:"#aaa",
                         marginTop:"2px" }}>{s.desc}</div>
                     </button>
                   ))}
                 </div>
                 {scenario && scenario!=="custom" && (
                   <div>
-                    <label style={{ fontSize:"12px", fontWeight:"700",
+                    <label style={{ fontSize:"18px", fontWeight:"700",
                       color:"#718096", display:"block", marginBottom:"4px" }}>
                       {extraLabel}
                     </label>
@@ -614,26 +614,26 @@ export default function LunchDataPage({ user }) {
                 background:"#f8f0ff", borderRadius:"12px",
                 padding:"12px 14px", border:"1px solid #E1BEE7"
               }}>
-                <div style={{ fontSize:"14px", fontWeight:"900",
+                <div style={{ fontSize:"18px", fontWeight:"900",
                   color:"#6A1B9A", marginBottom:"8px" }}>② 일차함수 식 구하기</div>
-                <div style={{ fontSize:"12px", color:"#888", marginBottom:"8px" }}>
+                <div style={{ fontSize:"18px", color:"#888", marginBottom:"8px" }}>
                   x = 시간(분),  y = 남은 학생 수
                 </div>
                 <div style={{ display:"flex", gap:"6px", alignItems:"center" }}>
-                  <span style={{ fontSize:"15px", fontWeight:"700",
+                  <span style={{ fontSize:"18px", fontWeight:"700",
                     whiteSpace:"nowrap" }}>y =</span>
                   <input value={sp3Slope}
                     onChange={e=>{ setSp3Slope(e.target.value); setSp3Drawn(false); }}
                     placeholder="기울기"
                     style={{ ...inp, fontFamily:"Courier New",
-                      fontSize:"14px", textAlign:"center" }}/>
-                  <span style={{ fontSize:"15px", fontWeight:"700",
+                      fontSize:"18px", textAlign:"center" }}/>
+                  <span style={{ fontSize:"18px", fontWeight:"700",
                     whiteSpace:"nowrap" }}>x +</span>
                   <input value={sp3Intercept}
                     onChange={e=>{ setSp3Intercept(e.target.value); setSp3Drawn(false); }}
                     placeholder="y절편"
                     style={{ ...inp, fontFamily:"Courier New",
-                      fontSize:"14px", textAlign:"center" }}/>
+                      fontSize:"18px", textAlign:"center" }}/>
                 </div>
               </div>
 
@@ -642,7 +642,7 @@ export default function LunchDataPage({ user }) {
                 background:"#e8f5e9", borderRadius:"12px",
                 padding:"12px 14px", border:"1px solid #A5D6A7"
               }}>
-                <div style={{ fontSize:"14px", fontWeight:"900",
+                <div style={{ fontSize:"18px", fontWeight:"900",
                   color:"#2E7D32", marginBottom:"8px" }}>③ 그래프 + 배식 완료 시간 예측</div>
 
                 <svg viewBox={`0 0 ${TVW3} ${TVH3}`}
@@ -718,11 +718,11 @@ export default function LunchDataPage({ user }) {
                   width:"100%", padding:"10px", marginBottom:"8px",
                   background:"linear-gradient(135deg,#43a047,#2e7d32)",
                   color:"white", border:"none", borderRadius:"8px",
-                  fontSize:"13px", fontWeight:"700", cursor:"pointer"
+                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
                 }}>📈 그래프 그리기</button>
 
                 <div style={{ background:"white", borderRadius:"8px", padding:"10px 12px" }}>
-                  <div style={{ fontSize:"12px", fontWeight:"700",
+                  <div style={{ fontSize:"18px", fontWeight:"700",
                     color:"#718096", marginBottom:"5px" }}>배식 시작 시간 입력</div>
                   <input type="time" value={sp3StartTime}
                     onChange={e=>setSp3StartTime(e.target.value)}
@@ -732,7 +732,7 @@ export default function LunchDataPage({ user }) {
                       background:"linear-gradient(135deg,#e8f5e9,#c8e6c9)",
                       borderRadius:"8px", padding:"10px 12px", textAlign:"center"
                     }}>
-                      <div style={{ fontSize:"12px", color:"#555", marginBottom:"3px" }}>
+                      <div style={{ fontSize:"18px", color:"#555", marginBottom:"3px" }}>
                         예측 배식 완료 시간
                       </div>
                       <div style={{ fontSize:"20px", fontWeight:"900", color:"#2E7D32" }}>
@@ -757,7 +757,7 @@ export default function LunchDataPage({ user }) {
             padding:"16px",
             background:"linear-gradient(135deg,#546E7A,#37474F)",
             color:"white", border:"none", borderRadius:"14px",
-            fontSize:"15px", fontWeight:"700", cursor:"pointer",
+            fontSize:"18px", fontWeight:"700", cursor:"pointer",
             boxShadow:"0 4px 16px rgba(84,110,122,0.35)",
             display:"flex", alignItems:"center", justifyContent:"center", gap:"8px"
           }}>📷 캡처하기</button>
@@ -770,7 +770,7 @@ export default function LunchDataPage({ user }) {
               padding:"16px",
               background:"linear-gradient(135deg,#FF8F00,#E65100)",
               color:"white", border:"none", borderRadius:"14px",
-              fontSize:"15px", fontWeight:"700", cursor:"pointer",
+              fontSize:"18px", fontWeight:"700", cursor:"pointer",
               boxShadow:"0 4px 16px rgba(230,81,0,0.3)",
               display:"flex", alignItems:"center", justifyContent:"center", gap:"8px"
             }}>🚀 패들렛 공유하기</button>

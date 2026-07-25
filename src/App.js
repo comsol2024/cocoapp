@@ -40,7 +40,7 @@ function App() {
       justifyContent:"center", flexDirection:"column", gap:"16px"
     }}>
       <div style={{ fontSize:"64px", animation:"float 1s ease-in-out infinite" }}>🌀</div>
-      <div style={{ color:"white", fontWeight:"700", fontSize:"16px" }}>COCO 로딩 중...</div>
+      <div style={{ color:"white", fontWeight:"700", fontSize:"18px" }}>COCO 로딩 중...</div>
       <style>{`@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}`}</style>
     </div>
   );

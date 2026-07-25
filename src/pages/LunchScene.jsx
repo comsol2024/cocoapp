@@ -221,10 +221,10 @@ const handleCompletionSubmit = () => {
               background:"white", border:"2px solid #FFB300",
               borderRadius:"16px 4px 16px 16px",
               padding:"14px 18px", maxWidth:"260px",
-              fontSize:"15px", lineHeight:"1.75",
+              fontSize:"18px", lineHeight:"1.75",
               boxShadow:"0 4px 20px rgba(0,0,0,0.12)"
             }}>
-              <div style={{fontSize:"12px",fontWeight:"700",color:"#FF8F00",marginBottom:"5px"}}>
+              <div style={{fontSize:"18px",fontWeight:"700",color:"#FF8F00",marginBottom:"5px"}}>
                 👩‍🍳 영양 선생님
               </div>
               {curIntro?.text}
@@ -296,7 +296,7 @@ const handleCompletionSubmit = () => {
                   <div style={{fontSize:"18px",fontWeight:"900",textAlign:"center",marginBottom:"6px"}}>
                     📊 그래프 축 설정하기
                   </div>
-                  <div style={{fontSize:"14px",color:"#718096",textAlign:"center",marginBottom:"16px",lineHeight:"1.6"}}>
+                  <div style={{fontSize:"18px",color:"#718096",textAlign:"center",marginBottom:"16px",lineHeight:"1.6"}}>
                     배식 완료 시간을 예측하는 그래프를 그리려면<br/>
                     x축과 y축에 각각 무엇이 들어가야 할까?
                   </div>
@@ -311,7 +311,7 @@ const handleCompletionSubmit = () => {
                         padding:"13px 16px", borderRadius:"12px", cursor:"pointer",
                         border: axisChoice===opt.id ? "2px solid #5b9fe8" : "1px solid #e2e8f0",
                         background: axisChoice===opt.id ? "#e3f2fd" : "white",
-                        fontSize:"15px", fontWeight: axisChoice===opt.id?"700":"400",
+                        fontSize:"18px", fontWeight: axisChoice===opt.id?"700":"400",
                         color: axisChoice===opt.id ? "#1565C0" : "#2D3748",
                         textAlign:"left", transition:"all 0.15s"
                       }}>{opt.label}</button>
@@ -321,7 +321,7 @@ const handleCompletionSubmit = () => {
                     width:"100%", padding:"13px",
                     background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
                     color:"white", border:"none", borderRadius:"12px",
-                    fontSize:"15px", fontWeight:"700", cursor:"pointer",
+                    fontSize:"18px", fontWeight:"700", cursor:"pointer",
                     opacity: axisChoice ? 1 : 0.5
                   }}>확인 →</button>
                 </>
@@ -386,30 +386,30 @@ const handleCompletionSubmit = () => {
                   </svg>
 
                   <div style={{display:"flex",gap:"8px",alignItems:"center",marginBottom:"10px"}}>
-                    <span style={{fontSize:"16px",fontWeight:"700",whiteSpace:"nowrap"}}>y =</span>
+                    <span style={{fontSize:"18px",fontWeight:"700",whiteSpace:"nowrap"}}>y =</span>
                     <input value={slopeInput} onChange={e=>setSlopeInput(e.target.value)}
                       placeholder="기울기"
                       style={{flex:1,padding:"9px",borderRadius:"8px",border:"1px solid #e2e8f0",
-                        fontSize:"15px",fontFamily:"Courier New",textAlign:"center",outline:"none"}}/>
-                    <span style={{fontSize:"16px",fontWeight:"700",whiteSpace:"nowrap"}}>x +</span>
+                        fontSize:"18px",fontFamily:"Courier New",textAlign:"center",outline:"none"}}/>
+                    <span style={{fontSize:"18px",fontWeight:"700",whiteSpace:"nowrap"}}>x +</span>
                     <input value={interceptInput} onChange={e=>setInterceptInput(e.target.value)}
                       placeholder="y절편"
                       style={{flex:1,padding:"9px",borderRadius:"8px",border:"1px solid #e2e8f0",
-                        fontSize:"15px",fontFamily:"Courier New",textAlign:"center",outline:"none"}}/>
+                        fontSize:"18px",fontFamily:"Courier New",textAlign:"center",outline:"none"}}/>
                   </div>
-                  <div style={{fontSize:"12px",color:"#aaa",marginBottom:"8px"}}>
+                  <div style={{fontSize:"18px",color:"#aaa",marginBottom:"8px"}}>
                     💡 힌트: y절편 = 전체 학생 수, 기울기 = 분당 배식 수 (음수)
                   </div>
                   <button onClick={handleDrawGraph} style={{
                     width:"100%",padding:"11px",marginBottom:"10px",
                     background:"linear-gradient(135deg,#e53935,#c62828)",
                     color:"white",border:"none",borderRadius:"10px",
-                    fontSize:"14px",fontWeight:"700",cursor:"pointer"
+                    fontSize:"18px",fontWeight:"700",cursor:"pointer"
                   }}>📈 그래프 그리기</button>
 
                   {graphStep===3 && graphDrawn && (
                     <div style={{background:"#fff8e1",borderRadius:"12px",padding:"14px"}}>
-                      <div style={{fontSize:"14px",fontWeight:"700",color:"#E65100",marginBottom:"10px"}}>
+                      <div style={{fontSize:"18px",fontWeight:"700",color:"#E65100",marginBottom:"10px"}}>
                         🤔 그래프에서 읽어봐!<br/>배식이 완료되는 데 걸리는 시간은 몇 분?
                       </div>
                       <div style={{display:"flex",gap:"8px",alignItems:"center"}}>
@@ -417,13 +417,13 @@ const handleCompletionSubmit = () => {
                           onChange={e=>setCompletionInput(e.target.value)} placeholder="?"
                           style={{flex:1,padding:"11px",borderRadius:"8px",border:"2px solid #FFB300",
                             fontSize:"24px",fontWeight:"900",textAlign:"center",outline:"none"}}/>
-                        <span style={{fontSize:"16px",fontWeight:"700",color:"#555"}}>분</span>
+                        <span style={{fontSize:"18px",fontWeight:"700",color:"#555"}}>분</span>
                       </div>
                       <button onClick={handleCompletionSubmit} style={{
                         width:"100%",padding:"12px",marginTop:"10px",
                         background:"linear-gradient(135deg,#5b9fe8,#764ba2)",
                         color:"white",border:"none",borderRadius:"10px",
-                        fontSize:"15px",fontWeight:"700",cursor:"pointer"
+                        fontSize:"18px",fontWeight:"700",cursor:"pointer"
                       }}>정답 제출 ✓</button>
                     </div>
                   )}
@@ -440,13 +440,13 @@ const handleCompletionSubmit = () => {
             <div className="ending-modal">
               <div style={{fontSize:"48px",marginBottom:"8px"}}>🍱</div>
               <div style={{fontSize:"21px",fontWeight:"900",marginBottom:"8px"}}>미션 완료!</div>
-              <div style={{fontSize:"15px",color:"#718096",marginBottom:"20px",lineHeight:"1.7"}}>
+              <div style={{fontSize:"18px",color:"#718096",marginBottom:"20px",lineHeight:"1.7"}}>
                 일차함수로 배식 완료 시간을 예측했어!<br/>이제 우리 학교 실제 데이터를 측정해보자 📊
               </div>
               <div style={{background:"linear-gradient(135deg,#FF8F00,#E65100)",
                 borderRadius:"16px",padding:"16px 20px",marginBottom:"20px"}}>
                 <div style={{fontSize:"28px",marginBottom:"8px"}}>🌀</div>
-                <div style={{color:"white",fontSize:"15px",lineHeight:"1.7",fontWeight:"600"}}>
+                <div style={{color:"white",fontSize:"18px",lineHeight:"1.7",fontWeight:"600"}}>
                   요일마다 메뉴가 달라지면 배식 완료 시간도 달라져!<br/>
                   직접 측정하고 그래프로 그려봐 📅
                 </div>
@@ -455,16 +455,16 @@ const handleCompletionSubmit = () => {
                 width:"100%",padding:"13px",
                 background:"linear-gradient(135deg,#FF8F00,#E65100)",
                 color:"white",border:"none",borderRadius:"12px",
-                fontSize:"16px",fontWeight:"700",cursor:"pointer",marginBottom:"8px"
+                fontSize:"18px",fontWeight:"700",cursor:"pointer",marginBottom:"8px"
               }}>📊 실제 데이터 측정하러 가기 →</button>
               <button onClick={()=>navigate("/map")} style={{
                 width:"100%",padding:"11px",background:"white",border:"1px solid #ddd",
-                borderRadius:"12px",fontSize:"14px",fontWeight:"700",
+                borderRadius:"12px",fontSize:"18px",fontWeight:"700",
                 cursor:"pointer",color:"#718096",marginBottom:"8px"
               }}>🗺 지도로 돌아가기</button>
               <button onClick={handleReset} style={{
                 width:"100%",padding:"9px",background:"white",border:"2px solid #eee",
-                borderRadius:"12px",fontSize:"13px",fontWeight:"700",cursor:"pointer",color:"#bbb"
+                borderRadius:"12px",fontSize:"18px",fontWeight:"700",cursor:"pointer",color:"#bbb"
               }}>🔄 처음부터 다시하기</button>
             </div>
           </>
