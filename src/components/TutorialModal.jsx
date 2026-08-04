@@ -115,7 +115,7 @@ export default function TutorialOverlay({ user, onDone }) {
       borderRadius:"16px",
       padding:"14px 18px",
       boxShadow:"0 6px 24px rgba(0,0,0,0.18)",
-      maxminminWidth:"300px", minWidth:"260px",
+      maxWidth:"300px", minWidth:"260px",
       fontSize:"18px", lineHeight:"1.85",
       fontWeight:"600", color:"#2D3748",
       whiteSpace:"pre-line",
