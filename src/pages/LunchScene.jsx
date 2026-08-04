@@ -5,11 +5,11 @@ import { saveUserProgress, loadUserProgress, resetUserProgress } from "../fireba
 
 // ── 인트로 대화 (chapters.js와 완전히 무관하게 직접 정의) ──
 const INTRO_DIALOGS = [
-  { speaker:"coco",    text:"안녕! 나는 코코야 🌀" },
+  { speaker:"coco",    text:"안녕! 나는 코코야" },
   { speaker:"coco",    text:"어? 저기 영양 선생님이 고민에 빠져 있어..." },
   { speaker:"teacher", text:"배식이 끝나는 시간이 메뉴나 요일마다 달라서 너무 힘들어요.. 😥" },
   { speaker:"teacher", text:"미리 배식 완료 시간을 알 수 있다면 시작 시간을 조정할 수 있을 텐데..." },
-  { speaker:"coco",    text:"우리가 도와줄 수 있을 것 같아! 급식실을 둘러보면서 정보를 모아보자!" },
+  { speaker:"coco",    text:"우리가 도와줄 수 있을 것 같아!\n 급식실을 둘러보면서 정보를 모아보자!  " },
 ];
 
 // 그래프 상수
@@ -220,7 +220,7 @@ const handleCompletionSubmit = () => {
             <div style={{
               background:"white", border:"2px solid #FFB300",
               borderRadius:"16px 4px 16px 16px",
-              padding:"14px 18px", maxWidth:"260px",
+              padding:"14px 18px", maxWidth:"320px",
               fontSize:"18px", lineHeight:"1.75",
               boxShadow:"0 4px 20px rgba(0,0,0,0.12)"
             }}>
@@ -285,8 +285,8 @@ const handleCompletionSubmit = () => {
               position:"absolute", top:"50%", left:"50%",
               transform:"translate(-50%,-50%)",
               background:"white", borderRadius:"20px",
-              padding:"22px", maxWidth:"430px", width:"94%",
-              zIndex:50, maxHeight:"90vh", overflowY:"auto",
+              padding:"22px", maxWidth:"600px", width:"100%",
+              zIndex:50, maxHeight:"150vh", overflowY:"auto",
               boxShadow:"0 20px 60px rgba(0,0,0,0.4)",
               animation:"popIn 0.3s ease-out"
             }}>
@@ -445,9 +445,8 @@ const handleCompletionSubmit = () => {
               </div>
               <div style={{background:"linear-gradient(135deg,#FF8F00,#E65100)",
                 borderRadius:"16px",padding:"16px 20px",marginBottom:"20px"}}>
-                <div style={{fontSize:"28px",marginBottom:"8px"}}>🌀</div>
                 <div style={{color:"white",fontSize:"18px",lineHeight:"1.7",fontWeight:"600"}}>
-                  요일마다 메뉴가 달라지면 배식 완료 시간도 달라져!<br/>
+                  요일마다 메뉴가 달라지면 <br/>배식 완료 시간도 달라져!<br/>
                   직접 측정하고 그래프로 그려봐 📅
                 </div>
               </div>
@@ -461,7 +460,7 @@ const handleCompletionSubmit = () => {
                 width:"100%",padding:"11px",background:"white",border:"1px solid #ddd",
                 borderRadius:"12px",fontSize:"18px",fontWeight:"700",
                 cursor:"pointer",color:"#718096",marginBottom:"8px"
-              }}>🗺 지도로 돌아가기</button>
+              }}>⬅️ 메인 지도로 돌아가기</button>
               <button onClick={handleReset} style={{
                 width:"100%",padding:"9px",background:"white",border:"2px solid #eee",
                 borderRadius:"12px",fontSize:"18px",fontWeight:"700",cursor:"pointer",color:"#bbb"

@@ -6,18 +6,18 @@ import cocoImg from "../styles/images/coco.png";
 const INTRO_DIALOGS = [
   { speaker:"teacher", text:"이번 주 수요일에 체육한마당을 열 계획인데... " },
   { speaker:"teacher", text:"월요일에 비가 내렸거든.\n수요일에도 비가 올지 너무 걱정이야! " },
-  { speaker:"coco",    text:"안녕! 나는 코코야 \n과거 날씨 기록을 이용해서 확률로 예측할 수 있어!\n" },
-  { speaker:"coco",    text:"교실 주변을 둘러보면서 필요한 정보를 모아봐!\n단서들이 숨어 있어\n " },
+  { speaker:"coco",    text:"안녕! 나는 코코야 \n날씨는 과거 날씨 기록을 이용해서 \n확률로 예측할 수 있어!\n" },
+  { speaker:"coco",    text:"체육 선생님을 도와서 날씨를 예측해보자! 일단 교실 주변을 둘러보면서 \n필요한 정보를 모아봐!\n단서들이 숨어 있어\n " },
 ];
 
 const FOUND_DIALOGS = [
   "정보를 다 모았어! 👏",
-  "수집한 단서들을 보면서 확률을 직접 계산해봐!",
-  "단계별로 풀어서 수요일에 비가 올 확률을 구해줘",
+  "수집한 단서들을 보면서\n확률을 직접 계산해봐!\n",
+  "단계별로 풀어서\n 수요일에 비가 올 확률을 구해줘\n",
 ];
 const CORRECT_DIALOGS = [
   "정답이야! 🎉",
-  "월요일에 비가 왔을 때 수요일 비 올 확률은 55%야!\n수학으로 날씨를 예측할 수 있어 😊",
+  "월요일에 비가 왔을 때\n 수요일 비 올 확률은 55%야!\n수학으로 날씨를 예측할 수 있어 😊",
 ];
 const WRONG_DIALOGS = [
   "아직 아니야! 🤔",
@@ -28,7 +28,7 @@ const WRONG_DIALOGS = [
 const OBJECTS = [
   {
     id:"data_note", emoji:"📊", name:"기상 관측 노트",
-    position:{ x:42, y:52 }, isClue:true,
+    position:{ x:32, y:62 }, isClue:true,
     dialog:[
       "기상 관측 노트를 발견했어!",
       "한 달 동안 날씨를 관측했더니...",
@@ -46,7 +46,7 @@ const OBJECTS = [
   },
   {
     id:"teacher_memo", emoji:"📝", name:"체육 선생님 메모",
-    position:{ x:17, y:68 }, isClue:true,
+    position:{ x:70, y:68 }, isClue:true,
     dialog:[
       "체육 선생님 수첩이야!",
       "이번 주 월요일 날씨: ☔ 비",
@@ -73,7 +73,7 @@ const OBJECTS = [
   },
   {
     id:"storage", emoji:"📋", name:"체육 창고 목록",
-    position:{ x:72, y:62 }, isClue:false,
+    position:{ x:92, y:62 }, isClue:false,
     dialog:[
       "체육 창고 재고 목록이야!",
       "줄넘기 30개, 농구공 15개, 배드민턴 채 48개...",
@@ -218,7 +218,7 @@ export default function RainScene({ user }) {
           <div className="hud-badge hud-back" onClick={()=>navigate("/map")}>
             ← 지도로
           </div>
-          <div className="hud-badge">⛈️ 체육대회 날씨 예측 · 확률</div>
+          <div className="hud-badge">⛈️ 체육대회 회의 · 확률</div>
           <div className="hud-badge">
             {clickedObjects.length}/{OBJECTS.length} 탐색
           </div>
@@ -284,7 +284,7 @@ export default function RainScene({ user }) {
         {phase === "intro" && !isTeacher && (
           <div key={`c-${introIdx}`}
             style={{
-              position:"absolute", bottom:"50%", left:"500px",
+              position:"absolute", bottom:"30%", left:"40%",
               display:"flex", flexDirection:"column",
               alignItems:"flex-start",
               zIndex:30, width:"min(420px,55%)",
@@ -297,7 +297,7 @@ export default function RainScene({ user }) {
               </button>
             </div>
             <img src={cocoImg} alt="COCO"
-              style={{ width:"250px", height:"250px", objectFit:"contain",
+              style={{ width:"300px", height:"300px", objectFit:"contain",
                 filter:"drop-shadow(0 4px 12px rgba(102,126,234,0.5))" }}/>
           </div>
         )}
@@ -306,7 +306,7 @@ export default function RainScene({ user }) {
         {showOtherCoco && (
           <div key={`other-${dialogIdx}`}
             style={{
-              position:"absolute", bottom:"50%", left:"500px",
+              position:"absolute", bottom:"30%", left:"40%",
               display:"flex", flexDirection:"column",
               alignItems:"flex-start", gap:"8px",
               zIndex:30, width:"min(420px,55%)"
@@ -318,7 +318,7 @@ export default function RainScene({ user }) {
               </button>
             </div>
             <img src={cocoImg} alt="COCO"
-              style={{ width:"250px", height:"250px", objectFit:"contain",
+              style={{ width:"300px", height:"300px", objectFit:"contain",
                 filter:"drop-shadow(0 4px 12px rgba(102,126,234,0.5))" }}/>
           </div>
         )}
@@ -348,12 +348,12 @@ export default function RainScene({ user }) {
               position:"absolute", top:"50%", left:"50%",
               transform:"translate(-50%,-50%)",
               background:"white", borderRadius:"20px",
-              padding:"22px", maxWidth:"460px", width:"94%",
-              zIndex:50, maxHeight:"90vh", overflowY:"auto",
+              padding:"22px", maxWidth:"650px", width:"100%",
+              zIndex:50, maxHeight:"100vh", overflowY:"auto",
               boxShadow:"0 20px 60px rgba(0,0,0,0.4)",
               animation:"popIn 0.3s ease-out"
             }}>
-              <div style={{ fontSize:"17px", fontWeight:"900",
+              <div style={{ fontSize:"20px", fontWeight:"900",
                 textAlign:"center", marginBottom:"12px" }}>
                 🌧️ 단계별 확률 계산
               </div>
@@ -553,12 +553,12 @@ export default function RainScene({ user }) {
                 background:"linear-gradient(135deg,#1565C0,#0D47A1)",
                 borderRadius:"16px", padding:"16px 20px", marginBottom:"20px"
               }}>
-                <div style={{ fontSize:"28px", marginBottom:"8px" }}>🌀</div>
+                <div style={{ fontSize:"28px", marginBottom:"8px" }}></div>
                 <div style={{ color:"white", fontSize:"18px",
                   lineHeight:"1.7", fontWeight:"600" }}>
                   이번엔 실제 배곧 지역<br/>
                   5월 강수 데이터를 직접 분석해봐!<br/>
-                  통계 확률로 나만의 문제를 만들어보자 📊
+                  통계 확률로 나만의 문제를 만들어보자 
                 </div>
               </div>
               <button onClick={()=>navigate("/rain-data")} style={{
@@ -575,7 +575,7 @@ export default function RainScene({ user }) {
                 border:"1px solid #ddd", borderRadius:"12px",
                 fontSize:"18px", fontWeight:"700",
                 cursor:"pointer", color:"#718096", marginBottom:"8px"
-              }}>🗺 지도로 돌아가기</button>
+              }}>⬅️ 메인 지도로 돌아가기</button>
               <button onClick={handleReset} style={{
                 width:"100%", padding:"9px", background:"white",
                 border:"2px solid #eee", borderRadius:"12px",

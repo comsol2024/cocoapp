@@ -301,7 +301,7 @@ export const CHAPTER_LIST = [
     emoji: "🏥",  
     image: aedImg,        // ✨ 이미지 경로 직접 추가
     locked: false, 
-    x: 50, y: 32 
+    x: 50, y: 34 
   },
   { 
     id: "cafeteria",    
@@ -310,7 +310,7 @@ export const CHAPTER_LIST = [
     emoji: "🍱",  
     image: cafeteriaImg,  // ✨ 이미지 경로 직접 추가
     locked: false, 
-    x: 85, y: 25 
+    x: 80, y: 40 
   },
   { 
     id: "rain", 
@@ -319,6 +319,6 @@ export const CHAPTER_LIST = [
     emoji: "⛈️", 
     image: rainImg,       // ✨ 이미지 경로 직접 추가
     locked: false, 
-    x: 50, y: 60 
+    x: 50, y: 70 
   }
 ];

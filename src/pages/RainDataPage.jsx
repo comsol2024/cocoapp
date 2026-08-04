@@ -274,8 +274,8 @@ export default function RainDataPage({ user }) {
           background:"none", border:"none", color:"#1565C0",
           fontWeight:"700", fontSize:"18px", cursor:"pointer"
         }}>← Step 1</button>
-        <div style={{ fontWeight:"900", fontSize:"17px" }}>
-          ⛈️ 비오는 날 체육 수업 — Step 2
+        <div style={{ fontWeight:"900", fontSize:"20px" }}>
+          ⛈️ 체육 대회 날씨를 예측해보자 !
         </div>
         <div style={{ fontSize:"18px", fontWeight:"600",
           color:saved?"#34a853":"#bbb" }}>
@@ -296,7 +296,7 @@ export default function RainDataPage({ user }) {
             style={{ width:"80px", height:"80px", objectFit:"contain", flexShrink:0 }}/>
           <div style={{ fontSize:"18px", lineHeight:"1.8" }}>
             🌀 <strong>COCO 미션 — Step 2</strong><br/>
-            서울·경기 지역 5월 날씨 달력을 보면서<br/>
+            과거 수도권 5월 날씨 달력 데이터를 보면서<br/>
             날씨 변화 횟수를 직접 세어 통계적 확률을 구해봐!
           </div>
         </div>

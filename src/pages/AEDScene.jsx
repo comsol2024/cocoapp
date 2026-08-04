@@ -99,7 +99,7 @@ export default function AEDScene({ user }) {
           <div className="hud-badge hud-back" onClick={() => navigate("/map")}>
             ← 지도로
           </div>
-          <div className="hud-badge">🏫 4층 평면도</div>
+          <div className="hud-badge">🏫 우리학교 평면도 · 외심과 내심</div>
           <div className="hud-badge">
             {clickedObjects.length}/{chapter.objects.length} 탐색
           </div>
@@ -213,8 +213,9 @@ export default function AEDScene({ user }) {
           <>
             <div className="overlay" />
             <div className="answer-modal">
-              <div className="answer-title">🏥 {chapter.answerHint}</div>
-
+              <div style={{fontSize:"20px",fontWeight:"900",textAlign:"center",marginBottom:"12px"}}>
+                   ♥️ AED 위치 결정하기! 
+              </div>
               <div style={{
                 background: "#fff8e1", borderRadius: "12px",
                 padding: "12px 14px", marginBottom: "16px",
@@ -222,7 +223,7 @@ export default function AEDScene({ user }) {
               }}>
                 💡 세 교실을 꼭짓점으로 하는 삼각형에서,<br/>
                 <strong>세 점으로부터 거리가 같은 점</strong>에 AED를 설치하면<br/>
-                어느 교실에서도 같은 거리로 달려올 수 있어!
+                어느 교실에서도 같은 거리로 달려올 수 있어!<br/> 어떤 점으로 선택해야할까?
               </div>
 
               {/* 선택 버튼 */}
@@ -303,22 +304,22 @@ export default function AEDScene({ user }) {
                 marginBottom: "20px", lineHeight: "1.7"
               }}>
                 외심을 이용해 AED의 최적 위치를 찾았어!<br/>
-                세 교실 어디서든 똑같이 가까운 위치. 수학이 생명을 구할 수 있어 😊
+                세 교실 어디서든 똑같이 가까운 위치.<br/> 수학이 생명을 구할 수 있어 😊
               </div>
 
               <div style={{
                 background: "linear-gradient(135deg,#1565C0,#0D47A1)",
                 borderRadius: "16px", padding: "16px 20px", marginBottom: "20px"
               }}>
-                <div style={{ fontSize: "28px", marginBottom: "8px" }}>🌀</div>
+                <div style={{ fontSize: "28px", marginBottom: "8px" }}></div>
                 <div style={{
                   color: "white", fontSize: "18px",
                   lineHeight: "1.7", fontWeight: "600"
                 }}>
                   우리가 배운 외심 개념으로<br/>
                   이번엔 직접 시뮬레이션 해볼까?<br/>
-                  2층 평면도에서 응급환자 위치를<br/>
-                  바꿔가며 외심이 어떻게 변하는지 확인해봐! 📍
+                  우리학교 평면도에서 응급환자 위치를<br/>
+                  바꿔가며 외심이 어떻게 변하는지 확인해봐!
                 </div>
               </div>
                 <button onClick={() => navigate("/incenter-sim")} style={{
@@ -329,16 +330,17 @@ export default function AEDScene({ user }) {
                 marginBottom: "8px", display: "flex",
                 alignItems: "center", justifyContent: "center", gap: "8px"
                 }}>
-                시뮬레이션 시작하기
+                🖥️ 시뮬레이션 시작하기
                 </button>
               <button onClick={() => navigate("/map")} style={{
                 width: "100%", padding: "13px",
                 background: "linear-gradient(135deg,#5b9fe8,#764ba2)",
-                color: "white", border: "none", borderRadius: "12px",
-                fontSize: "18px", fontWeight: "700", cursor: "pointer",
+                color: "white", border: "none", borderRadius: "12px", 
+                background: "white", border: "2px solid #ddd",
+                fontSize: "18px", fontWeight: "700", cursor: "pointer", color:"#718096",
                 marginBottom: "8px"
               }}>
-                지도로 돌아가기
+                ⬅️ 메인 지도로 돌아가기
               </button>
               <button onClick={handleReset} style={{
                 width: "100%", padding: "10px",
@@ -346,7 +348,7 @@ export default function AEDScene({ user }) {
                 borderRadius: "12px", fontSize: "18px",
                 fontWeight: "700", cursor: "pointer", color: "#718096"
               }}>
-                처음부터 다시하기
+                🔄️ 처음부터 다시하기
               </button>
             </div>
           </>

@@ -22,6 +22,7 @@ import { isAdmin } from "./config/admins";
 import LessonDesign from "./pages/LessonDesign";
 import PracticeHub from "./pages/PracticeHub";
 import PracticeQuiz from "./pages/PracticeQuiz";
+import LunchSpecialPage from "./pages/LunchSpecialPage";
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/lesson-design" element={<LessonDesign />} />
         <Route path="/practice" element={<PracticeHub />} />
         <Route path="/practice/:unitId" element={<PracticeQuiz user={user} />} />
+        <Route path="/lunch-special" element={<LunchSpecialPage user={user} />} />
       </Routes>
     </BrowserRouter>
   );

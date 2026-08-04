@@ -140,11 +140,11 @@ export default function RainProblemPage({ user }) {
               flexShrink:0,
               filter:"drop-shadow(0 4px 12px rgba(102,126,234,0.5))" }}/>
           <div>
-            <div style={{ fontSize:"17px", fontWeight:"900", marginBottom:"5px" }}>
-              🌀 COCO 미션 — 나만의 문제 만들기
+            <div style={{ fontSize:"18px", fontWeight:"900", marginBottom:"5px" }}>
+              COCO 미션 — 나만의 문제 만들기
             </div>
             <div style={{ fontSize:"18px", lineHeight:"1.8", opacity:0.92 }}>
-              앞에서 구한 통계 확률({statRR}%, {statCR}%)을 이용해서<br/>
+              앞에서 구한 통계 확률을 이용해서<br/>
               나만의 날씨 확률 문제를 직접 만들고 풀어봐!
             </div>
           </div>
@@ -167,10 +167,10 @@ export default function RainProblemPage({ user }) {
             <div style={{ fontSize:"28px" }}>⛈️</div>
             <div>
               <div style={{ fontSize:"20px", fontWeight:"900" }}>
-                비오는 날 체육 수업 — 나만의 확률 문제
+                우리 일상 생활 속 나만의 확률 문제
               </div>
               <div style={{ fontSize:"18px", color:"#888", marginTop:"2px" }}>
-                통계 확률 P(비→비): {statRR}%,  P(맑→비): {statCR}%
+                통계 확률 P(비→비): {statRR}%,  P(맑→비): {statCR}% 으로 표현해보자!
               </div>
             </div>
           </div>
@@ -224,12 +224,6 @@ export default function RainProblemPage({ user }) {
 
               {/* 기타 메모 */}
               <div>
-                <div style={{ fontSize:"18px", fontWeight:"700",
-                  color:"#718096", marginBottom:"8px" }}>📝 기타 메모</div>
-                <textarea value={memo}
-                  onChange={e=>setMemo(e.target.value)}
-                  placeholder="분석하면서 느낀 점, 궁금한 점..."
-                  style={{ ...inp, minHeight:"80px", resize:"vertical" }}/>
               </div>
             </div>
 
@@ -258,6 +252,12 @@ export default function RainProblemPage({ user }) {
                   placeholder="비가 올 경우와 안 올 경우 활동 계획을 모두 써봐!"
                   style={{ ...inp, minHeight:"100px", resize:"vertical" }}/>
               </div>
+              <div style={{ fontSize:"18px", fontWeight:"700",
+                  color:"#718096", marginBottom:"8px" }}>📝 기타 메모</div>
+                <textarea value={memo}
+                  onChange={e=>setMemo(e.target.value)}
+                  placeholder="분석하면서 느낀 점, 궁금한 점..."
+                  style={{ ...inp, minHeight:"150px", resize:"vertical" }}/>
             </div>
           </div>
 
@@ -268,9 +268,6 @@ export default function RainProblemPage({ user }) {
             display:"flex", justifyContent:"flex-end",
             alignItems:"center", gap:"8px"
           }}>
-            <div style={{ fontSize:"18px", color:"#bbb" }}>
-              ⛈️ 비오는 날 체육 수업 — 나만의 문제 활동지
-            </div>
           </div>
         </div>
         {/* ── 캡처 영역 끝 ── */}
