@@ -121,8 +121,8 @@ export default function LunchSpecialPage({ user }) {
         <button onClick={()=>navigate("/lunch-data")} style={{
           background:"none", border:"none", color:"#E65100",
           fontWeight:"700", fontSize:"18px", cursor:"pointer"
-        }}>← 배식 데이터로</button>
-        <div style={{ fontWeight:"900", fontSize:"20px" }}>🎭 특수 상황 분석</div>
+        }}>← 뒤로</button>
+        <div style={{ fontWeight:"900", fontSize:"20px" }}>🎭 나만의 문제 만들기</div>
         <div style={{ fontSize:"16px", fontWeight:"600", color:saved?"#34a853":"#bbb" }}>
           {saved?"✓ 저장됨":"저장 중..."}
         </div>

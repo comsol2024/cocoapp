@@ -125,7 +125,7 @@ export default function LunchDataPage({ user }) {
         </div>
       </div>
 
-      <div style={{ padding:"16px 24px" }}>
+      <div style={{ padding:"16px 24px", maxWidth:"1200px", margin:"0 auto"  }}>
 
         {/* 안내 */}
         <div style={{
@@ -136,7 +136,6 @@ export default function LunchDataPage({ user }) {
         }}>
           🌀 <strong>코코의 미션</strong> — 우리학교 배식 데이터를 측정하고 일차함수 그래프로 나타내봐!
         </div>
-
         {/* ── 좌우 2열 레이아웃 ── */}
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"20px", marginBottom:"20px" }}>
 
@@ -158,7 +157,7 @@ export default function LunchDataPage({ user }) {
             }}>
               <div style={{ display:"flex", alignItems:"center", gap:"12px" }}>
                 <label style={{ fontSize:"18px", fontWeight:"700",
-                  color:"#555", whiteSpace:"nowrap", minWidth:"120px" }}>
+                  color:"#555", whiteSpace:"nowrap", minWidth:"150px" }}>
                   🕛 배식 시작 시간
                 </label>
                 <input type="time" value={globalStart}
