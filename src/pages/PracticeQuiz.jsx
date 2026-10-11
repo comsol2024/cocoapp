@@ -1,426 +1,545 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../firebase";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-import CocoChat from "../components/CocoChat";
-import { PROMPTS } from "../utils/cocoPrompts";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import {
   PRACTICE_UNITS,
   PROBLEM_SETS,
   isAnswerCorrect,
 } from "../data/practiceProblems";
 
-// 단원별로 재사용할 기존 코코 프롬프트 매핑
-// (이미 만들어둔 각 챕터 프롬프트를 그대로 활용)
-const PROMPT_MAP = {
-  system: PROMPTS.equation, // 연립방정식 챕터 프롬프트 재사용
-  linear: PROMPTS.lunch,    // 일차함수(급식) 챕터 프롬프트 재사용
-  probability: PROMPTS.rain, // 확률(비) 챕터 프롬프트 재사용
+// ── 단원 설정 ──
+const UNIT_CONFIG = {
+  system:       { title: "연립방정식",   emoji: "🎭", color: "#1565C0", bg: "#E3F2FD" },
+  circumcenter: { title: "외심과 내심",  emoji: "🔵", color: "#E65100", bg: "#FFF3E0" },
+  linear:       { title: "일차함수",     emoji: "🍱", color: "#2E7D32", bg: "#E8F5E9" },
+  probability:  { title: "확률",         emoji: "⛈️", color: "#5E35B1", bg: "#EDE7F6" },
 };
 
 export default function PracticeQuiz({ user }) {
   const { unitId } = useParams();
   const navigate = useNavigate();
 
-  const unitConfig = PRACTICE_UNITS.find(u => u.id === unitId);
-  const problems   = PROBLEM_SETS[unitId] || [];
+  const cfg = UNIT_CONFIG[unitId] || {};
+  const problems = PROBLEM_SETS[unitId] || [];
+  const total = problems.length;
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [results, setResults]           = useState({}); // {0:"first"|"hint"}
-  const [input, setInput]               = useState("");
-  const [status, setStatus]             = useState("idle"); // idle|correct|wrong|hint
-  const [loaded, setLoaded]             = useState(false);
-  const [saved, setSaved]               = useState(false);
-  const [view, setView]                 = useState("quiz"); // quiz|completed
+  const [current, setCurrent] = useState(0);
+  const [inputs, setInputs] = useState({});
+  const [submitted, setSubmitted] = useState({});
+  const [showSolution, setShowSolution] = useState({});
+  const inputRef = useRef(null);
 
-  // ── 진행 상황 불러오기 ──
+  const problem = problems[current] || {};
+  const isSubmitted = !!submitted[current];
+  const isSolShown = !!showSolution[current];
+  const inputVal = inputs[current];
+
+  // Firebase 불러오기
   useEffect(() => {
     const load = async () => {
-      if (!user?.uid || !unitId) return;
-      const snap = await getDoc(doc(db, "users", user.uid, "practice", unitId));
-      if (snap.exists()) {
-        const d = snap.data();
-        if (d.results) setResults(d.results);
-        if (d.completed) {
-          setView("completed");
-        } else if (typeof d.currentIndex === "number") {
-          setCurrentIndex(d.currentIndex);
+      if (!user?.uid) return;
+      try {
+        const snap = await getDoc(doc(db, "users", user.uid, "practice", unitId));
+        if (snap.exists()) {
+          const d = snap.data();
+          if (d.inputs) setInputs(d.inputs);
+          if (d.submitted) setSubmitted(d.submitted);
         }
-      }
-      setLoaded(true);
+      } catch {}
     };
     load();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [unitId]);
+  }, [user, unitId]);
 
-  // ── 진행 상황 자동 저장 ──
-  useEffect(() => {
-    if (!loaded || !user?.uid || !unitId) return;
-    const t = setTimeout(async () => {
+  // Firebase 저장
+  const save = async (newInputs, newSubmitted) => {
+    if (!user?.uid) return;
+    try {
       await setDoc(
         doc(db, "users", user.uid, "practice", unitId),
-        {
-          currentIndex,
-          results,
-          completed: view === "completed",
-          updatedAt: new Date().toISOString(),
-        },
+        { inputs: newInputs, submitted: newSubmitted, updatedAt: Date.now() },
         { merge: true }
       );
-      setSaved(true);
-      setTimeout(() => setSaved(false), 1500);
-    }, 600);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, results, view, loaded]);
-
-  if (!unitConfig || problems.length === 0) {
-    return (
-      <div style={{ padding:"40px", textAlign:"center" }}>
-        <p>존재하지 않는 단원이에요.</p>
-        <button onClick={()=>navigate("/practice")}>← 연습문제 목록으로</button>
-      </div>
-    );
-  }
-
-  const problem = problems[currentIndex];
-  const color   = unitConfig.color;
-
-  const handleCheck = () => {
-    if (!input.trim()) return;
-    if (isAnswerCorrect(input, problem)) {
-      setStatus("correct");
-      setResults(prev => ({
-        ...prev,
-        [currentIndex]: prev[currentIndex] === "hint" ? "hint" : "first",
-      }));
-    } else {
-      setStatus("wrong");
-    }
+    } catch {}
   };
 
+  // 답 제출
+  const handleSubmit = () => {
+    if (problem.inputType === "essay") return;
+    const newSub = { ...submitted, [current]: true };
+    setSubmitted(newSub);
+    save(inputs, newSub);
+  };
+
+  // 다시풀기 (해당 문제만 초기화)
   const handleRetry = () => {
-    setStatus("idle");
-    setInput("");
+    const newInputs = { ...inputs };
+    delete newInputs[current];
+    const newSub = { ...submitted };
+    delete newSub[current];
+    const newSol = { ...showSolution };
+    delete newSol[current];
+    setInputs(newInputs);
+    setSubmitted(newSub);
+    setShowSolution(newSol);
+    save(newInputs, newSub);
   };
 
-  const handleShowHint = () => {
-    setStatus("hint");
-    setResults(prev => ({ ...prev, [currentIndex]: "hint" }));
+  // 전체 다시하기
+  const handleResetAll = () => {
+    setInputs({});
+    setSubmitted({});
+    setShowSolution({});
+    setCurrent(0);
+    save({}, {});
   };
 
-  const handleNext = () => {
-    if (currentIndex < problems.length - 1) {
-      setCurrentIndex(i => i + 1);
-      setInput("");
-      setStatus("idle");
-    } else {
-      setView("completed");
+  // 단일 입력 변경
+  const handleInput = (val) => {
+    setInputs(prev => ({ ...prev, [current]: val }));
+  };
+
+  // pair 입력 변경
+  const handlePairInput = (key, val) => {
+    const prev = (typeof inputVal === "object" && inputVal !== null) ? inputVal : {};
+    const newVal = { ...prev, [key]: val };
+    setInputs(prevInp => ({ ...prevInp, [current]: newVal }));
+  };
+
+  // 이전/다음
+  const goPrev = () => { if (current > 0) setCurrent(c => c - 1); };
+  const goNext = () => { if (current < total - 1) setCurrent(c => c + 1); };
+
+  // 상태 판별
+  const getStatus = (idx) => {
+    const p = problems[idx];
+    if (!p) return "empty";
+    if (p.inputType === "essay") {
+      return showSolution[idx] ? "viewed" : "unanswered";
     }
+    if (!submitted[idx]) {
+      const v = inputs[idx];
+      const hasInput = v && (typeof v === "object" ? (v.a || v.b) : String(v).trim());
+      return hasInput ? "input" : "unanswered";
+    }
+    return isAnswerCorrect(inputs[idx], p) ? "correct" : "wrong";
   };
 
-  const handleReset = async () => {
-    if (!window.confirm("처음부터 다시 풀까요? 저장된 기록이 초기화돼요.")) return;
-    setCurrentIndex(0);
-    setResults({});
-    setInput("");
-    setStatus("idle");
-    setView("quiz");
+  // 전체 완료 여부
+  const allDone = problems.length > 0 && problems.every((p, i) => {
+    const s = getStatus(i);
+    return s === "correct" || s === "wrong" || s === "viewed";
+  });
+
+  const STATUS_COLOR = {
+    unanswered: { bg: "#f0f0f0", text: "#aaa",    border: "#ddd" },
+    input:      { bg: "#FFF3E0", text: "#E65100",  border: "#FFB300" },
+    correct:    { bg: "#E8F5E9", text: "#2E7D32",  border: "#66BB6A" },
+    wrong:      { bg: "#FFEBEE", text: "#C62828",  border: "#EF9A9A" },
+    viewed:     { bg: "#E3F2FD", text: "#1565C0",  border: "#90CAF9" },
   };
 
-  const inp = {
-    padding:"12px 16px", borderRadius:"12px",
-    border:"2px solid #e2e8f0", fontSize:"18px",
-    outline:"none", width:"100%", boxSizing:"border-box",
-    fontFamily:"Courier New",
-  };
+  const isCorrect = isSubmitted && isAnswerCorrect(inputVal, problem);
 
-  // ── 완료 화면 ──
-  if (view === "completed") {
-    const firstCount = Object.values(results).filter(r => r === "first").length;
-    const hintCount  = Object.values(results).filter(r => r === "hint").length;
+  const legend = [
+    { key: "unanswered", label: "미풀이" },
+    { key: "input",      label: "작성중" },
+    { key: "correct",    label: "정답" },
+    { key: "wrong",      label: "오답" },
+    { key: "viewed",     label: "해설확인" },
+  ];
 
-    return (
-      <div style={{
-        background:`linear-gradient(180deg,${unitConfig.bg},white)`,
-        minHeight:"100vh", display:"flex", alignItems:"center",
-        justifyContent:"center", padding:"20px"
-      }}>
-        <div style={{
-          background:"white", borderRadius:"24px",
-          padding:"36px 30px", maxWidth:"420px", width:"100%",
-          textAlign:"center", boxShadow:"0 12px 40px rgba(0,0,0,0.15)"
-        }}>
-          <div style={{ fontSize:"56px", marginBottom:"10px" }}>🎉</div>
-          <div style={{ fontSize:"22px", fontWeight:"900", marginBottom:"6px" }}>
-            {unitConfig.title} 완료!
-          </div>
-          <div style={{ fontSize:"18px", color:"#888", marginBottom:"24px" }}>
-            10문제를 모두 풀었어요
-          </div>
-
-          <div style={{
-            display:"grid", gridTemplateColumns:"1fr 1fr", gap:"12px",
-            marginBottom:"24px"
-          }}>
-            <div style={{ background:"#E8F5E9", borderRadius:"14px", padding:"16px" }}>
-              <div style={{ fontSize:"24px", fontWeight:"900", color:"#2E7D32" }}>
-                {firstCount}
-              </div>
-              <div style={{ fontSize:"18px", color:"#555" }}>한 번에 맞춤 ✅</div>
-            </div>
-            <div style={{ background:"#FFF3E0", borderRadius:"14px", padding:"16px" }}>
-              <div style={{ fontSize:"24px", fontWeight:"900", color:"#E65100" }}>
-                {hintCount}
-              </div>
-              <div style={{ fontSize:"18px", color:"#555" }}>힌트 보고 맞춤 💡</div>
-            </div>
-          </div>
-
-          <button onClick={handleReset} style={{
-            width:"100%", padding:"14px", marginBottom:"10px",
-            background:`linear-gradient(135deg,${color},${color}cc)`,
-            color:"white", border:"none", borderRadius:"14px",
-            fontSize:"17px", fontWeight:"700", padding:"14px 28px", cursor:"pointer"
-          }}>
-            🔄 다시 풀기
-          </button>
-          <button onClick={()=>navigate("/practice")} style={{
-            width:"100%", padding:"12px",
-            background:"white", border:"1.5px solid #e2e8f0",
-            borderRadius:"14px", fontSize:"18px",
-            fontWeight:"700", color:"#666", cursor:"pointer"
-          }}>
-            ✏️ 다른 단원 풀기
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  // ── 퀴즈 화면 ──
   return (
-    <div style={{
-      background:`linear-gradient(180deg,${unitConfig.bg},white)`,
-      minHeight:"100vh"
-    }}>
+    <div style={{ background: "#F5F5F7", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+
       {/* 헤더 */}
       <div style={{
-        background:"white", padding:"12px 20px",
-        display:"flex", alignItems:"center", justifyContent:"space-between",
-        boxShadow:"0 2px 10px rgba(0,0,0,0.08)",
-        position:"sticky", top:0, zIndex:30
+        background: "white", padding: "22px 32px",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
+        position: "sticky", top: 0, zIndex: 30,
       }}>
-        <button onClick={()=>navigate("/practice")} style={{
-          background:"none", border:"none", color,
-          fontWeight:"700", fontSize:"18px", cursor:"pointer"
-        }}>← 단원 선택</button>
-        <div style={{ fontWeight:"900", fontSize:"18px" }}>
-          {unitConfig.emoji} {unitConfig.title} 연습문제
+        <button onClick={() => navigate("/practice")} style={{
+          background: "none", border: "none", color: cfg.color,
+          fontWeight: "700", fontSize: "22px", cursor: "pointer",
+        }}>← 목록으로</button>
+        <div style={{ fontWeight: "900", fontSize: "26px" }}>
+          {cfg.emoji} {cfg.title}
         </div>
-        <div style={{ fontSize:"18px", fontWeight:"600",
-          color: saved ? "#34a853" : "#bbb" }}>
-          {saved ? "✓ 저장됨" : ""}
+        <div style={{ fontSize: "22px", color: "#888", fontWeight: "700" }}>
+          {current + 1} / {total}
         </div>
       </div>
 
-      <div style={{ padding:"20px 20px 100px", maxWidth:"600px", margin:"0 auto" }}>
+      {/* 본문 */}
+      <div style={{
+        flex: 1, display: "flex",
+        maxWidth: "1200px", width: "100%",
+        margin: "0 auto", padding: "20px", gap: "20px",
+        alignItems: "flex-start",
+      }}>
 
-        {/* 진행 표시 */}
-        <div style={{ display:"flex", gap:"5px", marginBottom:"18px" }}>
-          {problems.map((_, i) => (
-            <div key={i} style={{
-              flex:1, height:"7px", borderRadius:"4px",
-              background:
-                i === currentIndex ? color :
-                results[i] === "first" ? "#66BB6A" :
-                results[i] === "hint"  ? "#FFB74D" :
-                "#e0e0e0",
-              transition:"all 0.3s"
-            }}/>
-          ))}
-        </div>
-        <div style={{ fontSize:"18px", color:"#888", marginBottom:"16px",
-          textAlign:"right" }}>
-          {currentIndex + 1} / {problems.length} 문제
-        </div>
-
-        {/* 문제 카드 */}
+        {/* ── 왼쪽 현황판 ── */}
         <div style={{
-          background:"white", borderRadius:"18px",
-          padding:"24px 22px", boxShadow:"0 4px 20px rgba(0,0,0,0.08)",
-          marginBottom:"16px"
+          width: "190px", flexShrink: 0,
+          background: "white", borderRadius: "20px",
+          padding: "20px 16px", boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          position: "sticky", top: "80px",
         }}>
+          <div style={{ fontSize: "17px", fontWeight: "800", color: "#555", marginBottom: "16px", textAlign: "center" }}>
+            📋 문제 현황
+          </div>
           <div style={{
-            display:"inline-block",
-            background: unitConfig.bg, color,
-            fontSize:"18px", fontWeight:"700",
-            padding:"4px 12px", borderRadius:"20px",
-            marginBottom:"14px"
+            display: "grid", gridTemplateColumns: "1fr 1fr",
+            gap: "10px", marginBottom: "20px",
           }}>
-            {problem.type}
+            {problems.map((_, idx) => {
+              const status = getStatus(idx);
+              const sc = STATUS_COLOR[status];
+              const isActive = idx === current;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setCurrent(idx)}
+                  style={{
+                    width: "100%", aspectRatio: "1",
+                    borderRadius: "12px",
+                    border: isActive ? `3px solid ${cfg.color}` : `2px solid ${sc.border}`,
+                    background: isActive ? cfg.bg : sc.bg,
+                    color: isActive ? cfg.color : sc.text,
+                    fontWeight: isActive ? "900" : "700",
+                    fontSize: "20px", cursor: "pointer",
+                    transition: "all 0.15s ease",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
           </div>
 
-          <div style={{
-            fontSize:"20px", lineHeight:"2",
-            color:"#2D3748", whiteSpace:"pre-line",
-            marginBottom:"20px"
-          }}>
-            {problem.question}
+          {/* 범례 */}
+          <div style={{ borderTop: "1px solid #f0f0f0", paddingTop: "14px" }}>
+            {legend.map(l => {
+              const sc = STATUS_COLOR[l.key];
+              return (
+                <div key={l.key} style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                  <div style={{
+                    width: "18px", height: "18px", borderRadius: "5px",
+                    background: sc.bg, border: `2px solid ${sc.border}`,
+                    flexShrink: 0,
+                  }} />
+                  <span style={{ fontSize: "16px", color: "#666" }}>{l.label}</span>
+                </div>
+              );
+            })}
           </div>
 
-          {/* 입력창 */}
-          <div style={{ display:"flex", gap:"10px", marginBottom:"6px" }}>
-            <input
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && status === "idle" && handleCheck()}
-              disabled={status === "correct"}
-              placeholder="답을 입력해줘! (예: 8000, 7/3, 0.4 등)"
-              style={{
-                ...inp,
-                borderColor:
-                  status === "correct" ? "#66BB6A" :
-                  status === "wrong"   ? "#EF5350" : "#e2e8f0",
-                background: status === "correct" ? "#F1F8E9" : "white",
-              }}
-            />
-            {status === "idle" && (
-              <button
-                onClick={handleNext}
-                style={{
-                  position:"fixed",
-                  bottom:"170px",   // 코코 챗봇 버튼 위에 오도록
-                  right:"670px",
-                  background:"rgba(38, 165, 197, 0.92)",
-                  border:"1.5px solid #e2e8f0",
-                  borderRadius:"20px",
-                  padding:"10px 18px",
-                  fontSize:"20px", fontWeight:"700",
-                  color:"#ffffff", cursor:"pointer",
-                  boxShadow:"0 2px 10px rgba(0,0,0,0.1)",
-                  zIndex:35,
-                  backdropFilter:"blur(8px)",
-                  whiteSpace:"nowrap"
-                }}
-              >
-                다음 문제 
-              </button>
+          {/* 다시하기 버튼 */}
+          <button
+            onClick={allDone ? handleResetAll : undefined}
+            style={{
+              marginTop: "16px", width: "100%",
+              padding: "14px 0", borderRadius: "12px",
+              border: `2px solid ${allDone ? "#EF5350" : "#E0E0E0"}`,
+              background: allDone ? "#FFEBEE" : "#F5F5F5",
+              color: allDone ? "#C62828" : "#BDBDBD",
+              fontSize: "17px", fontWeight: "800",
+              cursor: allDone ? "pointer" : "default",
+              transition: "all 0.2s",
+            }}
+          >
+            🔄 전체 다시하기
+          </button>
+        </div>
+
+        {/* ── 오른쪽 문제 카드 ── */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{
+            background: "white", borderRadius: "24px",
+            padding: "36px 36px 28px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+          }}>
+            {/* 문제 번호 + 유형 */}
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+              <div style={{
+                background: cfg.bg, color: cfg.color,
+                fontWeight: "900", fontSize: "28px",
+                width: "68px", height: "68px", borderRadius: "18px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                {current + 1}
+              </div>
+              <div>
+                <div style={{ fontSize: "19px", color: "#888", fontWeight: "600" }}>{problem.type}</div>
+                <div style={{ fontSize: "16px", color: "#bbb", marginTop: "2px" }}>
+                  {problem.inputType === "essay"  ? "서술형 (해설 확인)" :
+                   problem.inputType === "pair"   ? "두 값 입력" :
+                   problem.inputType === "text"   ? "분수/텍스트 입력" : "숫자 입력"}
+                </div>
+              </div>
+            </div>
+
+            {/* 문제 본문 */}
+            <div style={{
+              fontSize: "21px", lineHeight: "2.1", color: "#222",
+              whiteSpace: "pre-wrap", background: "#FAFAFA",
+              borderRadius: "16px", padding: "26px 28px",
+              marginBottom: "28px", border: "1px solid #f0f0f0",
+            }}>
+              {problem.question}
+            </div>
+
+            {/* 문제 이미지 (image 필드가 있을 때만 표시) */}
+            {problem.image && (
+              <div style={{
+                marginBottom: "28px", textAlign: "center",
+                background: "#FAFAFA", borderRadius: "16px",
+                padding: "20px", border: "1px solid #f0f0f0",
+              }}>
+                <img
+                  src={problem.image}
+                  alt="문제 그림"
+                  style={{
+                    maxWidth: "100%", maxHeight: "360px",
+                    borderRadius: "10px", objectFit: "contain",
+                  }}
+                />
+              </div>
+            )}
+
+            {/* ── 입력 영역 ── */}
+            {problem.inputType === "essay" ? (
+              <div style={{
+                background: "#F8F9FF", borderRadius: "14px",
+                padding: "24px 26px", marginBottom: "24px",
+                border: "2px dashed #C5CAE9",
+                fontSize: "19px", color: "#5C6BC0", lineHeight: "1.9",
+              }}>
+                ✏️ 이 문제는 서술형입니다.<br />
+                직접 풀어본 뒤 아래 <strong>해설보기</strong> 버튼을 눌러 답을 확인하세요.
+              </div>
+            ) : problem.inputType === "pair" ? (
+              <div style={{ marginBottom: "24px" }}>
+                <div style={{ fontSize: "18px", fontWeight: "700", color: "#555", marginBottom: "14px" }}>
+                  📝 두 값을 각각 입력하세요
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                  {(problem.pairLabels || ["첫 번째 값", "두 번째 값"]).map((label, li) => {
+                    const key = li === 0 ? "a" : "b";
+                    const pairObj = (typeof inputVal === "object" && inputVal) ? inputVal : {};
+                    return (
+                      <div key={li} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                        <div style={{
+                          fontSize: "18px", fontWeight: "700", color: cfg.color,
+                          width: "200px", flexShrink: 0,
+                        }}>
+                          {label}
+                        </div>
+                        <input
+                          type="text"
+                          value={pairObj[key] || ""}
+                          disabled={isSubmitted}
+                          onChange={e => handlePairInput(key, e.target.value)}
+                          placeholder="숫자 입력"
+                          style={{
+                            flex: 1, padding: "14px 18px",
+                            borderRadius: "12px",
+                            border: `2px solid ${isSubmitted
+                              ? (isCorrect ? "#66BB6A" : "#EF9A9A")
+                              : (pairObj[key] ? cfg.color + "88" : "#E0E0E0")}`,
+                            fontSize: "20px", outline: "none",
+                            background: isSubmitted ? "#FAFAFA" : "white",
+                            color: "#222",
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div style={{ marginBottom: "24px" }}>
+                <div style={{ fontSize: "18px", fontWeight: "700", color: "#555", marginBottom: "14px" }}>
+                  📝 답을 입력하세요
+                  {problem.inputType === "text" && (
+                    <span style={{ color: "#aaa", fontWeight: "500", marginLeft: "10px" }}>
+                      (분수는 예: 2/5 형태로)
+                    </span>
+                  )}
+                </div>
+                <input
+                  ref={inputRef}
+                  type={problem.inputType === "number" ? "number" : "text"}
+                  value={typeof inputVal === "string" || typeof inputVal === "number" ? inputVal : ""}
+                  disabled={isSubmitted}
+                  onChange={e => handleInput(e.target.value)}
+                  onKeyDown={e => { if (e.key === "Enter" && !isSubmitted) handleSubmit(); }}
+                  placeholder={problem.placeholder || (problem.inputType === "number" ? "숫자 입력" : "답 입력")}
+                  style={{
+                    width: "100%", padding: "16px 20px",
+                    borderRadius: "14px",
+                    border: `2px solid ${isSubmitted
+                      ? (isCorrect ? "#66BB6A" : "#EF9A9A")
+                      : (inputVal ? cfg.color + "88" : "#E0E0E0")}`,
+                    fontSize: "22px", outline: "none",
+                    background: isSubmitted ? "#FAFAFA" : "white",
+                    color: "#222", boxSizing: "border-box",
+                  }}
+                />
+              </div>
+            )}
+
+            {/* 제출 결과 */}
+            {isSubmitted && problem.inputType !== "essay" && (
+              <div style={{
+                background: isCorrect ? "#E8F5E9" : "#FFEBEE",
+                border: `2px solid ${isCorrect ? "#A5D6A7" : "#FFCDD2"}`,
+                borderRadius: "14px", padding: "16px 20px",
+                marginBottom: "20px", fontSize: "20px",
+                fontWeight: "700", color: isCorrect ? "#2E7D32" : "#C62828",
+              }}>
+                {isCorrect ? "✅ 정답이에요!" : `❌ 틀렸어요. 정답: ${problem.answer}`}
+              </div>
+            )}
+
+            {/* 버튼 영역 */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {/* 제출하기 */}
+              {problem.inputType !== "essay" && !isSubmitted && (
+                <button
+                  onClick={handleSubmit}
+                  style={{
+                    width: "100%", padding: "20px",
+                    borderRadius: "16px", border: "none",
+                    background: cfg.color, color: "white",
+                    fontSize: "22px", fontWeight: "800", cursor: "pointer",
+                  }}
+                >
+                  제출하기
+                </button>
+              )}
+
+              {/* 제출 후 버튼 row: 다시풀기 + 해설보기 */}
+              {(isSubmitted || problem.inputType === "essay") && (
+                <div style={{ display: "flex", gap: "12px" }}>
+                  {/* 다시풀기 (essay 제외) */}
+                  {problem.inputType !== "essay" && (
+                    <button
+                      onClick={handleRetry}
+                      style={{
+                        flex: 1, padding: "18px",
+                        borderRadius: "14px",
+                        border: "2.5px solid #FF8F00",
+                        background: "white",
+                        color: "#FF8F00",
+                        fontSize: "20px", fontWeight: "700", cursor: "pointer",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      🔁 다시풀기
+                    </button>
+                  )}
+
+                  {/* 해설보기 */}
+                  <button
+                    onClick={() => {
+                      const newSol = { ...showSolution, [current]: !isSolShown };
+                      setShowSolution(newSol);
+                      if (problem.inputType === "essay" && !isSolShown) {
+                        const newSub = { ...submitted, [current]: true };
+                        setSubmitted(newSub);
+                        save(inputs, newSub);
+                      }
+                    }}
+                    style={{
+                      flex: 1, padding: "18px",
+                      borderRadius: "14px",
+                      border: `2.5px solid ${cfg.color}`,
+                      background: isSolShown ? cfg.color : "white",
+                      color: isSolShown ? "white" : cfg.color,
+                      fontSize: "20px", fontWeight: "700", cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    {isSolShown ? "해설 닫기 ▲" : "해설보기 ▼"}
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 해설 패널 */}
+            {isSolShown && problem.solution && (
+              <div style={{
+                marginTop: "20px", background: "#F8F9FF",
+                borderRadius: "16px", padding: "24px 28px",
+                border: `2px solid ${cfg.color}33`,
+              }}>
+                <div style={{ fontSize: "20px", fontWeight: "800", color: cfg.color, marginBottom: "14px" }}>
+                  💡 해설
+                </div>
+                <div style={{
+                  fontSize: "19px", lineHeight: "2.1",
+                  color: "#333", whiteSpace: "pre-wrap",
+                }}>
+                  {problem.solution}
+                </div>
+                {problem.answer && (
+                  <div style={{
+                    marginTop: "18px", padding: "14px 18px",
+                    background: cfg.bg, borderRadius: "12px",
+                    fontSize: "20px", fontWeight: "800", color: cfg.color,
+                  }}>
+                    ✅ 정답: {problem.answer}
+                  </div>
+                )}
+              </div>
             )}
           </div>
 
-          {/* 정답 상태 */}
-          {status === "correct" && (
-            <div style={{ marginTop:"14px" }}>
-              <div style={{
-                background:"#E8F5E9", borderRadius:"12px",
-                padding:"14px 16px", color:"#2E7D32",
-                fontWeight:"800", fontSize:"18px",
-                textAlign:"center", marginBottom:"10px"
-              }}>
-                🎉 정답입니다!
-              </div>
-              <button onClick={handleNext} style={{
-                width:"100%", padding:"13px",
-                background:`linear-gradient(135deg,${color},${color}cc)`,
-                color:"white", border:"none", borderRadius:"12px",
-                fontSize:"17px", fontWeight:"700", padding:"14px 28px", cursor:"pointer"
-              }}>
-                {currentIndex < problems.length - 1 ? "다음 문제 →" : "결과 보기 🎉"}
-              </button>
+          {/* ── 이전 / 다음 버튼 ── */}
+          <div style={{
+            display: "flex", justifyContent: "space-between",
+            alignItems: "center", marginTop: "20px", gap: "14px",
+          }}>
+            <button
+              onClick={goPrev}
+              disabled={current === 0}
+              style={{
+                flex: 1, padding: "20px", borderRadius: "16px",
+                border: `2.5px solid ${current === 0 ? "#E0E0E0" : cfg.color}`,
+                background: current === 0 ? "#F5F5F5" : "white",
+                color: current === 0 ? "#BDBDBD" : cfg.color,
+                fontSize: "22px", fontWeight: "800",
+                cursor: current === 0 ? "default" : "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              ← 이전 문제
+            </button>
+            <div style={{ fontSize: "20px", color: "#aaa", fontWeight: "700", whiteSpace: "nowrap" }}>
+              {current + 1} / {total}
             </div>
-          )}
-
-          {/* 오답 상태 */}
-          {status === "wrong" && (
-            <div style={{ marginTop:"14px" }}>
-              <div style={{
-                background:"#FFEBEE", borderRadius:"12px",
-                padding:"12px 16px", color:"#C62828",
-                fontWeight:"700", fontSize:"18px",
-                textAlign:"center", marginBottom:"10px"
-              }}>
-                ❌ 아직 정답이 아니에요!
-              </div>
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"10px" }}>
-                <button onClick={handleRetry} style={{
-                  padding:"12px", background:"white",
-                  border:"1.5px solid #e2e8f0", borderRadius:"12px",
-                  fontSize:"18px", fontWeight:"700", color:"#555", cursor:"pointer"
-                }}>
-                  🔁 다시 풀기
-                </button>
-                <button onClick={handleShowHint} style={{
-                  padding:"12px",
-                  background:"linear-gradient(135deg,#FF8F00,#E65100)",
-                  color:"white", border:"none", borderRadius:"12px",
-                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
-                }}>
-                  💡 힌트 확인
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* 힌트 + 정답 공개 */}
-          {status === "hint" && (
-            <div style={{ marginTop:"14px" }}>
-              <div style={{
-                background:"#FFF8E1", borderRadius:"12px",
-                padding:"14px 16px", marginBottom:"10px",
-                border:"1.5px solid #FFE082"
-              }}>
-                <div style={{ fontSize:"18px", fontWeight:"800",
-                  color:"#E65100", marginBottom:"6px" }}>
-                  💡 힌트
-                </div>
-                <div style={{ fontSize:"18px", color:"#555", lineHeight:"1.8" }}>
-                  {problem.hint}
-                </div>
-              </div>
-
-              <div style={{
-                background:"#E3F2FD", borderRadius:"12px",
-                padding:"14px 16px", marginBottom:"12px",
-                border:"1.5px solid #90CAF9"
-              }}>
-                <div style={{ fontSize:"18px", fontWeight:"800",
-                  color:"#1565C0", marginBottom:"6px" }}>
-                  📌 정답
-                </div>
-                <div style={{ fontSize:"18px", color:"#333",
-                  lineHeight:"1.8", fontWeight:"600" }}>
-                  {problem.answer}
-                </div>
-              </div>
-
-              <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"10px" }}>
-                <button onClick={handleRetry} style={{
-                  padding:"12px", background:"white",
-                  border:"1.5px solid #e2e8f0", borderRadius:"12px",
-                  fontSize:"18px", fontWeight:"700", color:"#555", cursor:"pointer"
-                }}>
-                  🔁 다시 풀어보기
-                </button>
-                <button onClick={handleNext} style={{
-                  padding:"12px",
-                  background:`linear-gradient(135deg,${color},${color}cc)`,
-                  color:"white", border:"none", borderRadius:"12px",
-                  fontSize:"18px", fontWeight:"700", cursor:"pointer"
-                }}>
-                  {currentIndex < problems.length - 1 ? "다음 문제 →" : "결과 보기 🎉"}
-                </button>
-              </div>
-            </div>
-          )}
+            <button
+              onClick={goNext}
+              disabled={current === total - 1}
+              style={{
+                flex: 1, padding: "20px", borderRadius: "16px",
+                border: `2.5px solid ${current === total - 1 ? "#E0E0E0" : cfg.color}`,
+                background: current === total - 1 ? "#F5F5F5" : cfg.color,
+                color: current === total - 1 ? "#BDBDBD" : "white",
+                fontSize: "22px", fontWeight: "800",
+                cursor: current === total - 1 ? "default" : "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              다음 문제 →
+            </button>
+          </div>
         </div>
       </div>
-
-      <CocoChat
-        systemPrompt={PROMPT_MAP[unitId] || PROMPTS.equation}
-        initialMessage={`안녕! 나는 코코야 🌀\n${unitConfig.title} 문제 풀다가 막히면 언제든 물어봐!`}
-        bottomOffset="24px"
-      />
     </div>
   );
 }
